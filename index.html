@@ -579,6 +579,50 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
       <div style="color:var(--textdim);font-size:10px;padding:4px 0">Loading alerts…</div>
     </div>
 
+    <!-- ACTIVE FIRE INCIDENTS -->
+    <div class="col-hdr" style="margin-top:0">
+      <span>🔥 ACTIVE FIRE INCIDENTS</span>
+      <span id="fire-count" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">0 INCIDENTS</span>
+    </div>
+    <div id="fire-incident-list" style="padding:8px 14px">
+      <div style="color:var(--textdim);font-size:10px">Loading NIFC fire data…</div>
+    </div>
+
+    <!-- SD WILDLAND FIRE EMBED — always visible, human-updated -->
+    <div style="border-top:1px solid var(--border)">
+      <div class="col-hdr" style="margin-top:0;background:rgba(192,80,16,0.06)">
+        <span style="color:var(--orangelt)">🌲 SD WILDLAND FIRE INFO</span>
+        <a href="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx" target="_blank"
+          style="font-size:8px;color:var(--textdim);font-family:var(--mono)">Open ↗</a>
+      </div>
+      <div style="height:340px;overflow:hidden;position:relative">
+        <iframe
+          src="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx"
+          style="width:100%;height:100%;border:none;display:block"
+          title="SD Wildland Fire Info"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+        </iframe>
+        <!-- Fallback if blocked -->
+        <div id="sdwf-fallback" style="display:none;position:absolute;inset:0;background:var(--card);padding:12px;flex-direction:column;gap:6px">
+          <div style="font-size:9px;color:var(--textmid);margin-bottom:4px;font-family:var(--mono)">SD WILDLAND FIRE — DIRECT LINKS</div>
+          <a href="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx" target="_blank"
+            class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">▸ SD Wildland Fire Info Page</a>
+          <a href="https://wildlandfire.sd.gov/operations/firefighterbriefing.aspx" target="_blank"
+            class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">▸ Daily Firefighter Briefing</a>
+          <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank"
+            class="lbtn" style="color:var(--redlt);background:rgba(224,56,48,0.08);border-color:rgba(224,56,48,0.3)">▸ InciWeb — SD Active Incidents</a>
+          <a href="http://gpfireinfo.blogspot.com/" target="_blank"
+            class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">▸ Great Plains Fire Information</a>
+          <a href="https://www.nifc.gov/nicc-files/sitreprt.pdf" target="_blank"
+            class="lbtn" style="color:var(--textmid);background:rgba(255,255,255,0.04);border-color:var(--border)">▸ NIFC Daily Sit Report (PDF)</a>
+        </div>
+      </div>
+      <div style="padding:4px 14px;font-size:7px;color:var(--textdim);font-family:var(--mono);border-top:1px solid var(--border);display:flex;justify-content:space-between">
+        <span>SD WILDLAND FIRE · MANUALLY UPDATED BY SD DPS PIO</span>
+        <a href="https://wildlandfire.sd.gov/" target="_blank" style="color:var(--textdim)">wildlandfire.sd.gov</a>
+      </div>
+    </div>
+
   </div>
 
   <!-- ── CENTER — MAP ─────────────────────────── -->
@@ -596,8 +640,8 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 
     <!-- Map iframe container -->
     <div id="map-container" style="padding-top:36px;height:100%">
-      <div id="map-iframe-wrap">
-        <iframe id="map-frame" src="https://radar.weather.gov/station/KUDX/standard" title="SD Radar" allowfullscreen></iframe>
+      <div id="map-iframe-wrap" style="width:100%;height:100%">
+        <!-- Loaded by setMapLayer() on init -->
       </div>
     </div>
 
@@ -1111,31 +1155,173 @@ updateClock();
 ══════════════════════════════════════════════════ */
 const MAP_LAYERS = {
   radar: {
-    url: "https://radar.weather.gov/station/KFSD/standard",
-    legend: `<div class="legend-item"><div class="legend-sq" style="background:rgba(18,128,208,0.7)"></div>KFSD Sioux Falls radar</div>
-             <div class="legend-item"><div class="legend-sq" style="background:rgba(26,128,80,0.5)"></div>Light precip</div>
-             <div class="legend-item"><div class="legend-sq" style="background:rgba(220,60,30,0.7)"></div>Heavy precip</div>
-             <div style="margin-top:6px"><a href="https://radar.weather.gov/station/KUDX/standard" target="_blank" class="lbtn" style="font-size:8px;color:var(--bluelt);border-color:rgba(18,128,208,0.3);background:rgba(18,128,208,0.08)">▸ KUDX Rapid City</a></div>`,
+    url: "about:blank",
+    isCustom: true,
+    legend: `<div class="legend-item"><div class="legend-sq" style="background:rgba(18,128,208,0.6)"></div>Light precip (green)</div>
+             <div class="legend-item"><div class="legend-sq" style="background:rgba(220,160,0,0.7)"></div>Moderate (yellow)</div>
+             <div class="legend-item"><div class="legend-sq" style="background:rgba(220,60,30,0.7)"></div>Heavy (red)</div>
+             <div style="margin-top:6px;font-size:8px;color:var(--textdim)">UNR = Rapid City · FSD = Sioux Falls</div>`,
+    customHTML: `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;height:100%;background:#060c10">
+        <div style="display:flex;flex-direction:column;border-right:1px solid #1c2d3e">
+          <div style="padding:6px 10px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#1880d0;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.8)">
+            📡 KUDX — RAPID CITY (WESTERN SD)
+          </div>
+          <div style="flex:1;position:relative;overflow:hidden">
+            <img src="https://radar.weather.gov/ridge/standard/KUDX_0.gif?t=${Date.now()}"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+              alt="KUDX Radar"/>
+            <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#3a5268;font-size:10px;font-family:'Share Tech Mono',monospace">
+              <div>Radar loading…</div>
+              <a href="https://radar.weather.gov/station/KUDX/standard" target="_blank"
+                style="color:#1880d0;font-size:9px">▸ Open KUDX Rapid City</a>
+            </div>
+          </div>
+          <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-top:1px solid #1c2d3e;display:flex;justify-content:space-between;align-items:center">
+            <span>Covers western SD, Black Hills, Badlands</span>
+            <a href="https://radar.weather.gov/station/KUDX/standard" target="_blank"
+              style="color:#1880d0;font-size:8px">Open ↗</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <div style="padding:6px 10px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#1880d0;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.8)">
+            📡 KFSD — SIOUX FALLS (EASTERN SD)
+          </div>
+          <div style="flex:1;position:relative;overflow:hidden">
+            <img src="https://radar.weather.gov/ridge/standard/KFSD_0.gif?t=${Date.now()}"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+              alt="KFSD Radar"/>
+            <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#3a5268;font-size:10px;font-family:'Share Tech Mono',monospace">
+              <div>Radar loading…</div>
+              <a href="https://radar.weather.gov/station/KFSD/standard" target="_blank"
+                style="color:#1880d0;font-size:9px">▸ Open KFSD Sioux Falls</a>
+            </div>
+          </div>
+          <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-top:1px solid #1c2d3e;display:flex;justify-content:space-between;align-items:center">
+            <span>Covers eastern SD, James R valley, Sioux Falls</span>
+            <a href="https://radar.weather.gov/station/KFSD/standard" target="_blank"
+              style="color:#1880d0;font-size:8px">Open ↗</a>
+          </div>
+        </div>
+      </div>
+    `,
   },
   water: {
-    url: "https://dashboard.waterdata.usgs.gov/api/gwis/2.1.1/service/ui?region=sd&parameter=00065",
+    url: "about:blank",
+    isCustom: true,
     legend: `<div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Below action stage</div>
              <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Action / flood watch</div>
              <div class="legend-item"><div class="legend-dot" style="background:var(--redlt)"></div>Flood / major flood</div>`,
+    customHTML: `
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
+        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#12aeb2;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center">
+          <span>🌊 USGS WATER CONDITIONS — SOUTH DAKOTA</span>
+          <div style="display:flex;gap:8px">
+            <a href="https://waterdata.usgs.gov/state/south-dakota/" target="_blank" style="color:#12aeb2;font-size:8px;font-family:'Share Tech Mono',monospace">▸ USGS SD Water Data</a>
+            <a href="https://water.weather.gov/ahps2/index.php?wfo=unr" target="_blank" style="color:#1880d0;font-size:8px;font-family:'Share Tech Mono',monospace">▸ NWS Flood Outlook</a>
+            <a href="https://www.nwd-mr.usace.army.mil/rcc/current.html" target="_blank" style="color:#12aeb2;font-size:8px;font-family:'Share Tech Mono',monospace">▸ Army Corps MR</a>
+          </div>
+        </div>
+        <div style="flex:1;overflow:hidden">
+          <iframe src="https://waterdata.usgs.gov/state/south-dakota/" style="width:100%;height:100%;border:none;display:block" title="USGS SD Water Data"></iframe>
+        </div>
+        <div style="padding:4px 12px;font-size:8px;color:#3a5268;border-top:1px solid #1c2d3e;display:flex;gap:16px">
+          <span>SOURCE: USGS Water Resources · Updated hourly · Click any gauge for details</span>
+        </div>
+      </div>
+    `,
   },
   drought: {
-    url: "https://droughtmonitor.unl.edu/CurrentMap/StateDroughtMonitor.aspx?SD",
+    url: "about:blank",
+    isCustom: true,
     legend: `<div class="legend-item"><div class="legend-sq" style="background:#f0d840"></div>D0 Abnormally dry</div>
              <div class="legend-item"><div class="legend-sq" style="background:#e8a000"></div>D1 Moderate</div>
              <div class="legend-item"><div class="legend-sq" style="background:#e06010"></div>D2 Severe</div>
              <div class="legend-item"><div class="legend-sq" style="background:#c02000"></div>D3 Extreme</div>
              <div class="legend-item"><div class="legend-sq" style="background:#7a0000"></div>D4 Exceptional</div>`,
+    customHTML: `
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
+        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#e09a14;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center">
+          <span>🌵 US DROUGHT MONITOR — SOUTH DAKOTA</span>
+          <div style="display:flex;gap:8px">
+            <a href="https://droughtmonitor.unl.edu/CurrentMap/StateDroughtMonitor.aspx?SD" target="_blank" style="color:#e09a14;font-size:8px;font-family:'Share Tech Mono',monospace">▸ USDM SD Page</a>
+            <a href="https://www.drought.gov/states/south-dakota" target="_blank" style="color:#1880d0;font-size:8px;font-family:'Share Tech Mono',monospace">▸ Drought.gov SD</a>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:16px">
+          <img src="https://droughtmonitor.unl.edu/data/png/current/current_sd_trd.png?t=${Date.now()}"
+            style="max-width:100%;max-height:calc(100% - 80px);object-fit:contain;background:#fff;border-radius:4px;display:block"
+            onerror="this.style.display='none';document.getElementById('drought-fallback').style.display='flex'"
+            alt="SD Drought Monitor Map"/>
+          <div id="drought-fallback" style="display:none;flex-direction:column;align-items:center;gap:10px;color:#3a5268;font-size:10px;font-family:'Share Tech Mono',monospace">
+            <div>Map unavailable — open directly:</div>
+            <a href="https://droughtmonitor.unl.edu/CurrentMap/StateDroughtMonitor.aspx?SD" target="_blank"
+              style="color:#e09a14;padding:6px 14px;border:1px solid rgba(200,130,10,0.4);border-radius:4px;font-size:9px">▸ Open USDM SD Map</a>
+          </div>
+          <div style="font-size:8px;color:#3a5268;font-family:'Share Tech Mono',monospace;text-align:center">US Drought Monitor · Updated every Thursday · NDMC/NOAA/USDA</div>
+        </div>
+      </div>
+    `,
   },
   fire: {
-    url: "https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z",
+    url: "about:blank",
+    isCustom: true,
     legend: `<div class="legend-item"><div class="legend-dot" style="background:#ff4400"></div>Active fire detection (VIIRS)</div>
              <div class="legend-item"><div class="legend-dot" style="background:#ff8800"></div>Fire hotspot (MODIS)</div>
-             <div style="margin-top:6px;font-size:8px;color:var(--textdim)">NASA FIRMS · 24hr window</div>`,
+             <div style="margin-top:4px;font-size:8px;color:var(--textdim)">NASA FIRMS · 24hr window</div>`,
+    customHTML: `
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
+        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#e06820;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center">
+          <span>🔥 ACTIVE FIRE DETECTION — SD REGION</span>
+          <div style="display:flex;gap:8px">
+            <a href="https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z" target="_blank" style="color:#e06820;font-size:8px;font-family:'Share Tech Mono',monospace">▸ NASA FIRMS Interactive Map</a>
+            <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank" style="color:#e03830;font-size:8px;font-family:'Share Tech Mono',monospace">▸ InciWeb SD Incidents</a>
+            <a href="https://www.nifc.gov/nicc-files/sitreprt.pdf" target="_blank" style="color:#e09a14;font-size:8px;font-family:'Share Tech Mono',monospace">▸ NIFC Sit Report</a>
+          </div>
+        </div>
+        <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="display:flex;flex-direction:column;border-right:1px solid #1c2d3e">
+            <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-bottom:1px solid #1c2d3e;font-family:'Share Tech Mono',monospace">NASA FIRMS — SATELLITE HEAT DETECTION (24hr)</div>
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:16px">
+              <img src="https://firms.modaps.eosdis.nasa.gov/usfs/api/area/png/-110,38,-92,50/VIIRS_SNPP_NRT/1/${new Date().toISOString().substring(0,10)}"
+                style="max-width:100%;max-height:240px;object-fit:contain;border-radius:4px;display:block"
+                onerror="this.style.display='none';this.nextSibling.style.display='flex'"
+                alt="NASA FIRMS SD"/>
+              <div style="display:none;flex-direction:column;align-items:center;gap:8px;color:#3a5268;font-size:9px;font-family:'Share Tech Mono',monospace">
+                <div>Satellite image unavailable</div>
+                <a href="https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z" target="_blank"
+                  style="color:#e06820;padding:5px 12px;border:1px solid rgba(224,104,32,0.4);border-radius:4px;font-size:9px">▸ Open NASA FIRMS Map</a>
+              </div>
+              <div style="font-size:7px;color:#3a5268;font-family:'Share Tech Mono',monospace;text-align:center">VIIRS SNPP · Not all detections are wildfires · Updated multiple times daily</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-bottom:1px solid #1c2d3e;font-family:'Share Tech Mono',monospace">ACTIVE INCIDENT RESOURCES</div>
+            <div style="padding:12px;display:flex;flex-direction:column;gap:6px">
+              <div style="padding:8px 10px;background:rgba(224,104,32,0.08);border:1px solid rgba(224,104,32,0.2);border-left:3px solid #e06820;border-radius:0 4px 4px 0">
+                <div style="font-size:9px;font-weight:700;color:#e06820;font-family:'Share Tech Mono',monospace;margin-bottom:3px">NIFC WFIGS — LIVE INCIDENT DATA</div>
+                <div style="font-size:8px;color:#7a9ab8;line-height:1.5">Active fire incidents with name, county/state location, coordinates, acreage, containment %, cause, and structures threatened display in the <strong style="color:#e06820">LEFT COLUMN</strong> of the main dashboard — updated every 5 minutes from NIFC WFIGS. SD incidents are highlighted separately from regional fires.</div>
+              </div>
+              <div style="padding:8px 10px;background:rgba(224,56,48,0.06);border:1px solid rgba(224,56,48,0.15);border-left:3px solid #e03830;border-radius:0 4px 4px 0">
+                <div style="font-size:9px;font-weight:700;color:#e03830;font-family:'Share Tech Mono',monospace;margin-bottom:3px">SD WILDLAND FIRE RESOURCES</div>
+                <div style="display:flex;flex-direction:column;gap:4px;margin-top:4px">
+                  <a href="https://wildlandfire.sd.gov/operations/firefighterbriefing.aspx" target="_blank" style="font-size:8px;color:#e06820;font-family:'Share Tech Mono',monospace">▸ SD Wildland Fire Daily Briefing</a>
+                  <a href="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx" target="_blank" style="font-size:8px;color:#e06820;font-family:'Share Tech Mono',monospace">▸ SD Wildland Fire Info</a>
+                  <a href="https://www.greatplainsfire.org/" target="_blank" style="font-size:8px;color:#e09a14;font-family:'Share Tech Mono',monospace">▸ Great Plains Fire Information</a>
+                  <a href="https://www.weather.gov/unr/rfd" target="_blank" style="font-size:8px;color:#e09a14;font-family:'Share Tech Mono',monospace">▸ SD Grassland Fire Danger Map</a>
+                  <a href="https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-wildland-fire-perimeters/explore" target="_blank" style="font-size:8px;color:#e06820;font-family:'Share Tech Mono',monospace">▸ NIFC Current Fire Perimeters</a>
+                </div>
+              </div>
+              <div style="padding:8px 10px;background:rgba(200,130,10,0.06);border:1px solid rgba(200,130,10,0.15);border-radius:4px">
+                <div style="font-size:8px;color:#7a9ab8;line-height:1.5;font-family:'Share Tech Mono',monospace">NATIONAL PREP LEVEL: Fetched automatically. Check strategic bar and risk model for current PL and resource availability context.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
   },
   roads: {
     url: "https://sd511.org/",
@@ -1145,11 +1331,52 @@ const MAP_LAYERS = {
              <div style="margin-top:4px;font-size:8px;color:var(--textdim)">SD511 · Live conditions</div>`,
   },
   quake: {
-    url: "https://earthquake.usgs.gov/earthquakes/map/?extent=39,-109&extent=49,-93&listOnlyShown",
+    url: "about:blank",
+    isCustom: true,
     legend: `<div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>M1.0–2.9</div>
              <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>M3.0–3.9</div>
              <div class="legend-item"><div class="legend-dot" style="background:var(--redlt)"></div>M4.0+</div>
              <div style="margin-top:4px;font-size:8px;color:var(--textdim)">USGS · 30-day window</div>`,
+    customHTML: `
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
+        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#12aeb2;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center">
+          <span>🌎 SEISMIC ACTIVITY — SD REGION (30 DAYS)</span>
+          <div style="display:flex;gap:8px">
+            <a href="https://earthquake.usgs.gov/earthquakes/map/?extent=39,-109&extent=49,-93" target="_blank" style="color:#12aeb2;font-size:8px;font-family:'Share Tech Mono',monospace">▸ USGS Interactive Map</a>
+            <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php" target="_blank" style="color:#1880d0;font-size:8px;font-family:'Share Tech Mono',monospace">▸ USGS GeoJSON Feed</a>
+          </div>
+        </div>
+        <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="display:flex;flex-direction:column;border-right:1px solid #1c2d3e">
+            <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-bottom:1px solid #1c2d3e;font-family:'Share Tech Mono',monospace">RECENT EVENTS — SD REGION</div>
+            <div style="flex:1;overflow-y:auto;padding:8px 12px" id="quake-map-list">
+              <div style="color:#3a5268;font-size:9px;font-family:'Share Tech Mono',monospace">Loading seismic data…</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-bottom:1px solid #1c2d3e;font-family:'Share Tech Mono',monospace">SD SEISMIC CONTEXT</div>
+            <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
+              <div style="padding:8px 10px;background:rgba(10,144,144,0.08);border:1px solid rgba(10,144,144,0.2);border-left:3px solid #12aeb2;border-radius:0 4px 4px 0">
+                <div style="font-size:9px;font-weight:700;color:#12aeb2;font-family:'Share Tech Mono',monospace;margin-bottom:4px">KNOWN FAULT SYSTEMS</div>
+                <div style="font-size:8px;color:#7a9ab8;line-height:1.6">Black Hills region and western SD have known fault systems. Oilfield injection operations in neighboring states have increased induced seismicity risk.</div>
+              </div>
+              <div style="padding:8px 10px;background:rgba(200,130,10,0.06);border:1px solid rgba(200,130,10,0.15);border-radius:4px">
+                <div style="font-size:9px;font-weight:700;color:#e09a14;font-family:'Share Tech Mono',monospace;margin-bottom:4px">ACTION THRESHOLDS</div>
+                <div style="font-size:8px;color:#7a9ab8;line-height:1.6">
+                  <div>M3.0+ — Monitor, log in situation report</div>
+                  <div>M4.0+ — Coordinate with USACE for Oahe/Fort Randall dam integrity assessment</div>
+                  <div>M5.0+ — Immediate TAG notification, assess Ellsworth AFB infrastructure</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <a href="https://earthquake.usgs.gov/earthquakes/map/?extent=39,-109&extent=49,-93&listOnlyShown" target="_blank" style="font-size:9px;color:#12aeb2;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(10,144,144,0.3);border-radius:4px;text-decoration:none">▸ Open USGS Interactive Earthquake Map</a>
+                <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson" target="_blank" style="font-size:9px;color:#1880d0;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(18,128,208,0.3);border-radius:4px;text-decoration:none">▸ USGS Weekly Feed (JSON)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
   },
 };
 
@@ -1159,8 +1386,43 @@ function setMapLayer(key) {
   });
   const layer = MAP_LAYERS[key];
   if (!layer) return;
-  document.getElementById("map-frame").src = layer.url;
   document.getElementById("legend-items").innerHTML = layer.legend;
+
+  const wrap = document.getElementById("map-iframe-wrap");
+  if (layer.isCustom && layer.customHTML) {
+    wrap.innerHTML = `<div style="width:100%;height:100%">${layer.customHTML}</div>`;
+    // Populate seismic list from state data after render
+    if (key === "quake") populateQuakeList();
+  } else {
+    wrap.innerHTML = `<iframe id="map-frame" src="${layer.url}" title="Map" allowfullscreen style="width:100%;height:100%;border:none;display:block"></iframe>`;
+  }
+}
+
+function populateQuakeList() {
+  const el = document.getElementById("quake-map-list");
+  if (!el) return;
+  const quakes = state.quakes || [];
+  const regional = quakes.filter(q=>{
+    const c=q.geometry?.coordinates;
+    return c&&c[1]>=39&&c[1]<=49&&c[0]>=-109&&c[0]<=-93;
+  });
+  if (regional.length === 0) {
+    el.innerHTML = `<div style="color:#1a9650;font-size:9px;font-family:'Share Tech Mono',monospace;padding:4px 0">✓ No significant seismic events detected in SD region (30 days)</div>`;
+    return;
+  }
+  el.innerHTML = regional.map(q => {
+    const m = q.properties?.mag;
+    const mc = m>=5?"#e03830":m>=4?"#e09a14":m>=3?"#e0c000":"#22b862";
+    const inSD = q.geometry?.coordinates[1]>=42&&q.geometry?.coordinates[1]<=46.5&&q.geometry?.coordinates[0]>=-104.5&&q.geometry?.coordinates[0]<=-96.5;
+    const t = new Date(q.properties?.time).toLocaleDateString("en-US",{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"});
+    return `<div style="padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:flex-start;gap:8px">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:900;color:${mc};line-height:1;min-width:36px">M${m?.toFixed(1)}</span>
+      <div>
+        <div style="font-size:9px;color:#a8c0d8;line-height:1.3">${q.properties?.place?.substring(0,40)}</div>
+        <div style="font-size:8px;color:#3a5268;font-family:'Share Tech Mono',monospace;margin-top:1px">${t}${inSD?" · <span style=\"color:#e03830\">IN SD</span>":""}</div>
+      </div>
+    </div>`;
+  }).join("");
 }
 
 /* ══════════════════════════════════════════════════
@@ -1176,24 +1438,51 @@ function togglePanel(id) {
 ══════════════════════════════════════════════════ */
 function computeRisk(alerts, gauges, drought, fema, quakes) {
   let score = 0;
-  const warn = Math.min(alerts.filter(a=>a.properties?.event?.includes("Warning")&&!a.properties?.event?.toLowerCase().includes("flood")).length,4);
-  const watch = Math.min(alerts.filter(a=>a.properties?.event?.includes("Watch")).length,4);
-  const fireWx = Math.min(alerts.filter(a=>a.properties?.event?.toLowerCase().includes("fire")||a.properties?.event?.toLowerCase().includes("red flag")).length,3);
-  const floodW = Math.min(alerts.filter(a=>a.properties?.event?.toLowerCase().includes("flood warning")).length,3);
-  score += warn*10 + watch*5 + fireWx*10 + floodW*12;
+  // Non-flood, non-fire warnings only (prevent double counting)
+  const warn = Math.min(alerts.filter(a=>{
+    const e=a.properties?.event?.toLowerCase()||"";
+    return a.properties?.event?.includes("Warning")
+      && !e.includes("flood")
+      && !e.includes("fire")
+      && !e.includes("red flag");
+  }).length,4);
+  const watch = Math.min(alerts.filter(a=>{
+    const e=a.properties?.event?.toLowerCase()||"";
+    return a.properties?.event?.includes("Watch")
+      && !e.includes("fire")
+      && !e.includes("red flag");
+  }).length,4);
+  const fireWx = Math.min(alerts.filter(a=>{
+    const e=a.properties?.event?.toLowerCase()||"";
+    return e.includes("fire")||e.includes("red flag");
+  }).length,3);
+  const floodW = Math.min(alerts.filter(a=>{
+    const e=a.properties?.event?.toLowerCase()||"";
+    return e.includes("flood warning")||e.includes("flash flood warning");
+  }).length,3);
+  if(warn>0) score+=warn*10;
+  if(watch>0) score+=watch*5;
+  if(fireWx>0) score+=fireWx*10;
+  if(floodW>0) score+=floodW*12;
   const atMaj = Math.min(gauges.filter(g=>g.stage&&g.t&&g.stage>=(g.t.m||9999)).length,3);
   const atFld = Math.min(gauges.filter(g=>g.stage&&g.t&&g.stage>=g.t.f&&g.stage<(g.t.m||9999)).length,3);
-  score += atMaj*15 + atFld*8;
+  if(atMaj>0) score+=atMaj*15;
+  if(atFld>0) score+=atFld*8;
   if (drought) {
     const d4=parseFloat(drought.D4||0),d3=parseFloat(drought.D3||0),d2=parseFloat(drought.D2||0);
-    if(d4>5) score+=15; else if(d3>10) score+=10; else if(d2>20) score+=6; else if(d2>5) score+=3;
+    if(d4>5) score+=15;
+    else if(d3>10) score+=10;
+    else if(d2>20) score+=6;
+    else if(d2>5) score+=3;
   }
   const activeSd = Math.min((fema||[]).filter(f=>f.state==="SD"&&!f.disasterCloseoutDate).length,2);
-  score += activeSd*8;
+  if(activeSd>0) score+=activeSd*8;
   const sig = Math.min((quakes||[]).filter(q=>q.properties?.mag>=3.0).length,2);
-  score += sig*5;
+  if(sig>0) score+=sig*5;
+  // Seasonal — only one fires
   const mo = new Date().getMonth()+1;
-  if(mo>=3&&mo<=6) score+=5; else if(mo>=7&&mo<=9) score+=5;
+  if(mo>=3&&mo<=6) score+=5;
+  else if(mo>=7&&mo<=9) score+=5;
   score = Math.min(Math.round(score),100);
   const level = score>=65?"CRITICAL":score>=40?"HIGH":score>=20?"ELEVATED":"NORMAL";
   const lc = score>=65?"var(--redlt)":score>=40?"var(--amberlt)":score>=20?"var(--bluelt)":"var(--greenlt)";
@@ -1521,6 +1810,127 @@ function updateFireBand(fires) {
   el.style.color = fires.length>0?"var(--orangelt)":"var(--greenlt)";
 }
 
+function renderFires(fires) {
+  const listEl = document.getElementById("fire-incident-list");
+  const countEl = document.getElementById("fire-count");
+  if (!listEl||!countEl) return;
+
+  const sdFires = fires.filter(f=>f.POOState==="SD"||f.POOState==="South Dakota");
+  const regional = fires.filter(f=>f.POOState!=="SD"&&f.POOState!=="South Dakota");
+  const total = fires.length;
+
+  countEl.textContent = `${total} INCIDENT${total!==1?"S":""}`;
+  countEl.style.background = total>0?"rgba(192,80,16,0.15)":"rgba(26,150,80,0.15)";
+  countEl.style.borderColor = total>0?"rgba(192,80,16,0.4)":"rgba(26,150,80,0.4)";
+  countEl.style.color = total>0?"var(--orangelt)":"var(--greenlt)";
+
+  if (total===0) {
+    listEl.innerHTML = `
+      <div style="color:var(--greenlt);font-size:10px;font-family:var(--mono);margin-bottom:4px">✓ No API-reported incidents detected</div>
+      <div style="padding:6px 8px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-left:3px solid var(--amberlt);border-radius:0 4px 4px 0;margin-bottom:4px">
+        <div style="font-size:9px;color:var(--amberlt);font-weight:700;font-family:var(--mono);margin-bottom:2px">⚠ REPORTING THRESHOLD</div>
+        <div style="font-size:8px;color:var(--textmid);line-height:1.6">
+          <strong style="color:var(--text)">NIFC WFIGS</strong> only reports fires typically <strong style="color:var(--text)">100+ acres</strong> that have entered the interagency reporting system.<br/>
+          <strong style="color:var(--text)">InciWeb RSS</strong> catches smaller fires once an incident page is created — usually 30–60 min after initial report.<br/>
+          Active fires under these thresholds will appear in the <strong style="color:var(--orangelt)">SD Wildland Fire panel below</strong> before showing here.
+        </div>
+      </div>`;
+    return;
+  }
+
+  let html = "";
+
+  // Source legend
+  html += `<div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+    <span style="font-size:7px;color:var(--textdim);font-family:var(--mono);align-self:center">SOURCES:</span>
+    <span class="chip" style="background:rgba(224,104,32,0.12);border:1px solid rgba(224,104,32,0.3);color:var(--orangelt);font-size:7px">NIFC WFIGS — large fires</span>
+    <span class="chip" style="background:rgba(18,128,208,0.12);border:1px solid rgba(18,128,208,0.3);color:var(--bluelt);font-size:7px">InciWeb RSS — all reported</span>
+  </div>`;
+
+  // SD fires first
+  if (sdFires.length>0) {
+    html += `<div style="font-size:8px;color:var(--redlt);letter-spacing:0.14em;font-family:var(--mono);font-weight:700;margin-bottom:5px;padding:3px 0;border-bottom:1px solid rgba(224,56,48,0.25)">
+      🔴 SOUTH DAKOTA — ${sdFires.length} INCIDENT${sdFires.length>1?"S":""}
+    </div>`;
+    html += sdFires.map(f=>fireCard(f,"var(--redlt)","rgba(224,56,48,0.1)")).join("");
+  }
+
+  // Regional fires
+  if (regional.length>0) {
+    html += `<div style="font-size:8px;color:var(--orangelt);letter-spacing:0.14em;font-family:var(--mono);font-weight:700;margin:${sdFires.length>0?"10px":0} 0 5px;padding:3px 0;border-bottom:1px solid rgba(224,104,32,0.2)">
+      🟠 REGIONAL — ${regional.length} INCIDENT${regional.length>1?"S":""} <span style="font-weight:400;font-size:7px">(resource competition)</span>
+    </div>`;
+    html += regional.map(f=>fireCard(f,"var(--orangelt)","rgba(224,104,32,0.07)")).join("");
+  }
+
+  html += `<div style="font-size:7px;color:var(--textdim);margin-top:8px;font-family:var(--mono);line-height:1.6;border-top:1px solid var(--border);padding-top:5px">
+    NIFC WFIGS: large fires only · InciWeb RSS: SD formally-reported incidents · Refreshed every 5 min<br/>
+    Small initial-attack fires may not appear for 30–60 min after ignition
+  </div>`;
+
+  listEl.innerHTML = html;
+}
+
+function fireCard(f, color, bg) {
+  const acres = f.IncidentSize||f.DiscoveryAcres||0;
+  const pct = f.PercentContained;
+  const contained = pct!=null&&pct>=100;
+  const cardColor = contained?"var(--greenlt)":pct!=null&&pct>50?"var(--amberlt)":color;
+  const isNIFC = f.source==="NIFC";
+  const isInciweb = f.source==="InciWeb";
+
+  // Location string
+  const county = f.POOCounty ? f.POOCounty.replace(" County","")+" Co." : "";
+  const locStr = [county, f.POOState].filter(Boolean).join(", ");
+
+  // Coordinates if available
+  const coords = (f.lat&&f.lon) ? `${f.lat.toFixed(3)}°N ${Math.abs(f.lon).toFixed(3)}°W` : "";
+
+  // Containment bar
+  const bar = pct!=null ? `<div style="margin-top:4px">
+    <div style="display:flex;justify-content:space-between;font-size:7px;color:var(--textdim);font-family:var(--mono);margin-bottom:2px">
+      <span>CONTAINMENT</span><span style="color:${cardColor}">${pct}%</span>
+    </div>
+    <div style="background:#040810;border-radius:2px;height:3px;overflow:hidden">
+      <div style="width:${Math.min(pct,100)}%;height:100%;background:${cardColor};transition:width 0.5s"></div>
+    </div>
+  </div>` : "";
+
+  // Source badge
+  const sourceBadge = isNIFC
+    ? `<span class="chip" style="background:rgba(224,104,32,0.12);border:1px solid rgba(224,104,32,0.3);color:var(--orangelt);font-size:7px">NIFC WFIGS</span>`
+    : `<span class="chip" style="background:rgba(18,128,208,0.12);border:1px solid rgba(18,128,208,0.3);color:var(--bluelt);font-size:7px">InciWeb</span>`;
+
+  // InciWeb link
+  const inciLink = isInciweb && f.link
+    ? `<a href="${f.link}" target="_blank" style="font-size:8px;color:var(--bluelt);font-family:var(--mono);margin-top:3px;display:inline-block">▸ View InciWeb page</a>`
+    : isNIFC ? `<a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank" style="font-size:8px;color:var(--textdim);font-family:var(--mono);margin-top:3px;display:inline-block">▸ InciWeb SD</a>` : "";
+
+  // InciWeb description snippet
+  const descSnippet = isInciweb && f.description
+    ? `<div style="font-size:8px;color:var(--textmid);margin-top:3px;line-height:1.4;font-style:italic">${f.description.substring(0,120)}${f.description.length>120?"…":""}</div>`
+    : "";
+
+  return `<div style="border-left:3px solid ${cardColor};background:${bg};border-radius:0 5px 5px 0;padding:7px 10px;margin-bottom:5px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:2px">
+      <span style="font-family:var(--head);font-size:13px;font-weight:700;color:${cardColor};letter-spacing:0.04em;line-height:1">${f.IncidentName}</span>
+      <div style="display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;align-items:center">
+        ${sourceBadge}
+        ${acres>0?`<span class="chip" style="background:rgba(224,104,32,0.15);border:1px solid rgba(224,104,32,0.4);color:var(--orangelt)">${acres>=1000?(acres/1000).toFixed(1)+"k":Math.round(acres)} ac</span>`:""}
+        ${pct!=null?`<span class="chip" style="background:${cardColor}18;border:1px solid ${cardColor}40;color:${cardColor}">${pct}% ctnd</span>`:""}
+      </div>
+    </div>
+    <div style="font-size:9px;color:var(--textmid);margin-top:2px">
+      📍 ${locStr||"Location pending"}${coords?` · <span style="font-family:var(--mono);font-size:8px;color:var(--textdim)">${coords}</span>`:""}
+    </div>
+    ${f.FireCause?`<div style="font-size:8px;color:var(--textdim);margin-top:1px;font-family:var(--mono)">Cause: ${f.FireCause}</div>`:""}
+    ${f.StructuresThreatenedTotal>0?`<div style="font-size:8px;color:var(--redlt);margin-top:2px;font-family:var(--mono)">⚠ ${f.StructuresThreatenedTotal} structures threatened</div>`:""}
+    ${descSnippet}
+    ${bar}
+    ${inciLink}
+  </div>`;
+}
+
 /* ══════════════════════════════════════════════════
    DATA FETCHING
 ══════════════════════════════════════════════════ */
@@ -1588,13 +1998,77 @@ async function fetchQuakes() {
 }
 
 async function fetchFires() {
+  // Source 1: NIFC WFIGS large fires (100+ acres, formally reported)
+  let nifcFires = [];
   try {
     const bbox="-108,39,-93,49";
-    const url=`https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/0/query?where=1%3D1&geometry=${encodeURIComponent(bbox)}&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects&outFields=IncidentName,IncidentSize,PercentContained,POOState,POOCounty&returnGeometry=false&orderByFields=IncidentSize+DESC&resultRecordCount=20&f=json`;
-    const r=await fetch(url,{signal:AbortSignal.timeout(10000)});
+    const url=`https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/0/query?where=1%3D1&geometry=${encodeURIComponent(bbox)}&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects&outFields=IncidentName,IncidentTypeCategory,IncidentSize,DiscoveryAcres,PercentContained,POOState,POOCounty,FireCause,IncidentShortDescription,StructuresThreatenedTotal,ModifiedOnDateTime_dt&returnGeometry=true&outSR=4326&orderByFields=IncidentSize+DESC&resultRecordCount=25&f=json`;
+    const r=await fetch(url,{signal:AbortSignal.timeout(12000)});
     const d=await r.json();
-    state.fires=(d.features||[]).map(f=>f.attributes).filter(f=>f.IncidentName);
-  } catch(e) { state.fires=[]; }
+    nifcFires=(d.features||[]).map(f=>({
+      ...f.attributes,
+      lat: f.geometry?.y||f.geometry?.rings?.[0]?.[0]?.[1]||null,
+      lon: f.geometry?.x||f.geometry?.rings?.[0]?.[0]?.[0]||null,
+      source:"NIFC",
+    })).filter(f=>f.IncidentName);
+  } catch(e) { nifcFires=[]; }
+
+  // Source 2: InciWeb RSS — SD state feed via rss2json proxy (catches smaller fires)
+  let inciwebFires = [];
+  try {
+    const rssUrl = encodeURIComponent("https://inciweb.wildfire.gov/feeds/rss/incidents/state/SD");
+    const r2 = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&api_key=public&count=30`,
+      {signal:AbortSignal.timeout(10000)});
+    const d2 = await r2.json();
+    if (d2.status==="ok" && d2.items) {
+      inciwebFires = d2.items
+        .filter(item => item.title && !item.title.toLowerCase().includes("prescribed"))
+        .map(item => {
+          // Parse county/state from description if available
+          const desc = item.description||"";
+          const countyMatch = desc.match(/([A-Z][a-z]+)\s+County/);
+          const stateMatch = desc.match(/,\s*(SD|South Dakota|ND|North Dakota|NE|Nebraska|WY|Wyoming|MT|Montana|MN|Minnesota)/);
+          const acresMatch = desc.match(/([\d,]+)\s+acres?/i);
+          const pctMatch = desc.match(/(\d+)%\s+contained/i);
+          const acres = acresMatch ? parseInt(acresMatch[1].replace(",","")) : null;
+          const pct = pctMatch ? parseInt(pctMatch[1]) : null;
+          const state = stateMatch?.[1]||"SD";
+          const normalizedState = {SD:"SD","South Dakota":"SD",ND:"ND","North Dakota":"ND",NE:"NE","Nebraska":"NE",WY:"WY","Wyoming":"WY",MT:"MT","Montana":"MT",MN:"MN","Minnesota":"MN"}[state]||state;
+          return {
+            IncidentName: item.title.replace(/\s*(Fire|Wildfire)\s*Information?$/i,"").trim(),
+            POOState: normalizedState,
+            POOCounty: countyMatch?.[1]||"",
+            IncidentSize: acres,
+            PercentContained: pct,
+            FireCause: null,
+            StructuresThreatenedTotal: 0,
+            lat: null, lon: null,
+            source: "InciWeb",
+            link: item.link,
+            pubDate: item.pubDate,
+            description: desc.replace(/<[^>]*>/g,"").substring(0,200),
+          };
+        });
+    }
+  } catch(e) { inciwebFires=[]; }
+
+  // Merge: deduplicate by name (NIFC is authoritative if same fire appears in both)
+  const nifcNames = new Set(nifcFires.map(f=>f.IncidentName?.toLowerCase().replace(/\s+fire$/i,"").trim()));
+  const uniqueInciweb = inciwebFires.filter(f => {
+    const clean = f.IncidentName?.toLowerCase().replace(/\s+fire$/i,"").trim();
+    return !nifcNames.has(clean);
+  });
+
+  // Sort: SD fires first, then by size descending
+  const allFires = [...nifcFires, ...uniqueInciweb].sort((a,b) => {
+    const aSD = a.POOState==="SD"||a.POOState==="South Dakota" ? 0 : 1;
+    const bSD = b.POOState==="SD"||b.POOState==="South Dakota" ? 0 : 1;
+    if (aSD !== bSD) return aSD - bSD;
+    return (b.IncidentSize||0) - (a.IncidentSize||0);
+  });
+
+  state.fires = allFires;
+  state.inciwebFires = inciwebFires; // keep for display
 }
 
 /* ══════════════════════════════════════════════════
@@ -1613,6 +2087,7 @@ function renderAll() {
   renderDrought(drought);
   renderFemaSeismic(fema,quakes);
   updateFireBand(fires);
+  renderFires(fires);
 
   state.lastUpdate = new Date();
   document.getElementById("band-updated").textContent = state.lastUpdate.toLocaleTimeString();
@@ -1633,9 +2108,26 @@ async function refreshAll() {
 }
 
 async function init() {
+  setMapLayer('radar');
   renderAll();
   await refreshAll();
   setInterval(refreshAll, 5*60*1000);
+  // Check if SD Wildland Fire iframe loaded — show fallback if blocked
+  setTimeout(()=>{
+    const frame = document.querySelector('iframe[title="SD Wildland Fire Info"]');
+    const fallback = document.getElementById("sdwf-fallback");
+    if (!frame||!fallback) return;
+    try {
+      // If we can't access contentDocument, CORS blocked it — show fallback links
+      const doc = frame.contentDocument||frame.contentWindow?.document;
+      if (!doc||doc.readyState==="loading") {
+        fallback.style.display="flex";
+      }
+    } catch(e) {
+      // Cross-origin block — show fallback
+      fallback.style.display="flex";
+    }
+  }, 5000);
 }
 
 let drawerOpen = false;
@@ -1731,11 +2223,11 @@ function renderDrawerPredict(risk, alerts, gauges, drought, fema, quakes) {
 function buildFactors(alerts, gauges, drought, fema, quakes) {
   const factors = [];
   const add = (pts, label, color) => { if(pts>0) factors.push({pts,label,color}); };
-  const warn = Math.min(alerts.filter(a=>a.properties?.event?.includes("Warning")&&!a.properties?.event?.toLowerCase().includes("flood")).length,4);
-  const watch = Math.min(alerts.filter(a=>a.properties?.event?.includes("Watch")).length,4);
-  const fireWx = Math.min(alerts.filter(a=>a.properties?.event?.toLowerCase().includes("fire")||a.properties?.event?.toLowerCase().includes("red flag")).length,3);
-  const floodW = Math.min(alerts.filter(a=>a.properties?.event?.toLowerCase().includes("flood warning")).length,3);
-  add(warn*10,`${warn} NWS Warning(s) Active`,"#e03830");
+  const warn = Math.min(alerts.filter(a=>{const e=a.properties?.event?.toLowerCase()||"";return a.properties?.event?.includes("Warning")&&!e.includes("flood")&&!e.includes("fire")&&!e.includes("red flag");}).length,4);
+  const watch = Math.min(alerts.filter(a=>{const e=a.properties?.event?.toLowerCase()||"";return a.properties?.event?.includes("Watch")&&!e.includes("fire")&&!e.includes("red flag");}).length,4);
+  const fireWx = Math.min(alerts.filter(a=>{const e=a.properties?.event?.toLowerCase()||"";return e.includes("fire")||e.includes("red flag");}).length,3);
+  const floodW = Math.min(alerts.filter(a=>{const e=a.properties?.event?.toLowerCase()||"";return e.includes("flood warning")||e.includes("flash flood warning");}).length,3);
+  add(warn*10,`${warn} NWS Warning(s) Active (non-flood/fire)`,"#e03830");
   add(watch*5,`${watch} NWS Watch(es) Active`,"#c8820a");
   add(fireWx*10,`${fireWx} Fire Weather Alert(s)`,"#e06820");
   add(floodW*12,`${floodW} Flood Warning(s)`,"#8a0000");
