@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#05080d"/>
 <meta name="description" content="SD ARNG Joint Operations Center — Emergency Situational Awareness Dashboard"/>
-<title>SD ARNG JOC v5</title>
+<title>SD ARNG JOC v6</title>
 <!-- PWA manifest inline -->
 <link rel="manifest" href="data:application/json,{%22name%22:%22SD%20ARNG%20JOC%22,%22short_name%22:%22ARNG%20JOC%22,%22start_url%22:%22./%22,%22display%22:%22standalone%22,%22background_color%22:%22%2305080d%22,%22theme_color%22:%22%2305080d%22,%22icons%22:[{%22src%22:%22https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f6e1.png%22,%22sizes%22:%2272x72%22,%22type%22:%22image/png%22}]}"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
@@ -61,12 +61,13 @@ const {useState,useEffect,useCallback,useRef,useMemo}=React;
 const PASS="SDARNG2026"; // Change this password before deploying
 
 const GAUGES=[
-  {site:"06452000",name:"Missouri R — Pierre",     short:"Missouri",     t:{a:17,f:19,m:23}},
+  {site:"06440000",name:"Missouri R — Pierre",     short:"Missouri",     t:{a:17,f:19,m:23}},
   {site:"06480000",name:"Big Sioux R — Watertown", short:"Big Sioux",    t:{a:12,f:14,m:17}},
-  {site:"06476000",name:"James R — Mitchell",      short:"James R",      t:{a:9,f:11,m:14}},
+  {site:"06476000",name:"James R — Mitchell",      short:"James R",      t:{a:9, f:11,m:14}},
   {site:"06439200",name:"Cheyenne R — Wasta",      short:"Cheyenne R",   t:{a:14,f:16,m:20}},
-  {site:"06406000",name:"Belle Fourche R",         short:"Belle Fourche",t:{a:8,f:10,m:13}},
-  {site:"06449500",name:"Bad R — Fort Pierre",     short:"Bad River",    t:{a:8,f:10,m:15}},
+  {site:"06406000",name:"Belle Fourche R",         short:"Belle Fourche",t:{a:8, f:10,m:13}},
+  {site:"06449500",name:"Bad R — Fort Pierre",     short:"Bad River",    t:{a:8, f:10,m:15}},
+  {site:"06441595",name:"Missouri R — Farm Island", short:"MO Farm Island",t:{a:17,f:19,m:23}},
 ];
 
 // NRCS SNOTEL stations in Black Hills / SD region
@@ -147,39 +148,49 @@ const THREAT_INTEL=[
 /* ═══ RISK MODEL ═══════════════════════════════ */
 function computeRisk(alerts,gauges,drought,fema,quakes,aqi){
   let score=0;const factors=[];
-  const warn=alerts.filter(a=>a.properties?.event?.includes("Warning")).length;
-  const watch=alerts.filter(a=>a.properties?.event?.includes("Watch")).length;
-  const fireWx=alerts.filter(a=>a.properties?.event?.toLowerCase().includes("fire")||a.properties?.event?.toLowerCase().includes("red flag")).length;
-  const floodW=alerts.filter(a=>a.properties?.event?.toLowerCase().includes("flood warning")).length;
-  if(warn>0){score+=warn*15;factors.push({label:`${warn} NWS Warning(s) Active`,pts:warn*15,color:"#d83828"})}
-  if(watch>0){score+=watch*7;factors.push({label:`${watch} NWS Watch(es) Active`,pts:watch*7,color:"#d09010"})}
-  if(fireWx>0){score+=fireWx*12;factors.push({label:`${fireWx} Fire Weather Alert(s)`,pts:fireWx*12,color:"#e06020"})}
-  if(floodW>0){score+=floodW*18;factors.push({label:`${floodW} Flood Warning(s)`,pts:floodW*18,color:"#900000"})}
-  const atMaj=gauges.filter(g=>g.stage&&g.t&&g.stage>=(g.t.m||9999)).length;
-  const atFld=gauges.filter(g=>g.stage&&g.t&&g.stage>=g.t.f&&g.stage<(g.t.m||9999)).length;
-  if(atMaj>0){score+=atMaj*20;factors.push({label:`${atMaj} Gauge(s) at Major Flood`,pts:atMaj*20,color:"#d83828"})}
-  if(atFld>0){score+=atFld*12;factors.push({label:`${atFld} Gauge(s) at Flood Stage`,pts:atFld*12,color:"#d09010"})}
+  // NWS Alerts — cap warnings at 4 to prevent runaway scoring
+  const warn=Math.min(alerts.filter(a=>a.properties?.event?.includes("Warning")&&!a.properties?.event?.toLowerCase().includes("flood")).length,4);
+  const watch=Math.min(alerts.filter(a=>a.properties?.event?.includes("Watch")).length,4);
+  const fireWx=Math.min(alerts.filter(a=>a.properties?.event?.toLowerCase().includes("fire")||a.properties?.event?.toLowerCase().includes("red flag")).length,3);
+  const floodW=Math.min(alerts.filter(a=>a.properties?.event?.toLowerCase().includes("flood warning")).length,3);
+  if(warn>0){score+=warn*10;factors.push({label:`${warn} NWS Warning(s) Active`,pts:warn*10,color:"#d83828"})}
+  if(watch>0){score+=watch*5;factors.push({label:`${watch} NWS Watch(es) Active`,pts:watch*5,color:"#d09010"})}
+  if(fireWx>0){score+=fireWx*10;factors.push({label:`${fireWx} Fire Weather Alert(s)`,pts:fireWx*10,color:"#e06020"})}
+  if(floodW>0){score+=floodW*12;factors.push({label:`${floodW} Flood Warning(s)`,pts:floodW*12,color:"#900000"})}
+  // Gauges — cap at 3 each
+  const atMaj=Math.min(gauges.filter(g=>g.stage&&g.t&&g.stage>=(g.t.m||9999)).length,3);
+  const atFld=Math.min(gauges.filter(g=>g.stage&&g.t&&g.stage>=g.t.f&&g.stage<(g.t.m||9999)).length,3);
+  if(atMaj>0){score+=atMaj*15;factors.push({label:`${atMaj} Gauge(s) at Major Flood`,pts:atMaj*15,color:"#d83828"})}
+  if(atFld>0){score+=atFld*8;factors.push({label:`${atFld} Gauge(s) at Flood Stage`,pts:atFld*8,color:"#d09010"})}
+  // Drought — only one level fires
   if(drought){
     const d4=parseFloat(drought.D4||0),d3=parseFloat(drought.D3||0),d2=parseFloat(drought.D2||0);
-    if(d4>5){score+=20;factors.push({label:`${d4.toFixed(0)}% SD Exceptional Drought (D4)`,pts:20,color:"#7a0000"})}
-    else if(d3>10){score+=15;factors.push({label:`${d3.toFixed(0)}% SD Extreme Drought (D3)`,pts:15,color:"#c02000"})}
-    else if(d2>20){score+=8;factors.push({label:`${d2.toFixed(0)}% SD Severe Drought (D2)`,pts:8,color:"#e06010"})}
+    if(d4>5){score+=15;factors.push({label:`${d4.toFixed(0)}% SD Exceptional Drought (D4)`,pts:15,color:"#7a0000"})}
+    else if(d3>10){score+=10;factors.push({label:`${d3.toFixed(0)}% SD Extreme Drought (D3)`,pts:10,color:"#c02000"})}
+    else if(d2>20){score+=6;factors.push({label:`${d2.toFixed(0)}% SD Severe Drought (D2)`,pts:6,color:"#e06010"})}
+    else if(d2>5){score+=3;factors.push({label:`${d2.toFixed(0)}% SD Moderate/Severe Drought`,pts:3,color:"#e06010"})}
   }
-  const activeSd=(fema||[]).filter(f=>f.state==="SD"&&!f.disasterCloseoutDate).length;
-  if(activeSd>0){score+=activeSd*10;factors.push({label:`${activeSd} Active FEMA Declaration(s) — SD`,pts:activeSd*10,color:"#8050d0"})}
-  // Earthquakes
-  const sig=quakes.filter(q=>q.properties?.mag>=3.0).length;
-  if(sig>0){score+=sig*8;factors.push({label:`${sig} Significant Quake(s) M3.0+`,pts:sig*8,color:"#10aaaa"})}
-  // AQI
-  const unhealthy=aqi.filter(a=>a.aqi>=150).length;
-  if(unhealthy>0){score+=unhealthy*8;factors.push({label:`${unhealthy} Location(s) Unhealthy AQI`,pts:unhealthy*8,color:"#e06010"})}
-  // Seasonal
+  // FEMA — cap at 2
+  const activeSd=Math.min((fema||[]).filter(f=>f.state==="SD"&&!f.disasterCloseoutDate).length,2);
+  if(activeSd>0){score+=activeSd*8;factors.push({label:`${activeSd} Active FEMA Declaration(s) — SD`,pts:activeSd*8,color:"#8050d0"})}
+  // Earthquakes — cap at 2
+  const sig=Math.min(quakes.filter(q=>q.properties?.mag>=3.0).length,2);
+  if(sig>0){score+=sig*5;factors.push({label:`${sig} Earthquake(s) M3.0+ in Region`,pts:sig*5,color:"#10aaaa"})}
+  // AQI — cap at 2 cities
+  const unhealthy=Math.min(aqi.filter(a=>a.aqi>=150).length,2);
+  if(unhealthy>0){score+=unhealthy*5;factors.push({label:`${unhealthy} Location(s) Unhealthy AQI`,pts:unhealthy*5,color:"#e06010"})}
+  // Seasonal — only one fires at a time
   const mo=new Date().getMonth()+1;
-  if(mo>=3&&mo<=6){score+=5;factors.push({label:"Spring Season Risk Modifier",pts:5,color:"#4080c0"})}
-  if(mo>=7&&mo<=9){score+=5;factors.push({label:"Fire Season Risk Modifier",pts:5,color:"#e06020"})}
-  score=Math.min(score,100);
-  const level=score>=75?"CRITICAL":score>=50?"HIGH":score>=25?"ELEVATED":"NORMAL";
-  const lc=score>=75?"#d83828":score>=50?"#d09010":score>=25?"#4090d0":"#1a8c4a";
+  if(mo>=3&&mo<=6){score+=5;factors.push({label:"Spring Season Modifier (Mar–Jun)",pts:5,color:"#4080c0"})}
+  else if(mo>=7&&mo<=9){score+=5;factors.push({label:"Fire Season Modifier (Jul–Sep)",pts:5,color:"#e06020"})}
+  score=Math.min(Math.round(score),100);
+  // Realistic thresholds:
+  // NORMAL 0-19: routine conditions
+  // ELEVATED 20-39: 1-2 moderate factors
+  // HIGH 40-64: multiple significant factors
+  // CRITICAL 65-100: major multi-domain emergency
+  const level=score>=65?"CRITICAL":score>=40?"HIGH":score>=20?"ELEVATED":"NORMAL";
+  const lc=score>=65?"#d83828":score>=40?"#d09010":score>=20?"#4090d0":"#1a8c4a";
   return{score,level,lc,factors};
 }
 
@@ -888,7 +899,7 @@ function App(){
           <div style={{width:38,height:38,borderRadius:4,background:"linear-gradient(135deg,#0e2010,#183820)",border:"1px solid #1a8c4a",display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,color:"#22aa5c",fontWeight:900,boxShadow:"0 0 10px #1a8c4a40",flexShrink:0,fontFamily:"'Barlow Condensed',sans-serif",lineHeight:1.1,textAlign:"center"}}>SD<br/>NG</div>
           <div>
             <div style={{fontSize:14,fontWeight:700,color:"#ddeeff",letterSpacing:"0.08em",fontFamily:"'Barlow Condensed',sans-serif"}}>SD ARNG · JOINT OPERATIONS CENTER</div>
-            <div style={{fontSize:7,color:"#446070",letterSpacing:"0.16em"}}>EMERGENCY SITUATIONAL AWARENESS · UNCLASSIFIED OPEN-SOURCE · v5.0</div>
+            <div style={{fontSize:7,color:"#446070",letterSpacing:"0.16em"}}>EMERGENCY SITUATIONAL AWARENESS · UNCLASSIFIED OPEN-SOURCE · v6.0</div>
           </div>
         </div>
         <div style={{display:"flex",alignItems:"center",gap:7,flexWrap:"wrap"}}>
@@ -1022,20 +1033,50 @@ function App(){
         {tab==="map"&&(
           <div style={{display:"flex",flexDirection:"column",gap:10}}>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-              {[
-                {title:"📡 NWS RADAR — KUDX",color:"#2080d0",content:<img src={`https://radar.weather.gov/ridge/standard/KUDX_0.gif?t=${Date.now()}`} style={{width:"100%",display:"block",background:"#010810"}} onError={e=>e.target.src="https://radar.weather.gov/ridge/standard/KFSD_0.gif"} alt="Radar"/>},
-                {title:"🌵 DROUGHT MONITOR",color:"#e0a000",content:<img src={`https://droughtmonitor.unl.edu/data/png/current/current_sd_trd.png?t=${Date.now()}`} style={{width:"100%",display:"block",background:"#fff",maxHeight:220,objectFit:"contain"}} alt="Drought Map"/>},
-                {title:"🔥 NASA FIRMS FIRE",color:"#e06020",content:<iframe src="https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z" style={{width:"100%",height:220,border:"none"}} title="FIRMS"/>},
-                {title:"🌎 USGS SEISMIC MAP",color:"#10aaaa",content:<iframe src="https://earthquake.usgs.gov/earthquakes/map/?extent=39,-109&extent=49,-93&listOnlyShown" style={{width:"100%",height:220,border:"none"}} title="Quakes"/>},
-              ].map((m,i)=>(
-                <div key={i} className="card">
-                  <div style={{padding:"5px 10px",borderBottom:"1px solid #1a2535",fontSize:9,fontWeight:700,color:m.color,letterSpacing:"0.1em"}}>{m.title}</div>
-                  {m.content}
+              {/* NWS whole-state radar */}
+              <div className="card">
+                <div style={{padding:"5px 10px",borderBottom:"1px solid #1a2535",fontSize:9,fontWeight:700,color:"#2080d0",letterSpacing:"0.1em"}}>📡 NWS RADAR — SOUTH DAKOTA STATEWIDE</div>
+                <img src={`https://radar.weather.gov/ridge/standard/KFSD_0.gif?t=${Date.now()}`} style={{width:"100%",display:"block",background:"#010810"}} alt="Radar East SD" onError={e=>e.target.src="https://radar.weather.gov/ridge/standard/KUDX_0.gif"}/>
+                <div style={{padding:"3px 8px",fontSize:8,color:"#446070",display:"flex",gap:8}}>
+                  <a href="https://radar.weather.gov/station/KUDX/standard" target="_blank" style={{color:"#2080d0"}}>▸ KUDX Rapid City</a>
+                  <a href="https://radar.weather.gov/station/KFSD/standard" target="_blank" style={{color:"#2080d0"}}>▸ KFSD Sioux Falls</a>
                 </div>
-              ))}
+              </div>
+              {/* NWS SD Alert map */}
+              <div className="card">
+                <div style={{padding:"5px 10px",borderBottom:"1px solid #1a2535",fontSize:9,fontWeight:700,color:"#d83828",letterSpacing:"0.1em"}}>⚠️ NWS ACTIVE ALERTS — SD STATE MAP</div>
+                <img src={`https://www.weather.gov/images/unr/sdRegionalRadar.gif?t=${Date.now()}`} style={{width:"100%",display:"block",background:"#010810",minHeight:180,objectFit:"contain"}} alt="SD NWS Alerts"
+                  onError={e=>{e.target.style.display="none";e.target.nextSibling.style.display="block"}}/>
+                <div style={{display:"none",padding:"8px",fontSize:9,color:"#446070",textAlign:"center",background:"#0a1020"}}>
+                  <a href="https://www.weather.gov/unr/" target="_blank" style={{color:"#d83828"}}>▸ View NWS Rapid City Active Alerts</a><br/>
+                  <a href="https://www.weather.gov/fsd/" target="_blank" style={{color:"#d83828"}}>▸ View NWS Sioux Falls Active Alerts</a>
+                </div>
+                <div style={{padding:"3px 8px",fontSize:8,color:"#446070",display:"flex",gap:8}}>
+                  <a href="https://www.weather.gov/unr/sdeoc" target="_blank" style={{color:"#d83828"}}>▸ SD EOC Forecast</a>
+                  <a href="https://www.weather.gov/unr/" target="_blank" style={{color:"#2080d0"}}>▸ NWS Rapid City</a>
+                  <a href="https://www.weather.gov/fsd/" target="_blank" style={{color:"#2080d0"}}>▸ NWS Sioux Falls</a>
+                </div>
+              </div>
+              {/* Drought */}
+              <div className="card">
+                <div style={{padding:"5px 10px",borderBottom:"1px solid #1a2535",fontSize:9,fontWeight:700,color:"#e0a000",letterSpacing:"0.1em"}}>🌵 DROUGHT MONITOR — SD</div>
+                <img src={`https://droughtmonitor.unl.edu/data/png/current/current_sd_trd.png?t=${Date.now()}`} style={{width:"100%",display:"block",background:"#fff",maxHeight:220,objectFit:"contain"}} alt="Drought Map"
+                  onError={e=>{e.target.style.display="none";e.target.nextSibling.style.display="block"}}/>
+                <div style={{display:"none",padding:"8px",fontSize:9,color:"#446070",textAlign:"center",background:"#0a1020"}}>
+                  <a href="https://droughtmonitor.unl.edu/CurrentMap/StateDroughtMonitor.aspx?SD" target="_blank" style={{color:"#e0a000"}}>▸ View SD Drought Monitor</a>
+                </div>
+              </div>
+              {/* USGS Water Dashboard */}
+              <div className="card">
+                <div style={{padding:"5px 10px",borderBottom:"1px solid #1a2535",fontSize:9,fontWeight:700,color:"#10aaaa",letterSpacing:"0.1em"}}>🌊 USGS SD WATER CONDITIONS MAP</div>
+                <iframe src="https://dashboard.waterdata.usgs.gov/api/gwis/2.1.1/service/ui?region=sd&parameter=00065" style={{width:"100%",height:220,border:"none",background:"#fff"}} title="USGS Water"/>
+                <div style={{padding:"3px 8px",fontSize:8,color:"#446070"}}>
+                  <a href="https://dashboard.waterdata.usgs.gov/?region=sd" target="_blank" style={{color:"#10aaaa"}}>▸ Open USGS National Water Dashboard — SD</a>
+                </div>
+              </div>
             </div>
             <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-              {[["🗺 SD511","https://sd511.org/","#22aa5c"],["⚡ PowerOutage SD","https://poweroutage.us/area/state/south%20dakota","#d09010"],["🔥 InciWeb","https://inciweb.wildfire.gov/","#e06020"],["💧 USGS SD Gauges","https://waterdata.usgs.gov/sd/nwis/rt","#10aaaa"],["📋 FEMA","https://www.fema.gov/disasters","#8050d0"],["🌵 USDM Drought","https://droughtmonitor.unl.edu/CurrentMap/StateDroughtMonitor.aspx?SD","#e0a000"],["💨 AirNow SD","https://www.airnow.gov/?city=Rapid+City&state=SD","#d09010"]].map(([l,u,c])=>(
+              {[["🗺 SD511","https://sd511.org/","#22aa5c"],["🔥 InciWeb SD","https://inciweb.wildfire.gov/state/south-dakota","#e06020"],["💧 USGS SD Gauges","https://waterdata.usgs.gov/state/south-dakota/","#10aaaa"],["📋 FEMA","https://www.fema.gov/disasters","#8050d0"],["🌵 USDM Drought","https://droughtmonitor.unl.edu/CurrentMap/StateDroughtMonitor.aspx?SD","#e0a000"],["💨 AirNow SD","https://www.airnow.gov/?city=Rapid+City&state=SD","#d09010"],["🔥 NIFC Fire Map","https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-wildland-fire-perimeters/explore","#d83828"]].map(([l,u,c])=>(
                 <a key={l} href={u} target="_blank" className="lbtn" style={{color:c,background:c+"15",border:`1px solid ${c}30`}}>{l}</a>
               ))}
             </div>
@@ -1251,19 +1292,44 @@ function App(){
               </div>
             </div>
 
-            {/* FIRE PERIMETER MAP + NASA FIRMS */}
+            {/* FIRE DETECTION + PERIMETERS */}
             <div className="g2">
               <div className="card">
                 <CardHdr title="NASA FIRMS — Active Fire Detection (24hr)" icon="🛰" accent="#e06020"/>
-                <iframe src="https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z" style={{width:"100%",height:300,border:"none"}} title="NASA FIRMS"/>
-                <div style={{padding:"4px 12px",fontSize:8,color:"#446070"}}>VIIRS/MODIS satellite heat detection · Updated multiple times daily · Not all detections are wildfires</div>
+                <div style={{background:"#0a1020",padding:"10px 12px",minHeight:120}}>
+                  <div style={{fontSize:10,color:"#b8cce0",marginBottom:8,lineHeight:1.6}}>
+                    NASA FIRMS provides satellite-based fire detection updated multiple times daily via VIIRS and MODIS sensors.
+                    The embedded map may be blocked by browser security — open directly for full functionality.
+                  </div>
+                  <div style={{display:"flex",flexDirection:"column",gap:5}}>
+                    {[
+                      ["▸ NASA FIRMS SD Region Map (24hr)","https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z","#e06020"],
+                      ["▸ NASA FIRMS Active Fire Data","https://firms.modaps.eosdis.nasa.gov/active_fire/","#e06020"],
+                      ["▸ Great Plains Fire Information","https://www.greatplainsfire.org/","#d09010"],
+                    ].map(([l,u,c])=><a key={l} href={u} target="_blank" className="lbtn" style={{color:c,background:c+"12",border:`1px solid ${c}25`}}>{l}</a>)}
+                  </div>
+                  <img src={`https://firms.modaps.eosdis.nasa.gov/usfs/api/area/png/-110,38,-92,50/VIIRS_SNPP_NRT/1/2026-03-28`}
+                    alt="NASA FIRMS SD" style={{width:"100%",marginTop:8,borderRadius:4,display:"block"}}
+                    onError={e=>e.target.style.display="none"}/>
+                </div>
+                <div style={{padding:"4px 12px",fontSize:8,color:"#446070"}}>VIIRS/MODIS satellite detection · Not all heat signatures are wildfires</div>
               </div>
               <div className="card">
-                <CardHdr title="NIFC Active Fire Perimeters Map" icon="🗺" accent="#d83828"/>
-                <iframe src="https://data-nifc.opendata.arcgis.com/maps/nifc::wfigs-2026-wildfire-perimeters-to-date/about" style={{width:"100%",height:300,border:"none"}} title="NIFC Perimeters"/>
-                <div style={{padding:"4px 12px",fontSize:8,color:"#446070"}}>
-                  <a href="https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-wildland-fire-perimeters/explore" target="_blank" style={{color:"#e06020"}}>▸ Open full NIFC perimeter map</a>
+                <CardHdr title="NIFC Active Fire Perimeters" icon="🗺" accent="#d83828"/>
+                <div style={{background:"#0a1020",padding:"10px 12px",minHeight:120}}>
+                  <div style={{fontSize:10,color:"#b8cce0",marginBottom:8,lineHeight:1.6}}>
+                    NIFC WFIGS publishes active fire perimeters updated every 5 minutes. The ArcGIS portal requires authentication for the embedded map — access directly via the links below.
+                  </div>
+                  <div style={{display:"flex",flexDirection:"column",gap:5}}>
+                    {[
+                      ["▸ NIFC Current Fire Perimeters Explorer","https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-wildland-fire-perimeters/explore","#d83828"],
+                      ["▸ NIFC 2026 Perimeters to Date","https://data-nifc.opendata.arcgis.com/maps/nifc::wfigs-2026-wildland-fire-perimeters-to-date","#d83828"],
+                      ["▸ InciWeb — SD Active Incidents","https://inciweb.wildfire.gov/state/south-dakota","#e06020"],
+                      ["▸ NIFC Incident Map","https://www.nifc.gov/nicc/incident-information/national-incident-map","#d09010"],
+                    ].map(([l,u,c])=><a key={l} href={u} target="_blank" className="lbtn" style={{color:c,background:c+"12",border:`1px solid ${c}25`}}>{l}</a>)}
+                  </div>
                 </div>
+                <div style={{padding:"4px 12px",fontSize:8,color:"#446070"}}>SOURCE: NIFC WFIGS · Large fires only · Small fires may not appear immediately</div>
               </div>
             </div>
 
@@ -1351,7 +1417,7 @@ function App(){
                   <div style={{width:`${risk.score}%`,height:"100%",background:`linear-gradient(90deg,#1a8c4a,${risk.lc})`,transition:"width 1s"}}/>
                 </div>
                 <div style={{display:"flex",justifyContent:"space-between",fontSize:7,color:"#446070",marginBottom:12}}>
-                  <span>0 NORMAL</span><span>25 ELEVATED</span><span>50 HIGH</span><span>75 CRITICAL</span><span>100</span>
+                  <span>0 NORMAL</span><span>20 ELEVATED</span><span>40 HIGH</span><span>65 CRITICAL</span><span>100</span>
                 </div>
                 <div style={{fontSize:9,color:"#446070",letterSpacing:"0.1em",marginBottom:6}}>CONTRIBUTING FACTORS</div>
                 {risk.factors.length===0?<div style={{color:"#22aa5c",fontSize:11}}>✓ No significant risk factors</div>:
@@ -1389,16 +1455,21 @@ function App(){
             <div className="card" style={{borderTop:"2px solid #8050d0"}}>
               <CardHdr title="Commander Action Checklist" icon="⚡" accent="#8050d0"/>
               <div className="card-body">
-                {(risk.score>=50?[
-                  {p:"IMMEDIATE",a:"Alert Battalion/Brigade commanders — elevated operational tempo likely",c:"#d83828"},
-                  {p:"IMMEDIATE",a:"Review 72-hr recall rosters for engineer, MP, and aviation units",c:"#d83828"},
-                  {p:"URGENT",a:"Coordinate with SD DPS / Emergency Management on resource staging",c:"#d09010"},
-                  {p:"URGENT",a:"Pre-position high-water rescue assets in eastern SD",c:"#d09010"},
+                {(risk.score>=65?[
+                  {p:"IMMEDIATE",a:"Alert TAG and JFHQ-SD — critical multi-hazard event in progress",c:"#d83828"},
+                  {p:"IMMEDIATE",a:"Review 72-hr recall rosters for engineer, MP, aviation, and medical units",c:"#d83828"},
+                  {p:"URGENT",a:"Coordinate with SD DPS / SDEM on unified command and resource staging",c:"#d09010"},
+                  {p:"URGENT",a:"Pre-position high-water rescue assets in eastern SD flood zones",c:"#d09010"},
                   {p:"PLANNING",a:"Brief JFHQ-SD on current threat picture and 30-day outlook",c:"#4090d0"},
                   {p:"PLANNING",a:"Review Title 32 and State Active Duty authority thresholds with JAG",c:"#4090d0"},
-                ]:risk.score>=25?[
+                ]:risk.score>=40?[
+                  {p:"URGENT",a:"Alert Battalion/Brigade commanders — elevated operational tempo likely",c:"#d09010"},
+                  {p:"URGENT",a:"Coordinate with SD DPS / Emergency Management on resource pre-positioning",c:"#d09010"},
+                  {p:"PLANNING",a:"Brief JFHQ-SD on current threat picture and 30-day outlook",c:"#4090d0"},
+                  {p:"PLANNING",a:"Review activation timelines and current equipment availability",c:"#4090d0"},
+                ]:risk.score>=20?[
                   {p:"URGENT",a:"Maintain heightened SA — multiple concurrent risk factors present",c:"#d09010"},
-                  {p:"URGENT",a:"Duty officer monitoring this dashboard and NWS alerts continuously",c:"#d09010"},
+                  {p:"URGENT",a:"Duty officer monitoring dashboard and NWS alerts continuously",c:"#d09010"},
                   {p:"PLANNING",a:"Review activation timelines and pre-positioned equipment lists",c:"#4090d0"},
                   {p:"PLANNING",a:"Coordinate with county emergency managers in highest-risk counties",c:"#4090d0"},
                 ]:[
@@ -1421,24 +1492,63 @@ function App(){
 
         {/* ROADS & POWER */}
         {tab==="roads"&&(
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
-            <div className="card" style={{borderTop:"2px solid #22aa5c",gridColumn:"span 2"}}>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,alignItems:"start"}}>
+            {/* LEFT — SD 511 Roads */}
+            <div className="card" style={{borderTop:"2px solid #22aa5c"}}>
               <CardHdr title="SD 511 — Road Conditions & Closures" icon="🛣" accent="#22aa5c"/>
-              <div style={{height:300}}><iframe src="https://sd511.org/" style={{width:"100%",height:"100%",border:"none"}} title="SD511"/></div>
-              <div style={{padding:"7px 12px",display:"flex",gap:6,flexWrap:"wrap",borderTop:"1px solid #1a2535"}}>
-                {[["SD511","https://sd511.org/","#22aa5c"],["SD DOT","https://dot.sd.gov/travelers/travelers","#22aa5c"],["Winter Alerts","https://dot.sd.gov/travelers/travelers/road-constructiontravel-conditions/","#d09010"]].map(([l,u,c])=>(
-                  <a key={l} href={u} target="_blank" className="lbtn" style={{color:c,background:c+"12",border:`1px solid ${c}25`}}>▸ {l}</a>
-                ))}
-                <span style={{color:"#446070",fontSize:8,alignSelf:"center"}}>Text SDInterstates to 605-836-8836 for closure alerts</span>
+              <div style={{height:340}}><iframe src="https://sd511.org/" style={{width:"100%",height:"100%",border:"none"}} title="SD511"/></div>
+              <div style={{padding:"8px 12px",borderTop:"1px solid #1a2535"}}>
+                <div style={{fontSize:9,color:"#446070",marginBottom:6,lineHeight:1.6}}>
+                  SD511 provides real-time road conditions, closures, and incidents on all Interstate, US, and State Routes. Updated every 2–5 minutes.
+                </div>
+                <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+                  {[["SD511 Full Map","https://sd511.org/","#22aa5c"],["SD DOT Travel Info","https://dot.sd.gov/travelers/travelers","#22aa5c"],["Winter Road Alerts","https://dot.sd.gov/travelers/travelers/road-constructiontravel-conditions/","#d09010"]].map(([l,u,c])=>(
+                    <a key={l} href={u} target="_blank" className="lbtn" style={{color:c,background:c+"12",border:`1px solid ${c}25`}}>▸ {l}</a>
+                  ))}
+                </div>
+                <div style={{fontSize:8,color:"#446070",marginTop:6}}>📱 Text <strong style={{color:"#22aa5c"}}>SDInterstates</strong> to 605-836-8836 for interstate closure alerts</div>
               </div>
             </div>
+
+            {/* RIGHT — Power Outages */}
             <div className="card" style={{borderTop:"2px solid #d09010"}}>
-              <CardHdr title="Power Outages — SD" icon="⚡" accent="#d09010"/>
-              <div style={{height:240}}><iframe src="https://poweroutage.us/area/state/south%20dakota" style={{width:"100%",height:"100%",border:"none",background:"#fff"}} title="Outages"/></div>
-              <div style={{padding:"7px 12px",display:"flex",flexDirection:"column",gap:3,borderTop:"1px solid #1a2535"}}>
-                {[["Pennington Co","https://poweroutage.us/area/county/46103"],["Minnehaha Co","https://poweroutage.us/area/county/46099"],["NorthWestern Energy","https://www.northwesternenergy.com/outages"],["Black Hills Energy","https://www.blackhillsenergy.com/outages-and-safety/outage-center"]].map(([l,u])=>(
-                  <a key={l} href={u} target="_blank" className="lbtn" style={{color:"#d09010",background:"#d0901010",border:"1px solid #d0901020"}}>⚡ {l}</a>
-                ))}
+              <CardHdr title="Power Outages — South Dakota" icon="⚡" accent="#d09010"/>
+              <div style={{padding:"10px 12px"}}>
+                {/* SD Rural Electric outage map */}
+                <div style={{fontSize:9,color:"#446070",marginBottom:8,letterSpacing:"0.08em",fontWeight:700}}>SD RURAL ELECTRIC ASSOCIATION — COOPERATIVE OUTAGES</div>
+                <div style={{height:200,borderRadius:4,overflow:"hidden",marginBottom:8}}>
+                  <iframe src="https://outages.sdrea.coop/" style={{width:"100%",height:"100%",border:"none",background:"#fff"}} title="SD Rural Electric Outages"/>
+                </div>
+
+                {/* Individual utility links */}
+                <div style={{fontSize:9,color:"#446070",marginBottom:6,letterSpacing:"0.08em",fontWeight:700}}>MAJOR UTILITY OUTAGE CENTERS</div>
+                <div style={{display:"flex",flexDirection:"column",gap:4}}>
+                  {[
+                    ["⚡ NorthWestern Energy (RC area)","https://www.northwesternenergy.com/outages","#d09010"],
+                    ["⚡ Black Hills Energy (RC / western SD)","https://www.blackhillsenergy.com/outages-and-safety/outage-center","#d09010"],
+                    ["⚡ Xcel Energy (eastern SD)","https://www.xcelenergy.com/outages","#d09010"],
+                    ["⚡ Montana-Dakota Utilities","https://customer.montana-dakota.com/outage-map","#d09010"],
+                    ["⚡ SD Rural Electric — Full Outage Map","https://outages.sdrea.coop/","#22aa5c"],
+                  ].map(([l,u,c])=>(
+                    <a key={l} href={u} target="_blank" className="lbtn" style={{color:c,background:c+"10",border:`1px solid ${c}20`}}>{l}</a>
+                  ))}
+                </div>
+
+                {/* County links */}
+                <div style={{fontSize:9,color:"#446070",marginTop:10,marginBottom:5,letterSpacing:"0.08em",fontWeight:700}}>COUNTY-LEVEL TRACKING</div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:4}}>
+                  {[
+                    ["Pennington (RC)","https://poweroutage.us/area/county/46103"],
+                    ["Minnehaha (SF)","https://poweroutage.us/area/county/46099"],
+                    ["Hughes (Pierre)","https://poweroutage.us/area/county/46065"],
+                    ["Lawrence (Deadwood)","https://poweroutage.us/area/county/46081"],
+                  ].map(([l,u])=>(
+                    <a key={l} href={u} target="_blank" className="lbtn" style={{color:"#d09010",background:"#d0901010",border:"1px solid #d0901020",fontSize:9}}>📍 {l}</a>
+                  ))}
+                </div>
+                <div style={{marginTop:8,fontSize:8,color:"#304050",lineHeight:1.6}}>
+                  NOTE: PowerOutage.us embeds may be blocked by browser security settings. Use direct utility links above for most reliable data during emergencies.
+                </div>
               </div>
             </div>
           </div>
@@ -1517,7 +1627,7 @@ function App(){
       {/* FOOTER */}
       <div style={{borderTop:"1px solid #1a2535",padding:"4px 12px",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:3,background:"#0b1018"}}>
         <div style={{fontSize:7,color:"#304050",letterSpacing:"0.06em"}}>NWS · USGS · USDM · NRCS SNOTEL · OPENFEMA · USGS SEISMIC · EPA AIRNOW · CISA KEV · NIFC WFIGS · INCIWEB · SD511 · POWEROUTAGE.US · NASA FIRMS · AUTO-REFRESH 5 MIN</div>
-        <div style={{fontSize:7,color:"#304050"}}>UNCLASSIFIED · OPEN-SOURCE · SD ARNG JOC v5.0</div>
+        <div style={{fontSize:7,color:"#304050"}}>UNCLASSIFIED · OPEN-SOURCE · SD ARNG JOC v6.0</div>
       </div>
 
       <ToastContainer toasts={toasts}/>
