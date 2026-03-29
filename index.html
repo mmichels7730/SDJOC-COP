@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -14,46 +15,46 @@
   --border:#1c2d3e;
   --borderhi:#2a4458;
 
-  --green:#1a9650;
-  --greenlt:#22b862;
-  --greendim:#0d5530;
-  --amber:#c8820a;
-  --amberlt:#e09a14;
-  --amberdim:#7a5006;
-  --red:#bf2f26;
-  --redlt:#e03830;
-  --reddim:#721a15;
-  --blue:#1260a8;
-  --bluelt:#1880d0;
-  --orange:#c05010;
-  --orangelt:#e06820;
-  --cyan:#0a9090;
-  --cyanlt:#12aeb2;
-  --purple:#6535b0;
-  --purplelt:#8050d8;
+–green:#1a9650;
+–greenlt:#22b862;
+–greendim:#0d5530;
+–amber:#c8820a;
+–amberlt:#e09a14;
+–amberdim:#7a5006;
+–red:#bf2f26;
+–redlt:#e03830;
+–reddim:#721a15;
+–blue:#1260a8;
+–bluelt:#1880d0;
+–orange:#c05010;
+–orangelt:#e06820;
+–cyan:#0a9090;
+–cyanlt:#12aeb2;
+–purple:#6535b0;
+–purplelt:#8050d8;
 
-  --text:#a8c0d8;
-  --texthi:#deeeff;
-  --textmid:#7a9ab8;
-  --textdim:#3a5268;
+–text:#a8c0d8;
+–texthi:#deeeff;
+–textmid:#7a9ab8;
+–textdim:#3a5268;
 
-  --mono:'Share Tech Mono',monospace;
-  --head:'Barlow Condensed',sans-serif;
-  --body:'Barlow',sans-serif;
+–mono:‘Share Tech Mono’,monospace;
+–head:‘Barlow Condensed’,sans-serif;
+–body:‘Barlow’,sans-serif;
 
-  --bar-h:52px;
-  --band-h:64px;
-  --left-w:300px;
-  --right-w:280px;
+–bar-h:52px;
+–band-h:64px;
+–left-w:300px;
+–right-w:280px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--body)}
+html,body{height:100%;overflow:hidden;background:var(–bg);color:var(–text);font-family:var(–body)}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+::-webkit-scrollbar-thumb{background:var(–border);border-radius:2px}
 
 /* ANIMATIONS */
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
@@ -67,180 +68,180 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 
 /* ── STRATEGIC BAR ─────────────────────────────── */
 #strategic-bar{
-  position:fixed;top:0;left:0;right:0;height:var(--bar-h);
-  background:linear-gradient(180deg,#0a1620,#080d12);
-  border-bottom:2px solid var(--green);
-  display:flex;align-items:stretch;
-  z-index:1000;
-  overflow:hidden;
+position:fixed;top:0;left:0;right:0;height:var(–bar-h);
+background:linear-gradient(180deg,#0a1620,#080d12);
+border-bottom:2px solid var(–green);
+display:flex;align-items:stretch;
+z-index:1000;
+overflow:hidden;
 }
 #strategic-bar::after{
-  content:'';position:absolute;bottom:0;left:-100%;width:60%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(26,150,80,0.6),transparent);
-  animation:scanH 6s linear infinite;
+content:’’;position:absolute;bottom:0;left:-100%;width:60%;height:1px;
+background:linear-gradient(90deg,transparent,rgba(26,150,80,0.6),transparent);
+animation:scanH 6s linear infinite;
 }
 
 .bar-logo{
-  width:64px;min-width:64px;display:flex;align-items:center;justify-content:center;
-  border-right:1px solid var(--border);flex-direction:column;gap:1px;
-  background:rgba(26,150,80,0.06);
+width:64px;min-width:64px;display:flex;align-items:center;justify-content:center;
+border-right:1px solid var(–border);flex-direction:column;gap:1px;
+background:rgba(26,150,80,0.06);
 }
 .bar-logo-badge{
-  font-family:var(--head);font-size:14px;font-weight:900;color:var(--greenlt);
-  line-height:1;letter-spacing:0.05em;
+font-family:var(–head);font-size:14px;font-weight:900;color:var(–greenlt);
+line-height:1;letter-spacing:0.05em;
 }
-.bar-logo-sub{font-size:7px;color:var(--textdim);letter-spacing:0.2em;margin-top:2px}
+.bar-logo-sub{font-size:7px;color:var(–textdim);letter-spacing:0.2em;margin-top:2px}
 
 .bar-section{
-  display:flex;align-items:center;gap:0;
-  border-right:1px solid var(--border);
-  padding:0 14px;
-  flex-shrink:0;
+display:flex;align-items:center;gap:0;
+border-right:1px solid var(–border);
+padding:0 14px;
+flex-shrink:0;
 }
 .bar-section-grow{flex:1;min-width:0}
 
-.bar-label{font-size:7px;color:var(--textdim);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:3px;font-family:var(--mono)}
-.bar-val{font-family:var(--head);font-size:15px;font-weight:700;letter-spacing:0.06em;line-height:1}
+.bar-label{font-size:7px;color:var(–textdim);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:3px;font-family:var(–mono)}
+.bar-val{font-family:var(–head);font-size:15px;font-weight:700;letter-spacing:0.06em;line-height:1}
 
 .activation-pill{
-  padding:4px 14px;border-radius:3px;font-family:var(--head);
-  font-size:13px;font-weight:700;letter-spacing:0.12em;white-space:nowrap;
+padding:4px 14px;border-radius:3px;font-family:var(–head);
+font-size:13px;font-weight:700;letter-spacing:0.12em;white-space:nowrap;
 }
 
 /* hazard badges */
 .haz{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .haz-badge{
-  padding:3px 8px;border-radius:3px;font-size:9px;font-weight:700;
-  font-family:var(--mono);letter-spacing:0.06em;white-space:nowrap;
+padding:3px 8px;border-radius:3px;font-size:9px;font-weight:700;
+font-family:var(–mono);letter-spacing:0.06em;white-space:nowrap;
 }
 
 /* critical alerts ticker */
 .ticker-wrap{flex:1;overflow:hidden;position:relative;min-width:0}
 .ticker-inner{
-  display:flex;gap:0;align-items:center;height:100%;
-  overflow-x:auto;white-space:nowrap;scrollbar-width:none;
+display:flex;gap:0;align-items:center;height:100%;
+overflow-x:auto;white-space:nowrap;scrollbar-width:none;
 }
 .ticker-inner::-webkit-scrollbar{display:none}
 .ticker-item{
-  display:inline-flex;align-items:center;gap:7px;padding:0 14px;
-  border-right:1px solid var(--border);height:100%;flex-shrink:0;
-  font-size:10px;font-family:var(--mono);color:var(--textmid);
+display:inline-flex;align-items:center;gap:7px;padding:0 14px;
+border-right:1px solid var(–border);height:100%;flex-shrink:0;
+font-size:10px;font-family:var(–mono);color:var(–textmid);
 }
 .ticker-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 
 .bar-time{
-  width:80px;min-width:80px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;border-left:1px solid var(--border);
-  padding:0 8px;
+width:80px;min-width:80px;display:flex;flex-direction:column;
+align-items:center;justify-content:center;border-left:1px solid var(–border);
+padding:0 8px;
 }
-.bar-time-clock{font-family:var(--head);font-size:18px;font-weight:700;color:var(--texthi);letter-spacing:0.08em;line-height:1}
-.bar-time-date{font-size:7px;color:var(--textdim);letter-spacing:0.12em;margin-top:2px}
+.bar-time-clock{font-family:var(–head);font-size:18px;font-weight:700;color:var(–texthi);letter-spacing:0.08em;line-height:1}
+.bar-time-date{font-size:7px;color:var(–textdim);letter-spacing:0.12em;margin-top:2px}
 
 /* ── MAIN LAYOUT ───────────────────────────────── */
 #layout{
-  position:fixed;
-  top:var(--bar-h);
-  bottom:var(--band-h);
-  left:0;right:0;
-  display:grid;
-  grid-template-columns:var(--left-w) 1fr var(--right-w);
-  overflow:hidden;
+position:fixed;
+top:var(–bar-h);
+bottom:var(–band-h);
+left:0;right:0;
+display:grid;
+grid-template-columns:var(–left-w) 1fr var(–right-w);
+overflow:hidden;
 }
 
 /* ── LEFT COLUMN ───────────────────────────────── */
 #left-col{
-  background:var(--surface);
-  border-right:1px solid var(--border);
-  overflow-y:auto;
-  display:flex;flex-direction:column;
-  gap:0;
+background:var(–surface);
+border-right:1px solid var(–border);
+overflow-y:auto;
+display:flex;flex-direction:column;
+gap:0;
 }
 
 .col-hdr{
-  padding:8px 14px;font-family:var(--head);font-size:11px;font-weight:700;
-  color:var(--textdim);letter-spacing:0.2em;text-transform:uppercase;
-  border-bottom:1px solid var(--border);background:rgba(255,255,255,0.015);
-  display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:10;
+padding:8px 14px;font-family:var(–head);font-size:11px;font-weight:700;
+color:var(–textdim);letter-spacing:0.2em;text-transform:uppercase;
+border-bottom:1px solid var(–border);background:rgba(255,255,255,0.015);
+display:flex;align-items:center;justify-content:space-between;
+position:sticky;top:0;z-index:10;
 }
 
 /* LIFELINE GRID */
-.lifeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border)}
+.lifeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(–border)}
 .lifeline-card{
-  padding:12px 14px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  cursor:pointer;transition:background 0.15s;position:relative;overflow:hidden;
+padding:12px 14px;border-right:1px solid var(–border);border-bottom:1px solid var(–border);
+cursor:pointer;transition:background 0.15s;position:relative;overflow:hidden;
 }
 .lifeline-card:nth-child(2n){border-right:none}
 .lifeline-card:hover{background:rgba(255,255,255,0.025)}
 .lifeline-card::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+content:’’;position:absolute;left:0;top:0;bottom:0;width:3px;
 }
-.lifeline-card.green::before{background:var(--green)}
-.lifeline-card.yellow::before{background:var(--amber)}
-.lifeline-card.red::before{background:var(--red)}
+.lifeline-card.green::before{background:var(–green)}
+.lifeline-card.yellow::before{background:var(–amber)}
+.lifeline-card.red::before{background:var(–red)}
 
 .lc-icon{font-size:16px;margin-bottom:4px;line-height:1}
-.lc-label{font-size:8px;color:var(--textdim);letter-spacing:0.14em;text-transform:uppercase;font-family:var(--mono);margin-bottom:4px}
-.lc-num{font-family:var(--head);font-size:28px;font-weight:900;line-height:1;transition:color 0.3s}
+.lc-label{font-size:8px;color:var(–textdim);letter-spacing:0.14em;text-transform:uppercase;font-family:var(–mono);margin-bottom:4px}
+.lc-num{font-family:var(–head);font-size:28px;font-weight:900;line-height:1;transition:color 0.3s}
 .lc-trend{font-size:12px;margin-left:4px}
-.lc-status{font-size:9px;color:var(--textmid);margin-top:3px;line-height:1.4;font-family:var(--body)}
+.lc-status{font-size:9px;color:var(–textmid);margin-top:3px;line-height:1.4;font-family:var(–body)}
 
 /* NWS ALERTS */
 .alert-list{padding:10px 14px;display:flex;flex-direction:column;gap:5px}
 .alert-row{
-  border-radius:0 5px 5px 0;padding:7px 10px;
-  border-left:3px solid;cursor:pointer;
-  transition:opacity 0.15s;
+border-radius:0 5px 5px 0;padding:7px 10px;
+border-left:3px solid;cursor:pointer;
+transition:opacity 0.15s;
 }
 .alert-row:hover{opacity:0.85}
-.alert-row-event{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:0.04em}
-.alert-row-area{font-size:9px;color:var(--textmid);margin-top:2px;font-family:var(--body)}
-.alert-row-exp{font-size:8px;color:var(--textdim);margin-top:1px;font-family:var(--mono)}
+.alert-row-event{font-family:var(–head);font-size:12px;font-weight:700;letter-spacing:0.04em}
+.alert-row-area{font-size:9px;color:var(–textmid);margin-top:2px;font-family:var(–body)}
+.alert-row-exp{font-size:8px;color:var(–textdim);margin-top:1px;font-family:var(–mono)}
 
 /* ── CENTER — MAP ──────────────────────────────── */
 #center-col{
-  position:relative;overflow:hidden;background:#060c10;
+position:relative;overflow:hidden;background:#060c10;
 }
 
 #map-container{width:100%;height:100%;position:relative}
 
 /* Map layer controls */
 #map-controls{
-  position:absolute;top:10px;right:10px;z-index:100;
-  display:flex;flex-direction:column;gap:5px;
+position:absolute;top:10px;right:10px;z-index:100;
+display:flex;flex-direction:column;gap:5px;
 }
 .map-layer-btn{
-  padding:5px 10px;border-radius:4px;font-size:9px;font-weight:700;
-  font-family:var(--mono);letter-spacing:0.08em;cursor:pointer;
-  border:1px solid var(--border);background:rgba(8,13,18,0.85);
-  color:var(--textmid);transition:all 0.2s;backdrop-filter:blur(4px);
-  text-align:left;
+padding:5px 10px;border-radius:4px;font-size:9px;font-weight:700;
+font-family:var(–mono);letter-spacing:0.08em;cursor:pointer;
+border:1px solid var(–border);background:rgba(8,13,18,0.85);
+color:var(–textmid);transition:all 0.2s;backdrop-filter:blur(4px);
+text-align:left;
 }
-.map-layer-btn.active{background:rgba(18,96,168,0.3);border-color:var(--bluelt);color:var(--bluelt)}
-.map-layer-btn:hover{border-color:var(--borderhi);color:var(--text)}
+.map-layer-btn.active{background:rgba(18,96,168,0.3);border-color:var(–bluelt);color:var(–bluelt)}
+.map-layer-btn:hover{border-color:var(–borderhi);color:var(–text)}
 
 /* Map overlays */
 #map-legend{
-  position:absolute;bottom:10px;left:10px;z-index:100;
-  background:rgba(8,13,18,0.88);border:1px solid var(--border);
-  border-radius:6px;padding:10px 12px;backdrop-filter:blur(4px);
+position:absolute;bottom:10px;left:10px;z-index:100;
+background:rgba(8,13,18,0.88);border:1px solid var(–border);
+border-radius:6px;padding:10px 12px;backdrop-filter:blur(4px);
 }
-.legend-title{font-size:8px;color:var(--textdim);letter-spacing:0.15em;text-transform:uppercase;font-family:var(--mono);margin-bottom:6px}
-.legend-item{display:flex;align-items:center;gap:7px;margin-bottom:4px;font-size:9px;color:var(--textmid);font-family:var(--body)}
+.legend-title{font-size:8px;color:var(–textdim);letter-spacing:0.15em;text-transform:uppercase;font-family:var(–mono);margin-bottom:6px}
+.legend-item{display:flex;align-items:center;gap:7px;margin-bottom:4px;font-size:9px;color:var(–textmid);font-family:var(–body)}
 .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .legend-sq{width:10px;height:6px;border-radius:1px;flex-shrink:0}
 
 /* USGS Water embed overlay */
 #map-info-bar{
-  position:absolute;bottom:10px;right:10px;z-index:100;
-  background:rgba(8,13,18,0.9);border:1px solid var(--border);
-  border-radius:6px;padding:10px 12px;max-width:200px;
-  backdrop-filter:blur(4px);
+position:absolute;bottom:10px;right:10px;z-index:100;
+background:rgba(8,13,18,0.9);border:1px solid var(–border);
+border-radius:6px;padding:10px 12px;max-width:200px;
+backdrop-filter:blur(4px);
 }
-.info-title{font-size:8px;color:var(--textdim);letter-spacing:0.15em;font-family:var(--mono);margin-bottom:6px}
+.info-title{font-size:8px;color:var(–textdim);letter-spacing:0.15em;font-family:var(–mono);margin-bottom:6px}
 .info-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;gap:8px}
-.info-label{font-size:9px;color:var(--textmid);font-family:var(--body)}
-.info-val{font-size:10px;font-weight:700;font-family:var(--mono)}
+.info-label{font-size:9px;color:var(–textmid);font-family:var(–body)}
+.info-val{font-size:10px;font-weight:700;font-family:var(–mono)}
 
 /* Map source iframe */
 #map-iframe-wrap{width:100%;height:100%}
@@ -248,45 +249,45 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 
 /* Map status overlay when no layer selected */
 #map-placeholder{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:16px;
-  background:radial-gradient(ellipse at center,#0d1820 0%,#060c10 100%);
+position:absolute;inset:0;display:flex;flex-direction:column;
+align-items:center;justify-content:center;gap:16px;
+background:radial-gradient(ellipse at center,#0d1820 0%,#060c10 100%);
 }
 
 /* ── RIGHT COLUMN ──────────────────────────────── */
 #right-col{
-  background:var(--surface);
-  border-left:1px solid var(--border);
-  overflow-y:auto;
-  display:flex;flex-direction:column;
+background:var(–surface);
+border-left:1px solid var(–border);
+overflow-y:auto;
+display:flex;flex-direction:column;
 }
 
 /* GAUGE CARD */
-.gauge-card{padding:10px 14px;border-bottom:1px solid var(--border)}
-.gauge-name{font-family:var(--head);font-size:11px;font-weight:700;color:var(--texthi);letter-spacing:0.06em;margin-bottom:2px}
-.gauge-meta{font-size:8px;color:var(--textdim);font-family:var(--mono);margin-bottom:5px}
+.gauge-card{padding:10px 14px;border-bottom:1px solid var(–border)}
+.gauge-name{font-family:var(–head);font-size:11px;font-weight:700;color:var(–texthi);letter-spacing:0.06em;margin-bottom:2px}
+.gauge-meta{font-size:8px;color:var(–textdim);font-family:var(–mono);margin-bottom:5px}
 .gauge-bar-wrap{display:flex;align-items:center;gap:8px}
 .gauge-bar-track{flex:1;height:6px;background:#040810;border-radius:3px;overflow:hidden;position:relative}
 .gauge-bar-fill{height:100%;border-radius:3px;transition:width 0.8s ease-out}
-.gauge-val{font-family:var(--head);font-size:14px;font-weight:700;white-space:nowrap;min-width:40px;text-align:right}
-.gauge-ticks{display:flex;justify-content:space-between;font-size:7px;color:var(--textdim);margin-top:2px;font-family:var(--mono)}
-.gauge-stage{padding:1px 6px;border-radius:3px;font-size:8px;font-weight:700;font-family:var(--mono);margin-top:4px;display:inline-block}
+.gauge-val{font-family:var(–head);font-size:14px;font-weight:700;white-space:nowrap;min-width:40px;text-align:right}
+.gauge-ticks{display:flex;justify-content:space-between;font-size:7px;color:var(–textdim);margin-top:2px;font-family:var(–mono)}
+.gauge-stage{padding:1px 6px;border-radius:3px;font-size:8px;font-weight:700;font-family:var(–mono);margin-top:4px;display:inline-block}
 
 /* PANEL BLOCKS */
-.panel-block{border-bottom:1px solid var(--border)}
+.panel-block{border-bottom:1px solid var(–border)}
 .panel-block-hdr{
-  padding:9px 14px;display:flex;align-items:center;justify-content:space-between;
-  cursor:pointer;user-select:none;transition:background 0.15s;
+padding:9px 14px;display:flex;align-items:center;justify-content:space-between;
+cursor:pointer;user-select:none;transition:background 0.15s;
 }
 .panel-block-hdr:hover{background:rgba(255,255,255,0.02)}
-.panel-block-title{font-family:var(--head);font-size:12px;font-weight:700;color:var(--texthi);letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.panel-block-title{font-family:var(–head);font-size:12px;font-weight:700;color:var(–texthi);letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:7px}
 .panel-block-body{padding:0 14px 10px}
 
 /* WEATHER METRIC ROW */
 .wx-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
 .wx-row:last-child{border-bottom:none}
-.wx-label{font-size:10px;color:var(--textmid);font-family:var(--body)}
-.wx-val{font-family:var(--head);font-size:13px;font-weight:700;letter-spacing:0.04em}
+.wx-label{font-size:10px;color:var(–textmid);font-family:var(–body)}
+.wx-val{font-family:var(–head);font-size:13px;font-weight:700;letter-spacing:0.04em}
 
 /* INFRA STABILITY */
 .infra-bar{margin-bottom:8px}
@@ -296,140 +297,167 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 
 /* ── BOTTOM BAND ───────────────────────────────── */
 #bottom-band{
-  position:fixed;bottom:0;left:0;right:0;height:var(--band-h);
-  background:var(--surface);
-  border-top:1px solid var(--border);
-  display:flex;align-items:stretch;
-  z-index:1000;
+position:fixed;bottom:0;left:0;right:0;height:var(–band-h);
+background:var(–surface);
+border-top:1px solid var(–border);
+display:flex;align-items:stretch;
+z-index:1000;
 }
 .band-section{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border-right:1px solid var(--border);padding:6px 10px;cursor:default;
-  transition:background 0.15s;
+flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+border-right:1px solid var(–border);padding:6px 10px;cursor:default;
+transition:background 0.15s;
 }
 .band-section:hover{background:rgba(255,255,255,0.02)}
 .band-section:last-child{border-right:none}
 .band-icon{font-size:14px;margin-bottom:2px}
-.band-val{font-family:var(--head);font-size:16px;font-weight:700;line-height:1;letter-spacing:0.04em}
-.band-label{font-size:7px;color:var(--textdim);letter-spacing:0.12em;text-transform:uppercase;font-family:var(--mono);margin-top:2px}
-.band-sub{font-size:8px;color:var(--textmid);margin-top:1px;font-family:var(--body)}
+.band-val{font-family:var(–head);font-size:16px;font-weight:700;line-height:1;letter-spacing:0.04em}
+.band-label{font-size:7px;color:var(–textdim);letter-spacing:0.12em;text-transform:uppercase;font-family:var(–mono);margin-top:2px}
+.band-sub{font-size:8px;color:var(–textmid);margin-top:1px;font-family:var(–body)}
 
 /* STATUS CHIP */
-.chip{display:inline-block;padding:2px 8px;border-radius:3px;font-size:8px;font-weight:700;font-family:var(--mono);letter-spacing:0.08em;white-space:nowrap}
+.chip{display:inline-block;padding:2px 8px;border-radius:3px;font-size:8px;font-weight:700;font-family:var(–mono);letter-spacing:0.08em;white-space:nowrap}
 
 /* RISK SCORE */
 .risk-ring{position:relative;width:44px;height:44px;flex-shrink:0}
 .risk-ring svg{transform:rotate(-90deg)}
-.risk-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:13px;font-weight:900;line-height:1}
+.risk-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(–head);font-size:13px;font-weight:900;line-height:1}
 
 /* LINK BTN */
-.lbtn{display:inline-block;padding:4px 9px;border-radius:3px;font-size:9px;font-weight:700;font-family:var(--mono);cursor:pointer;text-decoration:none;transition:opacity 0.15s;letter-spacing:0.04em;border:1px solid}
+.lbtn{display:inline-block;padding:4px 9px;border-radius:3px;font-size:9px;font-weight:700;font-family:var(–mono);cursor:pointer;text-decoration:none;transition:opacity 0.15s;letter-spacing:0.04em;border:1px solid}
 .lbtn:hover{opacity:0.8;text-decoration:none}
 
 /* ── MAP TABS ──────────────────────────────────── */
 #map-tab-bar{
-  position:absolute;top:0;left:0;right:0;height:36px;
-  background:rgba(8,13,18,0.92);border-bottom:1px solid var(--border);
-  display:flex;align-items:stretch;z-index:100;backdrop-filter:blur(4px);
-  overflow-x:auto;
+position:absolute;top:0;left:0;right:0;height:36px;
+background:rgba(8,13,18,0.92);border-bottom:1px solid var(–border);
+display:flex;align-items:stretch;z-index:100;backdrop-filter:blur(4px);
+overflow-x:auto;
 }
 .map-tab{
-  padding:0 14px;display:flex;align-items:center;gap:5px;
-  font-size:9px;font-weight:700;font-family:var(--mono);letter-spacing:0.08em;
-  cursor:pointer;color:var(--textdim);border-right:1px solid var(--border);
-  border-bottom:2px solid transparent;white-space:nowrap;
-  transition:all 0.15s;flex-shrink:0;
+padding:0 14px;display:flex;align-items:center;gap:5px;
+font-size:9px;font-weight:700;font-family:var(–mono);letter-spacing:0.08em;
+cursor:pointer;color:var(–textdim);border-right:1px solid var(–border);
+border-bottom:2px solid transparent;white-space:nowrap;
+transition:all 0.15s;flex-shrink:0;
 }
-.map-tab:hover{color:var(--text);background:rgba(255,255,255,0.03)}
-.map-tab.active{color:var(--bluelt);border-bottom-color:var(--bluelt);background:rgba(18,128,208,0.08)}
+.map-tab:hover{color:var(–text);background:rgba(255,255,255,0.03)}
+.map-tab.active{color:var(–bluelt);border-bottom-color:var(–bluelt);background:rgba(18,128,208,0.08)}
 
 /* ── LOGIN ─────────────────────────────────────── */
 #login-screen{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--bg);
-  display:flex;align-items:center;justify-content:center;
-  background-image:
-    repeating-linear-gradient(0deg,transparent,transparent 49px,rgba(26,150,80,0.03) 50px),
-    repeating-linear-gradient(90deg,transparent,transparent 49px,rgba(26,150,80,0.03) 50px);
+position:fixed;inset:0;z-index:9999;
+background:var(–bg);
+display:flex;align-items:center;justify-content:center;
+background-image:
+repeating-linear-gradient(0deg,transparent,transparent 49px,rgba(26,150,80,0.03) 50px),
+repeating-linear-gradient(90deg,transparent,transparent 49px,rgba(26,150,80,0.03) 50px);
 }
 .login-box{
-  background:var(--card);border:1px solid var(--borderhi);
-  border-top:3px solid var(--green);
-  border-radius:8px;padding:40px 48px;width:360px;text-align:center;
+background:var(–card);border:1px solid var(–borderhi);
+border-top:3px solid var(–green);
+border-radius:8px;padding:40px 48px;width:360px;text-align:center;
 }
 .login-box input{
-  width:100%;padding:12px 16px;background:#040810;
-  border:1px solid var(--border);border-radius:5px;
-  color:var(--texthi);font-family:var(--mono);font-size:14px;
-  margin-bottom:12px;letter-spacing:0.2em;text-align:center;
+width:100%;padding:12px 16px;background:#040810;
+border:1px solid var(–border);border-radius:5px;
+color:var(–texthi);font-family:var(–mono);font-size:14px;
+margin-bottom:12px;letter-spacing:0.2em;text-align:center;
 }
-.login-box input:focus{outline:none;border-color:var(--bluelt)}
+.login-box input:focus{outline:none;border-color:var(–bluelt)}
 .login-box button{
-  width:100%;padding:12px;background:var(--blue);border:none;border-radius:5px;
-  color:#fff;font-family:var(--head);font-size:16px;font-weight:700;
-  cursor:pointer;letter-spacing:0.1em;transition:background 0.2s;
+width:100%;padding:12px;background:var(–blue);border:none;border-radius:5px;
+color:#fff;font-family:var(–head);font-size:16px;font-weight:700;
+cursor:pointer;letter-spacing:0.1em;transition:background 0.2s;
 }
-.login-box button:hover{background:var(--bluelt)}
+.login-box button:hover{background:var(–bluelt)}
 
-/* TOOLTIP */
-.tooltip{
-  position:fixed;z-index:5000;background:rgba(8,13,18,0.95);
-  border:1px solid var(--borderhi);border-radius:5px;
-  padding:8px 12px;font-size:10px;color:var(--texthi);
-  font-family:var(--mono);pointer-events:none;line-height:1.6;
-  max-width:220px;display:none;
+/* LIFELINE DETAIL MODAL */
+#lifeline-modal{
+position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;
+background:rgba(4,8,16,0.85);backdrop-filter:blur(3px);
+}
+#lifeline-modal.open{display:flex}
+.lm-box{
+background:var(–card);border:1px solid var(–borderhi);border-radius:8px;
+width:min(560px,95vw);max-height:82vh;overflow:hidden;
+display:flex;flex-direction:column;
+animation:fadeIn 0.2s ease-out;
+}
+.lm-hdr{
+padding:12px 16px;border-bottom:1px solid var(–border);
+display:flex;align-items:center;justify-content:space-between;
+flex-shrink:0;
+}
+.lm-title{font-family:var(–head);font-size:16px;font-weight:700;color:var(–texthi);letter-spacing:0.08em;display:flex;align-items:center;gap:10px}
+.lm-close{background:transparent;border:1px solid var(–border);border-radius:4px;color:var(–textdim);cursor:pointer;padding:4px 10px;font-family:var(–mono);font-size:10px;transition:all 0.15s}
+.lm-close:hover{border-color:var(–redlt);color:var(–redlt)}
+.lm-body{overflow-y:auto;padding:14px 16px;flex:1}
+.lm-section{margin-bottom:12px}
+.lm-section-title{font-size:8px;color:var(–textdim);letter-spacing:0.15em;font-family:var(–mono);text-transform:uppercase;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(–border)}
+.lm-stat{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.lm-stat:last-child{border-bottom:none}
+.lm-stat-label{font-size:10px;color:var(–textmid);font-family:var(–body)}
+.lm-stat-val{font-size:11px;font-weight:700;font-family:var(–mono)}
+.lm-link{display:block;padding:5px 10px;border-radius:4px;font-size:9px;font-weight:700;font-family:var(–mono);text-decoration:none;margin-bottom:4px;border:1px solid;transition:opacity 0.15s;letter-spacing:0.04em}
+.lm-link:hover{opacity:0.8}
+position:fixed;z-index:5000;background:rgba(8,13,18,0.95);
+border:1px solid var(–borderhi);border-radius:5px;
+padding:8px 12px;font-size:10px;color:var(–texthi);
+font-family:var(–mono);pointer-events:none;line-height:1.6;
+max-width:220px;display:none;
 }
 
 /* ── DEEP DIVE DRAWER ──────────────────────────── */
 #drawer-toggle{
-  position:fixed;bottom:var(--band-h);left:50%;transform:translateX(-50%);
-  z-index:1001;
-  background:var(--surface);border:1px solid var(--borderhi);
-  border-bottom:none;border-radius:6px 6px 0 0;
-  padding:5px 20px 3px;cursor:pointer;
-  display:flex;align-items:center;gap:8px;
-  font-family:var(--head);font-size:11px;font-weight:700;
-  color:var(--textmid);letter-spacing:0.12em;
-  transition:color 0.2s,background 0.2s;
+position:fixed;bottom:var(–band-h);left:50%;transform:translateX(-50%);
+z-index:1001;
+background:var(–surface);border:1px solid var(–borderhi);
+border-bottom:none;border-radius:6px 6px 0 0;
+padding:5px 20px 3px;cursor:pointer;
+display:flex;align-items:center;gap:8px;
+font-family:var(–head);font-size:11px;font-weight:700;
+color:var(–textmid);letter-spacing:0.12em;
+transition:color 0.2s,background 0.2s;
 }
-#drawer-toggle:hover{color:var(--texthi);background:var(--card)}
+#drawer-toggle:hover{color:var(–texthi);background:var(–card)}
 #drawer-toggle .dt-arrow{font-size:10px;transition:transform 0.3s}
 #drawer-toggle.open .dt-arrow{transform:rotate(180deg)}
 
 #drawer{
-  position:fixed;bottom:var(--band-h);left:0;right:0;
-  height:0;overflow:hidden;z-index:999;
-  background:var(--surface);border-top:2px solid var(--blue);
-  transition:height 0.35s cubic-bezier(0.4,0,0.2,1);
-  display:flex;flex-direction:column;
+position:fixed;bottom:var(–band-h);left:0;right:0;
+height:0;overflow:hidden;z-index:999;
+background:var(–surface);border-top:2px solid var(–blue);
+transition:height 0.35s cubic-bezier(0.4,0,0.2,1);
+display:flex;flex-direction:column;
 }
-#drawer.open{height:calc(100vh - var(--bar-h) - var(--band-h))}
+#drawer.open{height:calc(100vh - var(–bar-h) - var(–band-h))}
 
 /* Drawer tab bar */
 #drawer-tabs{
-  display:flex;border-bottom:1px solid var(--border);
-  background:var(--card);flex-shrink:0;
+display:flex;border-bottom:1px solid var(–border);
+background:var(–card);flex-shrink:0;
 }
 .dtab{
-  padding:9px 16px;font-family:var(--mono);font-size:10px;font-weight:700;
-  letter-spacing:0.1em;cursor:pointer;color:var(--textdim);
-  border-bottom:2px solid transparent;border-right:1px solid var(--border);
-  transition:all 0.15s;white-space:nowrap;display:flex;align-items:center;gap:6px;
+padding:9px 16px;font-family:var(–mono);font-size:10px;font-weight:700;
+letter-spacing:0.1em;cursor:pointer;color:var(–textdim);
+border-bottom:2px solid transparent;border-right:1px solid var(–border);
+transition:all 0.15s;white-space:nowrap;display:flex;align-items:center;gap:6px;
 }
-.dtab:hover{color:var(--text);background:rgba(255,255,255,0.02)}
-.dtab.active{color:var(--bluelt);border-bottom-color:var(--bluelt);background:rgba(24,128,208,0.08)}
+.dtab:hover{color:var(–text);background:rgba(255,255,255,0.02)}
+.dtab.active{color:var(–bluelt);border-bottom-color:var(–bluelt);background:rgba(24,128,208,0.08)}
 
 /* Drawer content area */
 #drawer-content{flex:1;overflow-y:auto;padding:16px 20px}
 
 /* Drawer cards */
-.dc{background:var(--card);border:1px solid var(--border);border-radius:7px;overflow:hidden;margin-bottom:14px}
-.dc-hdr{padding:10px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
-.dc-title{font-family:var(--head);font-size:13px;font-weight:700;color:var(--texthi);letter-spacing:0.1em;display:flex;align-items:center;gap:8px}
+.dc{background:var(–card);border:1px solid var(–border);border-radius:7px;overflow:hidden;margin-bottom:14px}
+.dc-hdr{padding:10px 15px;border-bottom:1px solid var(–border);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dc-title{font-family:var(–head);font-size:13px;font-weight:700;color:var(–texthi);letter-spacing:0.1em;display:flex;align-items:center;gap:8px}
 .dc-body{padding:12px 15px}
 
 /* Risk score big display */
-.risk-big{font-family:var(--head);font-size:72px;font-weight:900;line-height:1;transition:color 0.5s}
+.risk-big{font-family:var(–head);font-size:72px;font-weight:900;line-height:1;transition:color 0.5s}
 .risk-bar-track{background:#040810;border-radius:6px;height:14px;overflow:hidden;position:relative;margin:10px 0 4px}
 .risk-bar-fill{height:100%;border-radius:6px;transition:width 1.2s cubic-bezier(0.4,0,0.2,1),background 0.5s}
 
@@ -439,16 +467,16 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 
 /* Commander checklist */
 .cmd-row{display:flex;gap:10px;padding:7px 10px;border-radius:4px;margin-bottom:4px;align-items:flex-start}
-.cmd-pill{padding:2px 8px;border-radius:3px;font-size:9px;font-weight:700;font-family:var(--mono);letter-spacing:0.06em;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.cmd-pill{padding:2px 8px;border-radius:3px;font-size:9px;font-weight:700;font-family:var(–mono);letter-spacing:0.06em;white-space:nowrap;flex-shrink:0;margin-top:1px}
 
 /* AQI */
-.aqi-card{background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.aqi-card{background:var(–card2);border:1px solid var(–border);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
 
 /* Snowpack bar */
 .sno-bar{margin-bottom:8px}
 
 /* Reservoir card */
-.res-card{background:var(--card2);border:1px solid var(--border);border-left:3px solid;border-radius:0 5px 5px 0;padding:9px 12px;margin-bottom:6px}
+.res-card{background:var(–card2);border:1px solid var(–border);border-left:3px solid;border-radius:0 5px 5px 0;padding:9px 12px;margin-bottom:6px}
 
 /* Threat advisory */
 .threat-row{border-left:3px solid;border-radius:0 5px 5px 0;padding:9px 12px;margin-bottom:6px;cursor:pointer;transition:opacity 0.15s}
@@ -459,11 +487,13 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .dgrid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:start}
 @media(max-width:900px){.dgrid{grid-template-columns:1fr}.dgrid3{grid-template-columns:1fr 1fr}}
 </style>
+
 </head>
 <body>
 
 <!-- ── LOGIN ─────────────────────────────────── -->
-<div id="login-screen">
+
+<div id="login-screen" style="display:none">
   <div class="login-box">
     <div style="font-family:var(--head);font-size:36px;font-weight:900;color:var(--greenlt);letter-spacing:0.08em;line-height:1;margin-bottom:4px">SDNG</div>
     <div style="font-family:var(--head);font-size:14px;font-weight:700;color:var(--texthi);letter-spacing:0.15em;margin-bottom:2px">JOINT OPERATIONS CENTER</div>
@@ -476,9 +506,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 </div>
 
 <!-- ── TOOLTIP ───────────────────────────────── -->
+
 <div class="tooltip" id="tooltip"></div>
 
 <!-- ── STRATEGIC BAR ─────────────────────────── -->
+
 <div id="strategic-bar">
   <div class="bar-logo">
     <div class="bar-logo-badge">SD<br/>NG</div>
@@ -486,6 +518,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
   <!-- Threat Environment -->
+
   <div class="bar-section" style="gap:8px;min-width:180px">
     <div>
       <div class="bar-label">Threat Environment</div>
@@ -496,6 +529,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
   <!-- Activation Level -->
+
   <div class="bar-section" style="min-width:160px">
     <div>
       <div class="bar-label">State Activation</div>
@@ -506,6 +540,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
   <!-- Hazard Index -->
+
   <div class="bar-section" style="min-width:200px;gap:6px">
     <div>
       <div class="bar-label">Hazard Index</div>
@@ -519,6 +554,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
   <!-- Critical Alerts Ticker -->
+
   <div class="bar-section bar-section-grow" style="padding:0">
     <div style="width:50px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);height:100%;flex-shrink:0">
       <div class="bar-label" style="transform:none;white-space:nowrap;padding:0 8px">ALERTS</div>
@@ -531,6 +567,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
   <!-- Risk Score -->
+
   <div class="bar-section" style="min-width:90px;gap:10px">
     <div class="risk-ring" id="bar-risk-ring">
       <svg width="44" height="44" viewBox="0 0 44 44">
@@ -548,6 +585,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
   <!-- Clock -->
+
   <div class="bar-time">
     <div class="bar-time-clock" id="clock">00:00:00</div>
     <div class="bar-time-date" id="clock-date">SAT 28 MAR</div>
@@ -556,234 +594,293 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 </div>
 
 <!-- ── MAIN LAYOUT ────────────────────────────── -->
+
 <div id="layout">
 
   <!-- ── LEFT COLUMN ─────────────────────────── -->
+
   <div id="left-col">
 
-    <!-- LIFELINE STATUS -->
-    <div class="col-hdr">
-      <span>LIFELINE STATUS</span>
-      <span style="font-size:8px;color:var(--textdim)" id="lifeline-update">—</span>
-    </div>
-    <div class="lifeline-grid" id="lifeline-grid">
-      <!-- Filled by JS -->
-    </div>
+```
+<!-- LIFELINE STATUS -->
+<div class="col-hdr">
+  <span>LIFELINE STATUS</span>
+  <span style="font-size:8px;color:var(--textdim)" id="lifeline-update">—</span>
+</div>
+<div class="lifeline-grid" id="lifeline-grid">
+  <!-- Filled by JS -->
+</div>
 
-    <!-- NWS ALERTS -->
-    <div class="col-hdr" style="margin-top:0">
-      <span>NWS ACTIVE ALERTS</span>
-      <span id="alert-count" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">0 ACTIVE</span>
-    </div>
-    <div class="alert-list" id="alert-list">
-      <div style="color:var(--textdim);font-size:10px;padding:4px 0">Loading alerts…</div>
-    </div>
+<!-- NWS ALERTS -->
+<div class="col-hdr" style="margin-top:0">
+  <span>NWS ACTIVE ALERTS</span>
+  <span id="alert-count" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">0 ACTIVE</span>
+</div>
+<div class="alert-list" id="alert-list">
+  <div style="color:var(--textdim);font-size:10px;padding:4px 0">Loading alerts…</div>
+</div>
 
-    <!-- ACTIVE FIRE INCIDENTS -->
-    <div class="col-hdr" style="margin-top:0">
-      <span>🔥 ACTIVE FIRE INCIDENTS</span>
-      <span id="fire-count" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">0 INCIDENTS</span>
-    </div>
-    <div id="fire-incident-list" style="padding:8px 14px">
-      <div style="color:var(--textdim);font-size:10px">Loading NIFC fire data…</div>
-    </div>
+<!-- ACTIVE FIRE INCIDENTS -->
+<div class="col-hdr" style="margin-top:0">
+  <span>🔥 ACTIVE FIRE INCIDENTS</span>
+  <span id="fire-count" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">0 INCIDENTS</span>
+</div>
+<div id="fire-incident-list" style="padding:8px 14px">
+  <div style="color:var(--textdim);font-size:10px">Loading NIFC fire data…</div>
+</div>
 
-    <!-- SD WILDLAND FIRE EMBED — always visible, human-updated -->
-    <div style="border-top:1px solid var(--border)">
-      <div class="col-hdr" style="margin-top:0;background:rgba(192,80,16,0.06)">
-        <span style="color:var(--orangelt)">🌲 SD WILDLAND FIRE INFO</span>
-        <a href="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx" target="_blank"
-          style="font-size:8px;color:var(--textdim);font-family:var(--mono)">Open ↗</a>
-      </div>
-      <div style="height:340px;overflow:hidden;position:relative">
-        <iframe
-          src="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx"
-          style="width:100%;height:100%;border:none;display:block"
-          title="SD Wildland Fire Info"
-          sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
-        </iframe>
-        <!-- Fallback if blocked -->
-        <div id="sdwf-fallback" style="display:none;position:absolute;inset:0;background:var(--card);padding:12px;flex-direction:column;gap:6px">
-          <div style="font-size:9px;color:var(--textmid);margin-bottom:4px;font-family:var(--mono)">SD WILDLAND FIRE — DIRECT LINKS</div>
-          <a href="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx" target="_blank"
-            class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">▸ SD Wildland Fire Info Page</a>
-          <a href="https://wildlandfire.sd.gov/operations/firefighterbriefing.aspx" target="_blank"
-            class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">▸ Daily Firefighter Briefing</a>
-          <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank"
-            class="lbtn" style="color:var(--redlt);background:rgba(224,56,48,0.08);border-color:rgba(224,56,48,0.3)">▸ InciWeb — SD Active Incidents</a>
-          <a href="http://gpfireinfo.blogspot.com/" target="_blank"
-            class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">▸ Great Plains Fire Information</a>
-          <a href="https://www.nifc.gov/nicc-files/sitreprt.pdf" target="_blank"
-            class="lbtn" style="color:var(--textmid);background:rgba(255,255,255,0.04);border-color:var(--border)">▸ NIFC Daily Sit Report (PDF)</a>
-        </div>
-      </div>
-      <div style="padding:4px 14px;font-size:7px;color:var(--textdim);font-family:var(--mono);border-top:1px solid var(--border);display:flex;justify-content:space-between">
-        <span>SD WILDLAND FIRE · MANUALLY UPDATED BY SD DPS PIO</span>
-        <a href="https://wildlandfire.sd.gov/" target="_blank" style="color:var(--textdim)">wildlandfire.sd.gov</a>
-      </div>
+
+<!-- SD WILDLAND FIRE PANEL — live data, no iframe -->
+<div style="border-top:1px solid var(--border)">
+  <div class="col-hdr" style="margin-top:0;background:rgba(192,80,16,0.06)">
+    <span style="color:var(--orangelt)">🌲 SD WILDLAND FIRE STATUS</span>
+    <div style="display:flex;gap:6px;align-items:center">
+      <span id="sdwf-updated" style="font-size:7px;color:var(--textdim);font-family:var(--mono)">—</span>
+      <a href="https://wildlandfire.sd.gov/fireinfo/fireinfo.aspx" target="_blank"
+        style="font-size:8px;color:var(--orangelt);font-family:var(--mono)">Full site ↗</a>
     </div>
+  </div>
+
+  <!-- InciWeb SD incidents via RSS -->
+  <div id="sdwf-incidents" style="padding:8px 14px">
+    <div style="color:var(--textdim);font-size:9px;font-family:var(--mono)">Loading SD incident feed…</div>
+  </div>
+
+  <!-- Fire danger + key links -->
+  <div style="padding:8px 14px;border-top:1px solid var(--border)">
+    <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">FIRE RESOURCES — SD</div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank"
+        class="lbtn" style="color:var(--redlt);background:rgba(224,56,48,0.08);border-color:rgba(224,56,48,0.25)">🔴 InciWeb — SD Active Incidents</a>
+      <a href="https://wildlandfire.sd.gov/operations/firefighterbriefing.aspx" target="_blank"
+        class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.25)">🟠 SD Daily Firefighter Briefing</a>
+      <a href="http://gpfireinfo.blogspot.com/" target="_blank"
+        class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.25)">🟡 Great Plains Fire Information</a>
+      <a href="https://www.weather.gov/unr/rfd" target="_blank"
+        class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.25)">🟡 SD Grassland Fire Danger Map</a>
+      <a href="https://www.nifc.gov/nicc-files/sitreprt.pdf" target="_blank"
+        class="lbtn" style="color:var(--textmid);background:rgba(255,255,255,0.03);border-color:var(--border)">📄 NIFC Daily Sit Report (PDF)</a>
+      <a href="https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-wildland-fire-perimeters/explore" target="_blank"
+        class="lbtn" style="color:var(--textmid);background:rgba(255,255,255,0.03);border-color:var(--border)">🗺 NIFC Fire Perimeters Map</a>
+    </div>
+  </div>
+
+  <div style="padding:4px 14px;font-size:7px;color:var(--textdim);font-family:var(--mono);border-top:1px solid var(--border)">
+    SOURCES: InciWeb RSS · NIFC WFIGS · SD DPS · Updated every 5 min
+  </div>
+</div>
+```
 
   </div>
 
   <!-- ── CENTER — MAP ─────────────────────────── -->
+
   <div id="center-col">
 
-    <!-- Map tab bar -->
-    <div id="map-tab-bar">
-      <div class="map-tab active" onclick="setMapLayer('radar')" data-layer="radar">📡 RADAR</div>
-      <div class="map-tab" onclick="setMapLayer('water')" data-layer="water">🌊 WATER</div>
-      <div class="map-tab" onclick="setMapLayer('drought')" data-layer="drought">🌵 DROUGHT</div>
-      <div class="map-tab" onclick="setMapLayer('fire')" data-layer="fire">🔥 FIRE</div>
-      <div class="map-tab" onclick="setMapLayer('roads')" data-layer="roads">🛣 ROADS</div>
-      <div class="map-tab" onclick="setMapLayer('quake')" data-layer="quake">🌎 SEISMIC</div>
-    </div>
+```
+<!-- Map tab bar -->
+<div id="map-tab-bar">
+  <div class="map-tab active" onclick="setMapLayer('radar')" data-layer="radar">📡 RADAR</div>
+  <div class="map-tab" onclick="setMapLayer('water')" data-layer="water">🌊 WATER</div>
+  <div class="map-tab" onclick="setMapLayer('drought')" data-layer="drought">🌵 DROUGHT</div>
+  <div class="map-tab" onclick="setMapLayer('fire')" data-layer="fire">🔥 FIRE</div>
+  <div class="map-tab" onclick="setMapLayer('roads')" data-layer="roads">🛣 ROADS</div>
+  <div class="map-tab" onclick="setMapLayer('quake')" data-layer="quake">🌎 SEISMIC</div>
+  <div class="map-tab" onclick="setMapLayer('hospital')" data-layer="hospital">🏥 HOSPITALS</div>
+</div>
 
-    <!-- Map iframe container -->
-    <div id="map-container" style="padding-top:36px;height:100%">
-      <div id="map-iframe-wrap" style="width:100%;height:100%">
-        <!-- Loaded by setMapLayer() on init -->
-      </div>
-    </div>
+<!-- Map iframe container -->
+<div id="map-container" style="padding-top:36px;height:100%">
+  <div id="map-iframe-wrap" style="width:100%;height:100%">
+    <!-- Loaded by setMapLayer() on init -->
+  </div>
+</div>
 
-    <!-- Legend -->
-    <div id="map-legend">
-      <div class="legend-title">MAP LEGEND</div>
-      <div id="legend-items">
-        <div class="legend-item"><div class="legend-sq" style="background:rgba(18,128,208,0.7)"></div>Weather radar</div>
-        <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Normal gauge</div>
-        <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Action stage</div>
-        <div class="legend-item"><div class="legend-dot" style="background:var(--redlt)"></div>Flood stage</div>
-      </div>
-    </div>
+<!-- Legend -->
+<div id="map-legend">
+  <div class="legend-title">MAP LEGEND</div>
+  <div id="legend-items">
+    <div class="legend-item"><div class="legend-sq" style="background:rgba(18,128,208,0.7)"></div>Weather radar</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Normal gauge</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Action stage</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--redlt)"></div>Flood stage</div>
+  </div>
+</div>
 
-    <!-- Gauge summary overlay -->
-    <div id="map-info-bar">
-      <div class="info-title">RIVER GAUGES — SD</div>
-      <div id="gauge-overlay-rows">
-        <div style="color:var(--textdim);font-size:9px">Loading…</div>
-      </div>
-    </div>
+<!-- Gauge summary overlay -->
+<div id="map-info-bar">
+  <div class="info-title">RIVER GAUGES — SD</div>
+  <div id="gauge-overlay-rows">
+    <div style="color:var(--textdim);font-size:9px">Loading…</div>
+  </div>
+</div>
+```
 
   </div>
 
   <!-- ── RIGHT COLUMN ─────────────────────────── -->
+
   <div id="right-col">
 
-    <!-- WEATHER THREATS -->
-    <div class="col-hdr">WEATHER THREATS</div>
-    <div class="panel-block">
-      <div class="panel-block-body" style="padding-top:10px">
-        <div class="wx-row">
-          <span class="wx-label">Active Warnings</span>
-          <span class="wx-val" id="wx-warnings" style="color:var(--greenlt)">0</span>
+```
+<!-- WEATHER THREATS -->
+<div class="col-hdr">WEATHER THREATS</div>
+<div class="panel-block">
+  <div class="panel-block-body" style="padding-top:10px">
+    <div class="wx-row">
+      <span class="wx-label">Active Warnings</span>
+      <span class="wx-val" id="wx-warnings" style="color:var(--greenlt)">0</span>
+    </div>
+    <div class="wx-row">
+      <span class="wx-label">Active Watches</span>
+      <span class="wx-val" id="wx-watches" style="color:var(--textmid)">0</span>
+    </div>
+    <div class="wx-row">
+      <span class="wx-label">Fire Weather Alerts</span>
+      <span class="wx-val" id="wx-fire" style="color:var(--textmid)">0</span>
+    </div>
+    <div class="wx-row">
+      <span class="wx-label">Flood Warnings</span>
+      <span class="wx-val" id="wx-flood" style="color:var(--textmid)">0</span>
+    </div>
+    <div class="wx-row">
+      <span class="wx-label">Winter Storm Alerts</span>
+      <span class="wx-val" id="wx-winter" style="color:var(--textmid)">0</span>
+    </div>
+  </div>
+</div>
+
+<!-- HYDROLOGY -->
+<div class="col-hdr" style="margin-top:0">HYDROLOGY</div>
+<div id="gauge-list">
+  <div style="padding:10px 14px;color:var(--textdim);font-size:10px">Loading gauges…</div>
+</div>
+
+<!-- DROUGHT -->
+<div class="panel-block">
+  <div class="panel-block-hdr" onclick="togglePanel('drought-body')">
+    <span class="panel-block-title">🌵 DROUGHT STATUS</span>
+    <span style="color:var(--textdim);font-size:10px">▾</span>
+  </div>
+  <div class="panel-block-body" id="drought-body">
+    <div id="drought-display" style="font-size:9px;color:var(--textdim)">Loading…</div>
+  </div>
+</div>
+
+<!-- INFRA STABILITY -->
+<div class="panel-block">
+  <div class="panel-block-hdr" onclick="togglePanel('infra-body')">
+    <span class="panel-block-title">⚡ INFRASTRUCTURE</span>
+    <span style="color:var(--textdim);font-size:10px">▾</span>
+  </div>
+  <div class="panel-block-body" id="infra-body">
+    <div id="infra-display">
+      <div class="infra-bar">
+        <div class="infra-bar-label">
+          <span style="font-size:9px;color:var(--textmid)">Power Grid</span>
+          <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">STABLE</span>
         </div>
-        <div class="wx-row">
-          <span class="wx-label">Active Watches</span>
-          <span class="wx-val" id="wx-watches" style="color:var(--textmid)">0</span>
-        </div>
-        <div class="wx-row">
-          <span class="wx-label">Fire Weather Alerts</span>
-          <span class="wx-val" id="wx-fire" style="color:var(--textmid)">0</span>
-        </div>
-        <div class="wx-row">
-          <span class="wx-label">Flood Warnings</span>
-          <span class="wx-val" id="wx-flood" style="color:var(--textmid)">0</span>
-        </div>
-        <div class="wx-row">
-          <span class="wx-label">Winter Storm Alerts</span>
-          <span class="wx-val" id="wx-winter" style="color:var(--textmid)">0</span>
-        </div>
+        <div class="infra-bar-track"><div class="infra-bar-fill" style="width:92%;background:var(--green)"></div></div>
       </div>
+      <div class="infra-bar">
+        <div class="infra-bar-label">
+          <span style="font-size:9px;color:var(--textmid)">Communications</span>
+          <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">NOMINAL</span>
+        </div>
+        <div class="infra-bar-track"><div class="infra-bar-fill" style="width:97%;background:var(--green)"></div></div>
+      </div>
+      <div class="infra-bar">
+        <div class="infra-bar-label">
+          <span style="font-size:9px;color:var(--textmid)">Transportation</span>
+          <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">NORMAL</span>
+        </div>
+        <div class="infra-bar-track"><div class="infra-bar-fill" style="width:88%;background:var(--green)"></div></div>
+      </div>
+      <div class="infra-bar">
+        <div class="infra-bar-label">
+          <span style="font-size:9px;color:var(--textmid)">Water Systems</span>
+          <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">STABLE</span>
+        </div>
+        <div class="infra-bar-track"><div class="infra-bar-fill" style="width:95%;background:var(--green)"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEMA / SEISMIC -->
+<div class="panel-block">
+  <div class="panel-block-hdr" onclick="togglePanel('fema-body')">
+    <span class="panel-block-title">📋 FEMA & SEISMIC</span>
+    <span style="color:var(--textdim);font-size:10px">▾</span>
+  </div>
+  <div class="panel-block-body" id="fema-body">
+    <div id="fema-seismic-display" style="font-size:9px;color:var(--textdim)">Loading…</div>
+  </div>
+</div>
+
+<!-- RESOURCES -->
+<div class="panel-block">
+  <div class="panel-block-body" style="padding-top:10px">
+
+    <!-- Emergency & Operations -->
+    <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;margin-bottom:5px;font-family:var(--mono)">EMERGENCY & OPERATIONS</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px">
+      <a href="https://sd511.org/" target="_blank" class="lbtn" style="color:var(--greenlt);background:rgba(26,150,80,0.08);border-color:rgba(26,150,80,0.3)">🛣 SD511 Road Conditions</a>
+      <a href="https://waterdata.usgs.gov/state/south-dakota/" target="_blank" class="lbtn" style="color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">💧 USGS SD Water Data</a>
+      <a href="https://www.weather.gov/unr/" target="_blank" class="lbtn" style="color:var(--bluelt);background:rgba(18,96,168,0.08);border-color:rgba(18,96,168,0.3)">⛈ NWS Rapid City (UNR)</a>
+      <a href="https://www.weather.gov/fsd/" target="_blank" class="lbtn" style="color:var(--bluelt);background:rgba(18,96,168,0.08);border-color:rgba(18,96,168,0.3)">⛈ NWS Sioux Falls (FSD)</a>
+      <a href="https://dps.sd.gov/emergency-services/emergency-management" target="_blank" class="lbtn" style="color:var(--purplelt);background:rgba(101,53,176,0.08);border-color:rgba(101,53,176,0.3)">🛡 SD Emergency Mgmt</a>
     </div>
 
-    <!-- HYDROLOGY -->
-    <div class="col-hdr" style="margin-top:0">HYDROLOGY</div>
-    <div id="gauge-list">
-      <div style="padding:10px 14px;color:var(--textdim);font-size:10px">Loading gauges…</div>
+    <!-- Power Outages — Investor-Owned -->
+    <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;margin-bottom:5px;font-family:var(--mono)">⚡ POWER — INVESTOR-OWNED UTILITIES</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px">
+      <a href="https://www.northwesternenergy.com/outages" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">NorthWestern Energy (RC / western SD)</a>
+      <a href="https://www.blackhillsenergy.com/outages-and-safety/outage-center" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">Black Hills Energy (RC / Black Hills)</a>
+      <a href="https://www.xcelenergy.com/outages" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">Xcel Energy (eastern SD)</a>
+      <a href="https://customer.montana-dakota.com/outage-map" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">Montana-Dakota Utilities — MDU</a>
+      <a href="https://www.ottertailpower.com/outages" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">Otter Tail Power (northeast SD)</a>
+      <a href="https://www.midamerican.com/content/outage-central" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">MidAmerican Energy (southeast SD)</a>
     </div>
 
-    <!-- DROUGHT -->
-    <div class="panel-block">
-      <div class="panel-block-hdr" onclick="togglePanel('drought-body')">
-        <span class="panel-block-title">🌵 DROUGHT STATUS</span>
-        <span style="color:var(--textdim);font-size:10px">▾</span>
-      </div>
-      <div class="panel-block-body" id="drought-body">
-        <div id="drought-display" style="font-size:9px;color:var(--textdim)">Loading…</div>
-      </div>
+    <!-- Power Outages — Cooperatives -->
+    <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;margin-bottom:5px;font-family:var(--mono)">⚡ POWER — RURAL ELECTRIC COOPERATIVES</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px">
+      <a href="https://outages.sdrea.coop/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">SD Rural Electric Assn — All Co-ops</a>
+      <a href="https://www.westriverelectric.com/outages" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">West River Electric (Rapid City area)</a>
+      <a href="https://www.grandelectric.com/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Grand Electric Co-op (northwest SD)</a>
+      <a href="https://www.cherrytodd.com/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Cherry-Todd Electric (central/west SD)</a>
+      <a href="https://www.camwal.com/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Cam Wal Electric (north-central SD)</a>
+      <a href="https://www.rosebudelectric.com/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Rosebud Electric (south-central SD)</a>
+      <a href="https://www.siouxvalleyenergy.com/outage-reporting" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Sioux Valley Energy (southeast SD)</a>
+      <a href="https://www.nrec.coop/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Northern Electric Co-op (northeast SD)</a>
+      <a href="https://www.dakotaenergy.coop/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Dakota Energy Co-op (central SD)</a>
+      <a href="https://www.centralelectric.coop/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">Central Electric Co-op (Pierre area)</a>
+      <a href="https://www.lacreekelectric.com/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.06);border-color:rgba(200,130,10,0.2)">LaCreek Electric (southwest SD)</a>
+      <a href="https://poweroutage.us/area/state/south%20dakota" target="_blank" class="lbtn" style="color:var(--textmid);background:rgba(255,255,255,0.03);border-color:var(--border)">PowerOutage.us — SD Statewide Map</a>
     </div>
 
-    <!-- INFRA STABILITY -->
-    <div class="panel-block">
-      <div class="panel-block-hdr" onclick="togglePanel('infra-body')">
-        <span class="panel-block-title">⚡ INFRASTRUCTURE</span>
-        <span style="color:var(--textdim);font-size:10px">▾</span>
-      </div>
-      <div class="panel-block-body" id="infra-body">
-        <div id="infra-display">
-          <div class="infra-bar">
-            <div class="infra-bar-label">
-              <span style="font-size:9px;color:var(--textmid)">Power Grid</span>
-              <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">STABLE</span>
-            </div>
-            <div class="infra-bar-track"><div class="infra-bar-fill" style="width:92%;background:var(--green)"></div></div>
-          </div>
-          <div class="infra-bar">
-            <div class="infra-bar-label">
-              <span style="font-size:9px;color:var(--textmid)">Communications</span>
-              <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">NOMINAL</span>
-            </div>
-            <div class="infra-bar-track"><div class="infra-bar-fill" style="width:97%;background:var(--green)"></div></div>
-          </div>
-          <div class="infra-bar">
-            <div class="infra-bar-label">
-              <span style="font-size:9px;color:var(--textmid)">Transportation</span>
-              <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">NORMAL</span>
-            </div>
-            <div class="infra-bar-track"><div class="infra-bar-fill" style="width:88%;background:var(--green)"></div></div>
-          </div>
-          <div class="infra-bar">
-            <div class="infra-bar-label">
-              <span style="font-size:9px;color:var(--textmid)">Water Systems</span>
-              <span style="font-size:9px;font-family:var(--mono);color:var(--greenlt)">STABLE</span>
-            </div>
-            <div class="infra-bar-track"><div class="infra-bar-fill" style="width:95%;background:var(--green)"></div></div>
-          </div>
-        </div>
-      </div>
+    <!-- Municipal utilities note -->
+    <div style="padding:6px 8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:4px;font-size:8px;color:var(--textdim);line-height:1.6;margin-bottom:10px">
+      <strong style="color:var(--textmid)">MUNICIPAL UTILITIES</strong> — Sioux Falls, Pierre, Brookings, Madison, Vermillion, Fort Pierre, Beresford, Flandreau, Miller, Volga and others operate independently. Contact city emergency management directly for outage status during incidents.
     </div>
 
-    <!-- FEMA / SEISMIC -->
-    <div class="panel-block">
-      <div class="panel-block-hdr" onclick="togglePanel('fema-body')">
-        <span class="panel-block-title">📋 FEMA & SEISMIC</span>
-        <span style="color:var(--textdim);font-size:10px">▾</span>
-      </div>
-      <div class="panel-block-body" id="fema-body">
-        <div id="fema-seismic-display" style="font-size:9px;color:var(--textdim)">Loading…</div>
-      </div>
+    <!-- Fire resources -->
+    <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;margin-bottom:5px;font-family:var(--mono)">🔥 FIRE RESOURCES</div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank" class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">InciWeb — SD Fires</a>
+      <a href="https://www.nifc.gov/nicc-files/sitreprt.pdf" target="_blank" class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">NIFC Daily Sit Report (PDF)</a>
     </div>
 
-    <!-- RESOURCES -->
-    <div class="panel-block">
-      <div class="panel-block-body" style="padding-top:10px">
-        <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;margin-bottom:6px;font-family:var(--mono)">EXTERNAL RESOURCES</div>
-        <div style="display:flex;flex-direction:column;gap:4px">
-          <a href="https://sd511.org/" target="_blank" class="lbtn" style="color:var(--greenlt);background:rgba(26,150,80,0.08);border-color:rgba(26,150,80,0.3)">🛣 SD511 Road Conditions</a>
-          <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank" class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">🔥 InciWeb — SD Fires</a>
-          <a href="https://www.nifc.gov/nicc-files/sitreprt.pdf" target="_blank" class="lbtn" style="color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">📄 NIFC Daily Sit Report</a>
-          <a href="https://waterdata.usgs.gov/state/south-dakota/" target="_blank" class="lbtn" style="color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">💧 USGS SD Water Data</a>
-          <a href="https://www.weather.gov/unr/" target="_blank" class="lbtn" style="color:var(--bluelt);background:rgba(18,96,168,0.08);border-color:rgba(18,96,168,0.3)">⛈ NWS Rapid City</a>
-          <a href="https://dps.sd.gov/emergency-services/emergency-management" target="_blank" class="lbtn" style="color:var(--purplelt);background:rgba(101,53,176,0.08);border-color:rgba(101,53,176,0.3)">🛡 SD Emergency Mgmt</a>
-          <a href="https://outages.sdrea.coop/" target="_blank" class="lbtn" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">⚡ SD Rural Electric Outages</a>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+```
 
   </div>
 </div>
 
 <!-- ── BOTTOM BAND ─────────────────────────────── -->
+
 <div id="bottom-band">
   <div class="band-section">
     <div class="band-icon">🏠</div>
@@ -836,12 +933,14 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 </div>
 
 <!-- ── DRAWER TOGGLE ──────────────────────────── -->
+
 <div id="drawer-toggle" onclick="toggleDrawer()">
   <span>⬡ DEEP DIVE ANALYSIS</span>
   <span class="dt-arrow">▲</span>
 </div>
 
 <!-- ── DEEP DIVE DRAWER ───────────────────────── -->
+
 <div id="drawer">
   <!-- Drawer Tab Bar -->
   <div id="drawer-tabs">
@@ -856,231 +955,248 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
   <!-- Drawer Content -->
+
   <div id="drawer-content">
 
-    <!-- ── RISK MODEL ─────────────────────────── -->
-    <div id="dtab-predict">
-      <div class="dgrid">
-        <!-- Score display -->
-        <div class="dc">
-          <div class="dc-hdr">
-            <span class="dc-title">🎯 COMPOSITE RISK SCORE</span>
-            <span id="d-risk-pill" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">NORMAL</span>
-          </div>
-          <div class="dc-body">
-            <div style="display:flex;align-items:center;gap:20px;margin-bottom:14px;flex-wrap:wrap">
-              <div>
-                <div class="risk-big" id="d-risk-score" style="color:var(--greenlt)">0</div>
-                <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono)">RISK SCORE / 100</div>
-              </div>
-              <div style="flex:1;min-width:180px">
-                <div id="d-risk-level" style="font-family:var(--head);font-size:28px;font-weight:700;color:var(--greenlt);letter-spacing:0.08em">NORMAL</div>
-                <div id="d-risk-desc" style="font-size:10px;color:var(--textmid);margin-top:4px;line-height:1.6;max-width:300px">Normal operations. Continue routine monitoring.</div>
-              </div>
-            </div>
-            <div class="risk-bar-track">
-              <div style="position:absolute;left:20%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)"></div>
-              <div style="position:absolute;left:40%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)"></div>
-              <div style="position:absolute;left:65%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)"></div>
-              <div class="risk-bar-fill" id="d-risk-bar" style="width:0%;background:var(--green)"></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--textdim);font-family:var(--mono);margin-bottom:14px">
-              <span>0 NORMAL</span><span>20 ELEVATED</span><span>40 HIGH</span><span>65 CRITICAL</span><span>100</span>
-            </div>
-            <div style="font-size:9px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">CONTRIBUTING FACTORS</div>
-            <div id="d-factors">
-              <div style="color:var(--greenlt);font-size:11px;padding:4px 0;font-family:var(--mono)">✓ No active risk factors</div>
-            </div>
-            <div style="margin-top:10px;font-size:8px;color:var(--textdim);line-height:1.6;font-family:var(--mono)">
-              INPUTS: NWS Alerts · USGS Gauges · USDM Drought · OpenFEMA · USGS Seismic · Seasonal Modifiers · Not a replacement for expert judgment
-            </div>
-          </div>
-        </div>
-
-        <!-- Commander checklist -->
-        <div class="dc">
-          <div class="dc-hdr">
-            <span class="dc-title">⚡ COMMANDER ACTION CHECKLIST</span>
-          </div>
-          <div class="dc-body" id="d-checklist">
-            <div style="color:var(--textdim);font-size:10px">Loading…</div>
-          </div>
-        </div>
+```
+<!-- ── RISK MODEL ─────────────────────────── -->
+<div id="dtab-predict">
+  <div class="dgrid">
+    <!-- Score display -->
+    <div class="dc">
+      <div class="dc-hdr">
+        <span class="dc-title">🎯 COMPOSITE RISK SCORE</span>
+        <span id="d-risk-pill" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">NORMAL</span>
       </div>
-
-      <!-- Scoring methodology -->
-      <div class="dc">
-        <div class="dc-hdr"><span class="dc-title">📖 SCORING METHODOLOGY</span></div>
-        <div class="dc-body">
-          <div class="dgrid3" style="font-size:9px">
-            <div>
-              <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">NWS WEATHER ALERTS</div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Warning (non-flood)</span><span style="color:var(--redlt);font-family:var(--mono)">+10 each (max 4)</span></div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Watch</span><span style="color:var(--amberlt);font-family:var(--mono)">+5 each (max 4)</span></div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Fire Weather Alert</span><span style="color:var(--orangelt);font-family:var(--mono)">+10 each (max 3)</span></div>
-              <div style="display:flex;justify-content:space-between"><span style="color:var(--textmid)">Flood Warning</span><span style="color:var(--redlt);font-family:var(--mono)">+12 each (max 3)</span></div>
-            </div>
-            <div>
-              <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">USGS GAUGES & DROUGHT</div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Major Flood gauge</span><span style="color:var(--redlt);font-family:var(--mono)">+15 each (max 3)</span></div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Flood Stage gauge</span><span style="color:var(--amberlt);font-family:var(--mono)">+8 each (max 3)</span></div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">D4 Drought &gt;5%</span><span style="color:var(--orangelt);font-family:var(--mono)">+15</span></div>
-              <div style="display:flex;justify-content:space-between"><span style="color:var(--textmid)">D3 Drought &gt;10%</span><span style="color:var(--amberlt);font-family:var(--mono)">+10</span></div>
-            </div>
-            <div>
-              <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">OTHER FACTORS</div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Active FEMA — SD</span><span style="color:var(--purplelt);font-family:var(--mono)">+8 each (max 2)</span></div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Earthquake M3.0+</span><span style="color:var(--cyanlt);font-family:var(--mono)">+5 each (max 2)</span></div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Spring season mod.</span><span style="color:var(--bluelt);font-family:var(--mono)">+5</span></div>
-              <div style="display:flex;justify-content:space-between"><span style="color:var(--textmid)">Fire season mod.</span><span style="color:var(--orangelt);font-family:var(--mono)">+5</span></div>
-            </div>
+      <div class="dc-body">
+        <div style="display:flex;align-items:center;gap:20px;margin-bottom:14px;flex-wrap:wrap">
+          <div>
+            <div class="risk-big" id="d-risk-score" style="color:var(--greenlt)">0</div>
+            <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono)">RISK SCORE / 100</div>
           </div>
-          <div style="margin-top:12px;padding:8px 10px;background:#040810;border-radius:4px;font-size:9px;color:var(--textdim);line-height:1.7;font-family:var(--mono)">
-            THRESHOLDS: 0–19 NORMAL · 20–39 ELEVATED · 40–64 HIGH · 65–100 CRITICAL · Score capped at 100 · Single factors cannot reach CRITICAL alone — compound events are by design
+          <div style="flex:1;min-width:180px">
+            <div id="d-risk-level" style="font-family:var(--head);font-size:28px;font-weight:700;color:var(--greenlt);letter-spacing:0.08em">NORMAL</div>
+            <div id="d-risk-desc" style="font-size:10px;color:var(--textmid);margin-top:4px;line-height:1.6;max-width:300px">Normal operations. Continue routine monitoring.</div>
           </div>
+        </div>
+        <div class="risk-bar-track">
+          <div style="position:absolute;left:20%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)"></div>
+          <div style="position:absolute;left:40%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)"></div>
+          <div style="position:absolute;left:65%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)"></div>
+          <div class="risk-bar-fill" id="d-risk-bar" style="width:0%;background:var(--green)"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--textdim);font-family:var(--mono);margin-bottom:14px">
+          <span>0 NORMAL</span><span>20 ELEVATED</span><span>40 HIGH</span><span>65 CRITICAL</span><span>100</span>
+        </div>
+        <div style="font-size:9px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">CONTRIBUTING FACTORS</div>
+        <div id="d-factors">
+          <div style="color:var(--greenlt);font-size:11px;padding:4px 0;font-family:var(--mono)">✓ No active risk factors</div>
+        </div>
+        <div style="margin-top:10px;font-size:8px;color:var(--textdim);line-height:1.6;font-family:var(--mono)">
+          INPUTS: NWS Alerts · USGS Gauges · USDM Drought · OpenFEMA · USGS Seismic · Seasonal Modifiers · Not a replacement for expert judgment
         </div>
       </div>
     </div>
 
-    <!-- ── AIR QUALITY ─────────────────────────── -->
-    <div id="dtab-aqi" style="display:none">
-      <div class="dc">
-        <div class="dc-hdr">
-          <span class="dc-title">💨 AIR QUALITY INDEX — SD KEY CITIES</span>
-          <span id="d-aqi-status" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">GOOD</span>
-        </div>
-        <div class="dc-body">
-          <div id="d-aqi-key-prompt" style="padding:10px;background:rgba(200,130,10,0.1);border:1px solid rgba(200,130,10,0.3);border-radius:5px;margin-bottom:12px">
-            <div style="font-size:10px;color:var(--amberlt);font-weight:700;margin-bottom:4px;font-family:var(--mono)">⚙ EPA AIRNOW API KEY REQUIRED</div>
-            <div style="font-size:9px;color:var(--textmid);line-height:1.6;margin-bottom:8px">AirNow requires a free API key. Register at <a href="https://docs.airnowapi.org/account/request/" target="_blank" style="color:var(--amberlt)">docs.airnowapi.org</a> — instant approval. Enter your key below.</div>
-            <div style="display:flex;gap:8px">
-              <input type="text" id="airnow-key-input" placeholder="Paste API key here…"
-                style="flex:1;padding:7px 10px;background:#040810;border:1px solid var(--border);border-radius:4px;color:var(--texthi);font-family:var(--mono);font-size:11px"/>
-              <button onclick="saveAirnowKey()" style="padding:7px 14px;background:rgba(200,130,10,0.2);border:1px solid var(--amber);border-radius:4px;color:var(--amberlt);font-family:var(--mono);font-size:10px;font-weight:700;cursor:pointer">SAVE & FETCH</button>
-            </div>
-          </div>
-          <div id="d-aqi-grid" class="dgrid3" style="gap:10px"></div>
-          <div style="margin-top:12px">
-            <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">AQI REFERENCE SCALE</div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap">
-              ${[["0–50","Good","#00c040"],["51–100","Moderate","#e8d000"],["101–150","Sens. Groups","#e07000"],["151–200","Unhealthy","#c02000"],["201–300","Very Unhealthy","#8000a0"],["301+","Hazardous","#700020"]].map(([r,l,c])=>`<div style="padding:3px 8px;border-radius:3px;background:${c}22;border:1px solid ${c}55;font-size:8px;font-family:var(--mono);color:${c}">${r} ${l}</div>`).join("")}
-            </div>
-          </div>
-          <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
-            <a href="https://www.airnow.gov/?city=Rapid+City&state=SD&country=USA" target="_blank" class="lbtn" style="font-size:9px;color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">▸ AirNow SD Map</a>
-            <a href="https://www.airnow.gov/national-maps/" target="_blank" class="lbtn" style="font-size:9px;color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">▸ National Fire &amp; Smoke Map</a>
-            <a href="https://denr.sd.gov/des/aqsyear.aspx" target="_blank" class="lbtn" style="font-size:9px;color:var(--textmid);background:rgba(255,255,255,0.04);border-color:var(--border)">▸ SD DENR Air Quality</a>
-          </div>
-          <div style="margin-top:10px;padding:8px 10px;background:#040810;border-radius:4px;font-size:9px;color:var(--textdim);line-height:1.6;font-family:var(--mono)">
-            OPERATIONAL NOTE: AQI 150+ (Unhealthy) affects outdoor Guard operations and aviation crews. Smoke from SD or neighboring state fires can rapidly degrade conditions during wildfire events.
-          </div>
-        </div>
+    <!-- Commander checklist -->
+    <div class="dc">
+      <div class="dc-hdr">
+        <span class="dc-title">⚡ COMMANDER ACTION CHECKLIST</span>
+      </div>
+      <div class="dc-body" id="d-checklist">
+        <div style="color:var(--textdim);font-size:10px">Loading…</div>
       </div>
     </div>
+  </div>
 
-    <!-- ── SNOWPACK ─────────────────────────────── -->
-    <div id="dtab-snow" style="display:none">
-      <div class="dc">
-        <div class="dc-hdr">
-          <span class="dc-title">❄️ SNOTEL SNOWPACK — BLACK HILLS / SD REGION</span>
-          <span id="d-snow-avg" class="chip" style="background:rgba(18,128,208,0.15);border:1px solid rgba(18,128,208,0.4);color:var(--bluelt)">LOADING…</span>
-        </div>
-        <div class="dc-body">
-          <div style="font-size:9px;color:var(--textmid);margin-bottom:12px;line-height:1.7">
-            Snow Water Equivalent (SWE) measures actual water content in snowpack. Above-normal SWE = elevated spring flood risk on Cheyenne, Belle Fourche, and Missouri River systems. Updated daily by NRCS SNOTEL network.
-          </div>
-          <div id="d-snow-grid" class="dgrid" style="gap:10px">
-            <div style="color:var(--textdim);font-size:10px">Loading SNOTEL data…</div>
-          </div>
-          <div style="margin-top:12px;padding:8px 10px;background:rgba(18,128,208,0.08);border:1px solid rgba(18,128,208,0.2);border-radius:4px;font-size:9px;color:var(--textmid);line-height:1.7;font-family:var(--mono)">
-            FLOOD OUTLOOK: Above-normal Black Hills snowpack feeding Cheyenne, Belle Fourche, and Missouri River systems. When SWE &gt;150% of median AND soil is saturated, coordinate with Army Corps NWD-MR for reservoir management decisions.
-          </div>
-          <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
-            <a href="https://nwcc-apps.sc.egov.usda.gov/imap/" target="_blank" class="lbtn" style="font-size:9px;color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ NRCS Interactive Snow Map</a>
-            <a href="https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program" target="_blank" class="lbtn" style="font-size:9px;color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ Water Supply Forecast</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── RESERVOIRS ──────────────────────────── -->
-    <div id="dtab-reservoir" style="display:none">
-      <div class="dc">
-        <div class="dc-hdr">
-          <span class="dc-title">🏞 MISSOURI RIVER RESERVOIR LEVELS</span>
-          <span class="chip" style="background:rgba(10,144,144,0.15);border:1px solid rgba(10,144,144,0.4);color:var(--cyanlt)">ARMY CORPS NWD-MR</span>
-        </div>
-        <div class="dc-body">
-          <div style="font-size:9px;color:var(--textmid);margin-bottom:12px;line-height:1.7">
-            Missouri River mainstem reservoirs managed by Army Corps NWD-MR. Pool elevation via USGS, updated hourly. Full pool = top of conservation storage. Flood pool = base of flood control zone.
-          </div>
-          <div id="d-res-grid" class="dgrid" style="gap:10px">
-            <div style="color:var(--textdim);font-size:10px">Loading reservoir data…</div>
-          </div>
-          <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
-            <a href="https://www.nwd-mr.usace.army.mil/rcc/current.html" target="_blank" class="lbtn" style="font-size:9px;color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">▸ Army Corps MR Water Mgmt</a>
-            <a href="https://www.nwd.usace.army.mil/MRWM/Current-Conditions/Reservoir-Elevations/" target="_blank" class="lbtn" style="font-size:9px;color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">▸ MR Reservoir Elevations</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── LE / CYBER ──────────────────────────── -->
-    <div id="dtab-cyber" style="display:none">
-      <div class="dgrid">
+  <!-- Scoring methodology -->
+  <div class="dc">
+    <div class="dc-hdr"><span class="dc-title">📖 SCORING METHODOLOGY</span></div>
+    <div class="dc-body">
+      <div class="dgrid3" style="font-size:9px">
         <div>
-          <div class="dc" style="margin-bottom:14px">
-            <div class="dc-hdr"><span class="dc-title">🔴 FBI / CISA THREAT ADVISORIES</span></div>
-            <div class="dc-body" id="d-threats-list">
-              <div style="color:var(--textdim);font-size:10px">Loading…</div>
-            </div>
-          </div>
+          <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">NWS WEATHER ALERTS</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Warning (non-flood)</span><span style="color:var(--redlt);font-family:var(--mono)">+10 each (max 4)</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Watch</span><span style="color:var(--amberlt);font-family:var(--mono)">+5 each (max 4)</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Fire Weather Alert</span><span style="color:var(--orangelt);font-family:var(--mono)">+10 each (max 3)</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--textmid)">Flood Warning</span><span style="color:var(--redlt);font-family:var(--mono)">+12 each (max 3)</span></div>
         </div>
         <div>
-          <div class="dc" style="margin-bottom:14px">
-            <div class="dc-hdr">
-              <span class="dc-title">⚡ CISA KEV — MOST RECENT</span>
-              <span id="d-kev-count" class="chip" style="background:rgba(101,53,176,0.15);border:1px solid rgba(101,53,176,0.4);color:var(--purplelt)">—</span>
-            </div>
-            <div class="dc-body" id="d-kev-list">
-              <div style="color:var(--textdim);font-size:10px">Loading…</div>
-            </div>
-          </div>
-          <div class="dc">
-            <div class="dc-hdr"><span class="dc-title">🔗 LE & THREAT RESOURCES</span></div>
-            <div class="dc-body">
-              <div style="display:flex;flex-direction:column;gap:4px">
-                ${[["🔴 CISA Advisories","https://www.cisa.gov/news-events/cybersecurity-advisories","var(--redlt)"],["🔴 FBI Cyber Alerts","https://www.fbi.gov/investigate/cyber/alerts","var(--redlt)"],["🟡 CISA KEV Catalog","https://www.cisa.gov/known-exploited-vulnerabilities-catalog","var(--amberlt)"],["🟡 MS-ISAC","https://www.cisecurity.org/ms-isac","var(--amberlt)"],["🔵 SD Fusion Center","https://dps.sd.gov/law-enforcement/south-dakota-fusion-center","var(--bluelt)"],["🔵 FBI Denver","https://www.fbi.gov/contact-us/field-offices/denver","var(--bluelt)"],["🟢 InfraGard","https://www.infragard.org/","var(--greenlt)"]].map(([l,u,c])=>`<a href="${u}" target="_blank" class="lbtn" style="font-size:9px;color:${c};background:rgba(255,255,255,0.03);border-color:var(--border)">${l}</a>`).join("")}
-              </div>
-            </div>
-          </div>
+          <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">USGS GAUGES & DROUGHT</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Major Flood gauge</span><span style="color:var(--redlt);font-family:var(--mono)">+15 each (max 3)</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Flood Stage gauge</span><span style="color:var(--amberlt);font-family:var(--mono)">+8 each (max 3)</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">D4 Drought &gt;5%</span><span style="color:var(--orangelt);font-family:var(--mono)">+15</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--textmid)">D3 Drought &gt;10%</span><span style="color:var(--amberlt);font-family:var(--mono)">+10</span></div>
+        </div>
+        <div>
+          <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">OTHER FACTORS</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Active FEMA — SD</span><span style="color:var(--purplelt);font-family:var(--mono)">+8 each (max 2)</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Earthquake M3.0+</span><span style="color:var(--cyanlt);font-family:var(--mono)">+5 each (max 2)</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--textmid)">Spring season mod.</span><span style="color:var(--bluelt);font-family:var(--mono)">+5</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--textmid)">Fire season mod.</span><span style="color:var(--orangelt);font-family:var(--mono)">+5</span></div>
         </div>
       </div>
+      <div style="margin-top:12px;padding:8px 10px;background:#040810;border-radius:4px;font-size:9px;color:var(--textdim);line-height:1.7;font-family:var(--mono)">
+        THRESHOLDS: 0–19 NORMAL · 20–39 ELEVATED · 40–64 HIGH · 65–100 CRITICAL · Score capped at 100 · Single factors cannot reach CRITICAL alone — compound events are by design
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- ── 30-DAY OUTLOOK ──────────────────────── -->
-    <div id="dtab-outlook" style="display:none">
+<!-- ── AIR QUALITY ─────────────────────────── -->
+<div id="dtab-aqi" style="display:none">
+  <div class="dc">
+    <div class="dc-hdr">
+      <span class="dc-title">💨 AIR QUALITY INDEX — SD KEY CITIES</span>
+      <span id="d-aqi-status" class="chip" style="background:rgba(26,150,80,0.15);border:1px solid rgba(26,150,80,0.4);color:var(--greenlt)">GOOD</span>
+    </div>
+    <div class="dc-body">
+      <div id="d-aqi-key-prompt" style="padding:10px;background:rgba(200,130,10,0.1);border:1px solid rgba(200,130,10,0.3);border-radius:5px;margin-bottom:12px">
+        <div style="font-size:10px;color:var(--amberlt);font-weight:700;margin-bottom:4px;font-family:var(--mono)">⚙ EPA AIRNOW API KEY REQUIRED</div>
+        <div style="font-size:9px;color:var(--textmid);line-height:1.6;margin-bottom:8px">AirNow requires a free API key. Register at <a href="https://docs.airnowapi.org/account/request/" target="_blank" style="color:var(--amberlt)">docs.airnowapi.org</a> — instant approval. Enter your key below.</div>
+        <div style="display:flex;gap:8px">
+          <input type="text" id="airnow-key-input" placeholder="Paste API key here…"
+            style="flex:1;padding:7px 10px;background:#040810;border:1px solid var(--border);border-radius:4px;color:var(--texthi);font-family:var(--mono);font-size:11px"/>
+          <button onclick="saveAirnowKey()" style="padding:7px 14px;background:rgba(200,130,10,0.2);border:1px solid var(--amber);border-radius:4px;color:var(--amberlt);font-family:var(--mono);font-size:10px;font-weight:700;cursor:pointer">SAVE & FETCH</button>
+        </div>
+      </div>
+      <div id="d-aqi-grid" class="dgrid3" style="gap:10px"></div>
+      <div style="margin-top:12px">
+        <div style="font-size:8px;color:var(--textdim);letter-spacing:0.12em;font-family:var(--mono);margin-bottom:6px">AQI REFERENCE SCALE</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          ${[["0–50","Good","#00c040"],["51–100","Moderate","#e8d000"],["101–150","Sens. Groups","#e07000"],["151–200","Unhealthy","#c02000"],["201–300","Very Unhealthy","#8000a0"],["301+","Hazardous","#700020"]].map(([r,l,c])=>`<div style="padding:3px 8px;border-radius:3px;background:${c}22;border:1px solid ${c}55;font-size:8px;font-family:var(--mono);color:${c}">${r} ${l}</div>`).join("")}
+        </div>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <a href="https://www.airnow.gov/?city=Rapid+City&state=SD&country=USA" target="_blank" class="lbtn" style="font-size:9px;color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">▸ AirNow SD Map</a>
+        <a href="https://www.airnow.gov/national-maps/" target="_blank" class="lbtn" style="font-size:9px;color:var(--orangelt);background:rgba(192,80,16,0.08);border-color:rgba(192,80,16,0.3)">▸ National Fire &amp; Smoke Map</a>
+        <a href="https://denr.sd.gov/des/aqsyear.aspx" target="_blank" class="lbtn" style="font-size:9px;color:var(--textmid);background:rgba(255,255,255,0.04);border-color:var(--border)">▸ SD DENR Air Quality</a>
+      </div>
+      <div style="margin-top:10px;padding:8px 10px;background:#040810;border-radius:4px;font-size:9px;color:var(--textdim);line-height:1.6;font-family:var(--mono)">
+        OPERATIONAL NOTE: AQI 150+ (Unhealthy) affects outdoor Guard operations and aviation crews. Smoke from SD or neighboring state fires can rapidly degrade conditions during wildfire events.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SNOWPACK ─────────────────────────────── -->
+<div id="dtab-snow" style="display:none">
+  <div class="dc">
+    <div class="dc-hdr">
+      <span class="dc-title">❄️ SNOTEL SNOWPACK — BLACK HILLS / SD REGION</span>
+      <span id="d-snow-avg" class="chip" style="background:rgba(18,128,208,0.15);border:1px solid rgba(18,128,208,0.4);color:var(--bluelt)">LOADING…</span>
+    </div>
+    <div class="dc-body">
+      <div style="font-size:9px;color:var(--textmid);margin-bottom:12px;line-height:1.7">
+        Snow Water Equivalent (SWE) measures actual water content in snowpack. Above-normal SWE = elevated spring flood risk on Cheyenne, Belle Fourche, and Missouri River systems. Updated daily by NRCS SNOTEL network.
+      </div>
+      <div id="d-snow-grid" class="dgrid" style="gap:10px">
+        <div style="color:var(--textdim);font-size:10px">Loading SNOTEL data…</div>
+      </div>
+      <div style="margin-top:12px;padding:8px 10px;background:rgba(18,128,208,0.08);border:1px solid rgba(18,128,208,0.2);border-radius:4px;font-size:9px;color:var(--textmid);line-height:1.7;font-family:var(--mono)">
+        FLOOD OUTLOOK: Above-normal Black Hills snowpack feeding Cheyenne, Belle Fourche, and Missouri River systems. When SWE &gt;150% of median AND soil is saturated, coordinate with Army Corps NWD-MR for reservoir management decisions.
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <a href="https://nwcc-apps.sc.egov.usda.gov/imap/" target="_blank" class="lbtn" style="font-size:9px;color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ NRCS Interactive Snow Map</a>
+        <a href="https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program" target="_blank" class="lbtn" style="font-size:9px;color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ Water Supply Forecast</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RESERVOIRS ──────────────────────────── -->
+<div id="dtab-reservoir" style="display:none">
+  <div class="dc">
+    <div class="dc-hdr">
+      <span class="dc-title">🏞 MISSOURI RIVER RESERVOIR LEVELS</span>
+      <span class="chip" style="background:rgba(10,144,144,0.15);border:1px solid rgba(10,144,144,0.4);color:var(--cyanlt)">ARMY CORPS NWD-MR</span>
+    </div>
+    <div class="dc-body">
+      <div style="font-size:9px;color:var(--textmid);margin-bottom:12px;line-height:1.7">
+        Missouri River mainstem reservoirs managed by Army Corps NWD-MR. Pool elevation via USGS, updated hourly. Full pool = top of conservation storage. Flood pool = base of flood control zone.
+      </div>
+      <div id="d-res-grid" class="dgrid" style="gap:10px">
+        <div style="color:var(--textdim);font-size:10px">Loading reservoir data…</div>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <a href="https://www.nwd-mr.usace.army.mil/rcc/current.html" target="_blank" class="lbtn" style="font-size:9px;color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">▸ Army Corps MR Water Mgmt</a>
+        <a href="https://www.nwd.usace.army.mil/MRWM/Current-Conditions/Reservoir-Elevations/" target="_blank" class="lbtn" style="font-size:9px;color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">▸ MR Reservoir Elevations</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── LE / CYBER ──────────────────────────── -->
+<div id="dtab-cyber" style="display:none">
+  <div class="dgrid">
+    <div>
+      <div class="dc" style="margin-bottom:14px">
+        <div class="dc-hdr"><span class="dc-title">🔴 FBI / CISA THREAT ADVISORIES</span></div>
+        <div class="dc-body" id="d-threats-list">
+          <div style="color:var(--textdim);font-size:10px">Loading…</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="dc" style="margin-bottom:14px">
+        <div class="dc-hdr">
+          <span class="dc-title">⚡ CISA KEV — MOST RECENT</span>
+          <span id="d-kev-count" class="chip" style="background:rgba(101,53,176,0.15);border:1px solid rgba(101,53,176,0.4);color:var(--purplelt)">—</span>
+        </div>
+        <div class="dc-body" id="d-kev-list">
+          <div style="color:var(--textdim);font-size:10px">Loading…</div>
+        </div>
+      </div>
       <div class="dc">
-        <div class="dc-hdr"><span class="dc-title">📅 30-DAY THREAT OUTLOOK — SD</span></div>
+        <div class="dc-hdr"><span class="dc-title">🔗 LE & THREAT RESOURCES</span></div>
         <div class="dc-body">
-          <div class="dgrid3" id="d-outlook-grid">
-            <div style="color:var(--textdim);font-size:10px">Loading…</div>
-          </div>
-          <div style="margin-top:14px;padding:9px 12px;background:#040810;border-radius:5px;font-size:9px;color:var(--textdim);line-height:1.7;font-family:var(--mono)">
-            DISCLAIMER: Automated decision-support tool using open-source data. All assessments require validation by qualified emergency management personnel. NG activations require TAG, Governor's office, and SDCL coordination. Risk levels reflect current sensor data and may not capture all hazards.
+          <div style="display:flex;flex-direction:column;gap:4px">
+            ${[["🔴 CISA Advisories","https://www.cisa.gov/news-events/cybersecurity-advisories","var(--redlt)"],["🔴 FBI Cyber Alerts","https://www.fbi.gov/investigate/cyber/alerts","var(--redlt)"],["🟡 CISA KEV Catalog","https://www.cisa.gov/known-exploited-vulnerabilities-catalog","var(--amberlt)"],["🟡 MS-ISAC","https://www.cisecurity.org/ms-isac","var(--amberlt)"],["🔵 SD Fusion Center","https://dps.sd.gov/law-enforcement/south-dakota-fusion-center","var(--bluelt)"],["🔵 FBI Denver","https://www.fbi.gov/contact-us/field-offices/denver","var(--bluelt)"],["🟢 InfraGard","https://www.infragard.org/","var(--greenlt)"]].map(([l,u,c])=>`<a href="${u}" target="_blank" class="lbtn" style="font-size:9px;color:${c};background:rgba(255,255,255,0.03);border-color:var(--border)">${l}</a>`).join("")}
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ── 30-DAY OUTLOOK ──────────────────────── -->
+<div id="dtab-outlook" style="display:none">
+  <div class="dc">
+    <div class="dc-hdr"><span class="dc-title">📅 30-DAY THREAT OUTLOOK — SD</span></div>
+    <div class="dc-body">
+      <div class="dgrid3" id="d-outlook-grid">
+        <div style="color:var(--textdim);font-size:10px">Loading…</div>
+      </div>
+      <div style="margin-top:14px;padding:9px 12px;background:#040810;border-radius:5px;font-size:9px;color:var(--textdim);line-height:1.7;font-family:var(--mono)">
+        DISCLAIMER: Automated decision-support tool using open-source data. All assessments require validation by qualified emergency management personnel. NG activations require TAG, Governor's office, and SDCL coordination. Risk levels reflect current sensor data and may not capture all hazards.
+      </div>
+    </div>
+  </div>
+</div>
+```
 
   </div><!-- /drawer-content -->
 </div><!-- /drawer -->
+
+<!-- ── LIFELINE DETAIL MODAL ──────────────────── -->
+
+<div id="lifeline-modal" onclick="if(event.target===this)closeLifelineModal()">
+  <div class="lm-box">
+    <div class="lm-hdr">
+      <div class="lm-title" id="lm-title">LIFELINE DETAIL</div>
+      <button class="lm-close" onclick="closeLifelineModal()">✕ CLOSE</button>
+    </div>
+    <div class="lm-body" id="lm-body"></div>
+  </div>
+</div>
 
 <script>
 /* ══════════════════════════════════════════════════
    CONSTANTS
 ══════════════════════════════════════════════════ */
-const PASS = "SDARNG2026";
+const PASS = "SDNG2026"; // password disabled for now
+
+
 
 const GAUGES = [
   {site:"06440000", name:"Missouri R — Pierre",      short:"Missouri/Pierre",   t:{a:17,f:19,m:23}},
@@ -1107,7 +1223,7 @@ const ac = e => ALERT_COLORS[e] || "#607080";
 // State
 let state = {
   alerts: [], gauges: [], drought: null,
-  fema: [], quakes: [], fires: [],
+  fema: [], quakes: [], fires: [], kev: [],
   lastUpdate: null, risk: {score:0,level:"NORMAL",lc:"var(--greenlt)"}
 };
 
@@ -1127,12 +1243,17 @@ function doLogin() {
   }
 }
 document.getElementById("login-input").addEventListener("keydown", e => { if(e.key==="Enter") doLogin(); });
-if (sessionStorage.getItem("joc_auth") === "1") {
-  document.getElementById("login-screen").style.display = "none";
-  document.addEventListener("DOMContentLoaded", init);
-} else {
-  document.addEventListener("DOMContentLoaded", () => document.getElementById("login-input").focus());
-}
+// Password disabled - auto-authenticate
+(function(){
+  sessionStorage.setItem("joc_auth","1");
+  const ls = document.getElementById("login-screen");
+  if(ls) ls.style.display = "none";
+  if(document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
 
 /* ══════════════════════════════════════════════════
    CLOCK
@@ -1157,53 +1278,29 @@ const MAP_LAYERS = {
   radar: {
     url: "about:blank",
     isCustom: true,
-    legend: `<div class="legend-item"><div class="legend-sq" style="background:rgba(18,128,208,0.6)"></div>Light precip (green)</div>
-             <div class="legend-item"><div class="legend-sq" style="background:rgba(220,160,0,0.7)"></div>Moderate (yellow)</div>
-             <div class="legend-item"><div class="legend-sq" style="background:rgba(220,60,30,0.7)"></div>Heavy (red)</div>
-             <div style="margin-top:6px;font-size:8px;color:var(--textdim)">UNR = Rapid City · FSD = Sioux Falls</div>`,
+    legend: `<div class="legend-item"><div class="legend-sq" style="background:rgba(0,180,0,0.7)"></div>Light precip</div>
+             <div class="legend-item"><div class="legend-sq" style="background:rgba(255,220,0,0.7)"></div>Moderate</div>
+             <div class="legend-item"><div class="legend-sq" style="background:rgba(220,50,30,0.7)"></div>Heavy</div>
+             <div style="margin-top:4px;font-size:8px;color:var(--textdim)">NWS Mosaic · Full SD coverage</div>`,
     customHTML: `
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;height:100%;background:#060c10">
-        <div style="display:flex;flex-direction:column;border-right:1px solid #1c2d3e">
-          <div style="padding:6px 10px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#1880d0;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.8)">
-            📡 KUDX — RAPID CITY (WESTERN SD)
-          </div>
-          <div style="flex:1;position:relative;overflow:hidden">
-            <img src="https://radar.weather.gov/ridge/standard/KUDX_0.gif?t=${Date.now()}"
-              style="width:100%;height:100%;object-fit:cover;display:block"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-              alt="KUDX Radar"/>
-            <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#3a5268;font-size:10px;font-family:'Share Tech Mono',monospace">
-              <div>Radar loading…</div>
-              <a href="https://radar.weather.gov/station/KUDX/standard" target="_blank"
-                style="color:#1880d0;font-size:9px">▸ Open KUDX Rapid City</a>
-            </div>
-          </div>
-          <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-top:1px solid #1c2d3e;display:flex;justify-content:space-between;align-items:center">
-            <span>Covers western SD, Black Hills, Badlands</span>
-            <a href="https://radar.weather.gov/station/KUDX/standard" target="_blank"
-              style="color:#1880d0;font-size:8px">Open ↗</a>
-          </div>
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
+        <div style="padding:5px 10px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#1880d0;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+          <span>📡 NWS RADAR MOSAIC — SOUTH DAKOTA STATEWIDE</span>
+          <div style="display:flex;gap:8px">
+            <a href="https://radar.weather.gov/?settings=v1_eyJhZ2VuZGEiOnsiaWQiOiJuYXRpb25hbCIsImNlbnRlciI6Wy0xMDEuNSw0NC41XSwiem9vbSI6Nn0sImJhc2UiOiJzdGFuZGFyZCIsImNvdW50eSI6ZmFsc2UsImN3YSI6ZmFsc2UsInN0YXRlIjpmYWxzZSwibWVudSI6dHJ1ZSwiZmlsdGVyIjoiV1NQIn0=" target="_blank" style="color:#1880d0;font-size:8px;font-family:'Share Tech Mono',monospace">▸ Open full NWS Radar</a>
+            <a href="https://www.weather.gov/unr/" target="_blank" style="color:#1880d0;font-size:8px;font-family:'Share Tech Mono',monospace">▸ NWS Rapid City</a>
+            <a href="https://www.weather.gov/fsd/" target="_blank" style="color:#1880d0;font-size:8px;font-family:'Share Tech Mono',monospace">▸ NWS Sioux Falls</div>
         </div>
-        <div style="display:flex;flex-direction:column">
-          <div style="padding:6px 10px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#1880d0;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.8)">
-            📡 KFSD — SIOUX FALLS (EASTERN SD)
-          </div>
-          <div style="flex:1;position:relative;overflow:hidden">
-            <img src="https://radar.weather.gov/ridge/standard/KFSD_0.gif?t=${Date.now()}"
-              style="width:100%;height:100%;object-fit:cover;display:block"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-              alt="KFSD Radar"/>
-            <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#3a5268;font-size:10px;font-family:'Share Tech Mono',monospace">
-              <div>Radar loading…</div>
-              <a href="https://radar.weather.gov/station/KFSD/standard" target="_blank"
-                style="color:#1880d0;font-size:9px">▸ Open KFSD Sioux Falls</a>
-            </div>
-          </div>
-          <div style="padding:5px 10px;font-size:8px;color:#3a5268;border-top:1px solid #1c2d3e;display:flex;justify-content:space-between;align-items:center">
-            <span>Covers eastern SD, James R valley, Sioux Falls</span>
-            <a href="https://radar.weather.gov/station/KFSD/standard" target="_blank"
-              style="color:#1880d0;font-size:8px">Open ↗</a>
-          </div>
+        <div style="flex:1;overflow:hidden;position:relative">
+          <iframe
+            src="https://radar.weather.gov/?settings=v1_eyJhZ2VuZGEiOnsiaWQiOiJuYXRpb25hbCIsImNlbnRlciI6Wy0xMDEuNSw0NC41XSwiem9vbSI6Nn0sImJhc2UiOiJzdGFuZGFyZCIsImNvdW50eSI6ZmFsc2UsImN3YSI6ZmFsc2UsInN0YXRlIjpmYWxzZSwibWVudSI6dHJ1ZSwiZmlsdGVyIjoiV1NQIn0="
+            style="width:100%;height:100%;border:none;display:block"
+            title="NWS SD Mosaic Radar"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div style="padding:4px 10px;font-size:7px;color:#3a5268;border-top:1px solid #1c2d3e;font-family:'Share Tech Mono',monospace;flex-shrink:0">
+          NWS Multi-sensor mosaic · Covers all of SD · Includes warnings overlay · Updated every 2 min
         </div>
       </div>
     `,
@@ -1211,24 +1308,24 @@ const MAP_LAYERS = {
   water: {
     url: "about:blank",
     isCustom: true,
-    legend: `<div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Below action stage</div>
-             <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Action / flood watch</div>
+    legend: `<div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Normal / below action</div>
+             <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Action stage</div>
              <div class="legend-item"><div class="legend-dot" style="background:var(--redlt)"></div>Flood / major flood</div>`,
     customHTML: `
-      <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
-        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#12aeb2;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center">
-          <span>🌊 USGS WATER CONDITIONS — SOUTH DAKOTA</span>
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10;overflow:hidden">
+        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#12aeb2;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+          <span>🌊 USGS STREAM GAUGES — SOUTH DAKOTA</span>
           <div style="display:flex;gap:8px">
-            <a href="https://waterdata.usgs.gov/state/south-dakota/" target="_blank" style="color:#12aeb2;font-size:8px;font-family:'Share Tech Mono',monospace">▸ USGS SD Water Data</a>
+            <a href="https://waterdata.usgs.gov/state/south-dakota/" target="_blank" style="color:#12aeb2;font-size:8px;font-family:'Share Tech Mono',monospace">▸ USGS SD Water</a>
             <a href="https://water.weather.gov/ahps2/index.php?wfo=unr" target="_blank" style="color:#1880d0;font-size:8px;font-family:'Share Tech Mono',monospace">▸ NWS Flood Outlook</a>
             <a href="https://www.nwd-mr.usace.army.mil/rcc/current.html" target="_blank" style="color:#12aeb2;font-size:8px;font-family:'Share Tech Mono',monospace">▸ Army Corps MR</a>
           </div>
         </div>
-        <div style="flex:1;overflow:hidden">
-          <iframe src="https://waterdata.usgs.gov/state/south-dakota/" style="width:100%;height:100%;border:none;display:block" title="USGS SD Water Data"></iframe>
+        <div style="flex:1;overflow-y:auto;padding:10px 14px" id="water-map-gauges">
+          <div style="color:#3a5268;font-size:9px;font-family:'Share Tech Mono',monospace">Loading gauge data…</div>
         </div>
-        <div style="padding:4px 12px;font-size:8px;color:#3a5268;border-top:1px solid #1c2d3e;display:flex;gap:16px">
-          <span>SOURCE: USGS Water Resources · Updated hourly · Click any gauge for details</span>
+        <div style="padding:5px 12px;font-size:7px;color:#3a5268;border-top:1px solid #1c2d3e;font-family:'Share Tech Mono',monospace;flex-shrink:0">
+          SOURCE: USGS WATERSERVICES · UPDATED HOURLY · CLICK GAUGE NAME TO OPEN USGS PAGE
         </div>
       </div>
     `,
@@ -1268,9 +1365,41 @@ const MAP_LAYERS = {
   fire: {
     url: "about:blank",
     isCustom: true,
-    legend: `<div class="legend-item"><div class="legend-dot" style="background:#ff4400"></div>Active fire detection (VIIRS)</div>
-             <div class="legend-item"><div class="legend-dot" style="background:#ff8800"></div>Fire hotspot (MODIS)</div>
-             <div style="margin-top:4px;font-size:8px;color:var(--textdim)">NASA FIRMS · 24hr window</div>`,
+    legend: `<div class="legend-item"><div class="legend-dot" style="background:#ff4400"></div>Active fire (VIIRS)</div>
+             <div class="legend-item"><div class="legend-dot" style="background:#ff8800"></div>Hotspot (MODIS)</div>
+             <div style="margin-top:4px;font-size:8px;color:var(--textdim)">NASA FIRMS · 24hr</div>`,
+    customHTML: `
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
+        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#e06820;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+          <span>🔥 ACTIVE FIRE DETECTION — SD REGION (24hr)</span>
+          <div style="display:flex;gap:8px">
+            <a href="https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z" target="_blank" style="color:#e06820;font-size:8px;font-family:'Share Tech Mono',monospace">▸ NASA FIRMS Interactive</a>
+            <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank" style="color:#e03830;font-size:8px;font-family:'Share Tech Mono',monospace">▸ InciWeb SD</a>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;overflow:hidden">
+          <img
+            src="https://firms.modaps.eosdis.nasa.gov/api/area/png/-110,38,-93,50/VIIRS_SNPP_NRT/1"
+            style="max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;display:block"
+            onerror="this.style.display='none';document.getElementById('firms-fallback').style.display='flex'"
+            alt="NASA FIRMS SD Fire Detection"/>
+          <div id="firms-fallback" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;color:#3a5268;font-size:10px;font-family:'Share Tech Mono',monospace;width:100%">
+            <div>Satellite image unavailable.</div>
+            <div style="font-size:8px;line-height:1.6">NASA FIRMS blocks direct browser requests.<br/>Open the interactive map directly:</div>
+            <a href="https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-101.0,44.5,7z" target="_blank"
+              style="color:#e06820;padding:7px 16px;border:1px solid rgba(224,104,32,0.5);border-radius:4px;font-size:9px;text-decoration:none">▸ Open NASA FIRMS Map</a>
+            <a href="https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-wildland-fire-perimeters/explore" target="_blank"
+              style="color:#e03830;padding:7px 16px;border:1px solid rgba(224,56,48,0.5);border-radius:4px;font-size:9px;text-decoration:none">▸ NIFC Fire Perimeters</a>
+            <a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank"
+              style="color:#e06820;padding:7px 16px;border:1px solid rgba(224,104,32,0.4);border-radius:4px;font-size:9px;text-decoration:none">▸ InciWeb SD Incidents</a>
+          </div>
+        </div>
+        <div style="padding:4px 12px;font-size:7px;color:#3a5268;border-top:1px solid #1c2d3e;font-family:'Share Tech Mono',monospace;flex-shrink:0">
+          NASA FIRMS VIIRS SNPP · 24-HOUR WINDOW · SD/NE/WY/ND/MN REGION · NOT ALL DETECTIONS ARE WILDFIRES
+        </div>
+      </div>
+    `,
+  },
     customHTML: `
       <div style="display:flex;flex-direction:column;height:100%;background:#060c10">
         <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#e06820;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);display:flex;justify-content:space-between;align-items:center">
@@ -1378,6 +1507,76 @@ const MAP_LAYERS = {
       </div>
     `,
   },
+  hospital: {
+    url: "about:blank",
+    isCustom: true,
+    legend: `<div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Normal capacity</div>
+             <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Elevated / watch</div>
+             <div class="legend-item"><div class="legend-dot" style="background:var(--redlt)"></div>Diversion / strain</div>`,
+    customHTML: `
+      <div style="display:flex;flex-direction:column;height:100%;background:#060c10;overflow-y:auto">
+        <div style="padding:6px 12px;font-size:9px;font-weight:700;font-family:'Share Tech Mono',monospace;color:#8050d8;letter-spacing:0.1em;border-bottom:1px solid #1c2d3e;background:rgba(8,13,18,0.9);flex-shrink:0">
+          🏥 SD HOSPITAL & MEDICAL CAPACITY
+        </div>
+
+        <!-- Data gap notice -->
+        <div style="padding:10px 14px;background:rgba(200,130,10,0.08);border-bottom:1px solid rgba(200,130,10,0.2);flex-shrink:0">
+          <div style="font-size:9px;font-weight:700;color:#e09a14;font-family:'Share Tech Mono',monospace;margin-bottom:4px">⚠ NO PUBLIC REAL-TIME CAPACITY API FOR SOUTH DAKOTA</div>
+          <div style="font-size:8px;color:#7a9ab8;line-height:1.6">
+            Real-time hospital bed capacity data is not publicly available for SD. As of 2026, CDC's real-time bed capacity program covers 15 states — SD is not yet included.
+            ED diversion status and ICU capacity require direct contact with hospital emergency management or the SD DOH Health Link system (restricted access).<br/>
+            <strong style="color:#a8c0d8">During an emergency:</strong> Contact SD DOH Emergency Preparedness or use the CHEMPACK/ESAR-VHP system if activated.
+          </div>
+        </div>
+
+        <!-- Major SD hospitals -->
+        <div style="padding:10px 14px;flex-shrink:0">
+          <div style="font-size:8px;color:#3a5268;letter-spacing:0.14em;font-family:'Share Tech Mono',monospace;margin-bottom:8px">MAJOR SD HOSPITALS — DIRECT CONTACT</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            ${[
+              ["Monument Health Rapid City","Level II Trauma · Rapid City","https://www.monument.health/location/rapid-city-hospital/","(605) 755-1000"],
+              ["Monument Health Spearfish","Regional · Spearfish","https://www.monument.health/location/spearfish-hospital/","(605) 644-4000"],
+              ["Monument Health Custer","Critical Access · Custer","https://www.monument.health/location/custer-hospital/","(605) 673-2229"],
+              ["Sanford USD Medical Center","Level II Trauma · Sioux Falls","https://www.sanfordhealth.org/locations/sanford-usd-medical-center","(605) 333-1000"],
+              ["Avera McKennan Hospital","Level II Trauma · Sioux Falls","https://www.avera.org/avera-mckennan/","(605) 322-8000"],
+              ["Sanford Chamberlain","Critical Access · Chamberlain","https://www.sanfordhealth.org/locations/sanford-chamberlain","(605) 234-2300"],
+              ["Avera St. Mary's Pierre","Regional · Pierre","https://www.avera.org/st-marys-pierre/","(605) 224-3100"],
+              ["Sanford Aberdeen","Regional · Aberdeen","https://www.sanfordhealth.org/locations/sanford-aberdeen","(605) 626-4200"],
+              ["Huron Regional Medical Center","Regional · Huron","https://huronregional.org/","(605) 353-6200"],
+              ["St. Michael's Hospital","Critical Access · Tyndall","https://stmichaelshospital.com/","(605) 589-3341"],
+            ].map(([name,desc,url,phone])=>`
+              <div style="background:rgba(101,53,176,0.06);border:1px solid rgba(101,53,176,0.2);border-left:3px solid #8050d8;border-radius:0 4px 4px 0;padding:7px 9px">
+                <a href="${url}" target="_blank" style="font-size:10px;font-weight:700;color:#8050d8;font-family:'Share Tech Mono',monospace;text-decoration:none;display:block;margin-bottom:2px">${name}</a>
+                <div style="font-size:8px;color:#7a9ab8;">${desc}</div>
+                <div style="font-size:8px;color:#3a5268;font-family:'Share Tech Mono',monospace;margin-top:2px">${phone}</div>
+              </div>`).join("")}
+          </div>
+        </div>
+
+        <!-- EMS & Health resources -->
+        <div style="padding:0 14px 12px;flex-shrink:0">
+          <div style="font-size:8px;color:#3a5268;letter-spacing:0.14em;font-family:'Share Tech Mono',monospace;margin-bottom:7px">HEALTH & EMS RESOURCES</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <a href="https://doh.sd.gov/health-data-reports/data-dashboards/" target="_blank"
+              style="font-size:9px;color:#8050d8;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(101,53,176,0.3);border-radius:4px;text-decoration:none;display:block">▸ SD DOH Data Dashboards</a>
+            <a href="https://doh.sd.gov/emergency-preparedness/" target="_blank"
+              style="font-size:9px;color:#8050d8;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(101,53,176,0.3);border-radius:4px;text-decoration:none;display:block">▸ SD DOH Emergency Preparedness</a>
+            <a href="https://dph.sd.gov/emergency-medical-services/" target="_blank"
+              style="font-size:9px;color:#8050d8;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(101,53,176,0.3);border-radius:4px;text-decoration:none;display:block">▸ SD Emergency Medical Services</a>
+            <a href="https://www.sanfordhealth.org/emergency" target="_blank"
+              style="font-size:9px;color:#7a9ab8;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(255,255,255,0.08);border-radius:4px;text-decoration:none;display:block">▸ Sanford Health Emergency</a>
+            <a href="https://www.avera.org/emergency-care/" target="_blank"
+              style="font-size:9px;color:#7a9ab8;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(255,255,255,0.08);border-radius:4px;text-decoration:none;display:block">▸ Avera Emergency Care</a>
+            <a href="https://www.monument.health/services/emergency/" target="_blank"
+              style="font-size:9px;color:#7a9ab8;font-family:'Share Tech Mono',monospace;padding:5px 10px;border:1px solid rgba(255,255,255,0.08);border-radius:4px;text-decoration:none;display:block">▸ Monument Health Emergency</a>
+          </div>
+          <div style="margin-top:8px;padding:7px 9px;background:#040810;border-radius:4px;font-size:8px;color:#3a5268;line-height:1.6;font-family:'Share Tech Mono',monospace">
+            MASS CASUALTY: Contact SD DOH Emergency Preparedness · SD ESAR-VHP for volunteer health professionals · Coordinate with county EMS directors for mutual aid · SDNG Medical unit activation requires TAG authorization
+          </div>
+        </div>
+      </div>
+    `,
+  },
 };
 
 function setMapLayer(key) {
@@ -1391,11 +1590,58 @@ function setMapLayer(key) {
   const wrap = document.getElementById("map-iframe-wrap");
   if (layer.isCustom && layer.customHTML) {
     wrap.innerHTML = `<div style="width:100%;height:100%">${layer.customHTML}</div>`;
-    // Populate seismic list from state data after render
     if (key === "quake") populateQuakeList();
+    if (key === "water") populateWaterMapGauges();
   } else {
     wrap.innerHTML = `<iframe id="map-frame" src="${layer.url}" title="Map" allowfullscreen style="width:100%;height:100%;border:none;display:block"></iframe>`;
   }
+}
+
+function populateWaterMapGauges() {
+  const el = document.getElementById("water-map-gauges");
+  if (!el) return;
+  const gauges = state.gauges || [];
+  if (gauges.length === 0) {
+    el.innerHTML = `<div style="color:#3a5268;font-size:9px;font-family:'Share Tech Mono',monospace">Loading gauge data…</div>`;
+    return;
+  }
+  const stageColor = s => s==="MAJOR FLOOD"?"#e03830":s==="FLOOD"?"#e03830":s==="ACTION"?"#e09a14":s==="NO DATA"?"#3a5268":"#22b862";
+  const stageBg = s => s==="MAJOR FLOOD"?"rgba(224,56,48,0.12)":s==="FLOOD"?"rgba(224,56,48,0.08)":s==="ACTION"?"rgba(224,154,20,0.1)":"rgba(34,184,98,0.06)";
+
+  el.innerHTML = `
+    <div style="font-size:8px;color:#3a5268;font-family:'Share Tech Mono',monospace;letter-spacing:0.1em;margin-bottom:10px">SD STREAM GAUGES — LIVE DATA FROM USGS</div>
+    ${gauges.map(g => {
+      const s = g.stage, t = g.t;
+      const max = (t?.m||t?.f*1.5||20)*1.2;
+      const pct = s ? Math.min((s/max)*100,100) : 0;
+      const status = !s?"NO DATA":s>=(t?.m||9999)?"MAJOR FLOOD":s>=t?.f?"FLOOD":s>=(t?.a||9999)?"ACTION":"NORMAL";
+      const color = stageColor(status);
+      const bg = stageBg(status);
+      return `<div style="border-left:3px solid ${color};background:${bg};border-radius:0 5px 5px 0;padding:8px 12px;margin-bottom:6px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+          <a href="https://waterdata.usgs.gov/monitoring-location/${g.site}/" target="_blank"
+            style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:${color};text-decoration:none;letter-spacing:0.04em">${g.name}</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;font-weight:700;color:${color};padding:1px 6px;background:${color}20;border:1px solid ${color}40;border-radius:3px">${status}</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:5px">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:${color};line-height:1">${s?s.toFixed(1):"—"}</span>
+          <span style="font-size:9px;color:#3a5268;font-family:'Share Tech Mono',monospace">ft stage</span>
+          ${g.flow!=null?`<span style="font-size:12px;color:#7a9ab8;font-family:'Barlow Condensed',sans-serif;font-weight:600">${g.flow>=1000?(g.flow/1000).toFixed(1)+"k":g.flow.toFixed(0)} cfs</span>`:""}
+        </div>
+        <div style="background:#040810;border-radius:2px;height:5px;overflow:hidden;position:relative">
+          ${t?.a?`<div style="position:absolute;left:${(t.a/max)*100}%;top:0;bottom:0;width:1px;background:#e09a14;opacity:0.5"></div>`:""}
+          ${t?.f?`<div style="position:absolute;left:${(t.f/max)*100}%;top:0;bottom:0;width:1px;background:#e03830;opacity:0.6"></div>`:""}
+          <div style="width:${pct}%;height:100%;background:${color};transition:width 0.5s"></div>
+        </div>
+        <div style="display:flex;gap:10px;font-size:7px;color:#3a5268;font-family:'Share Tech Mono',monospace;margin-top:2px">
+          ${t?.a?`<span>ACT ${t.a}ft</span>`:""}${t?.f?`<span>FLD ${t.f}ft</span>`:""}${t?.m?`<span>MAJ ${t.m}ft</span>`:""}
+          <span style="margin-left:auto">USGS #${g.site}</span>
+        </div>
+      </div>`;
+    }).join("")}
+    <div style="font-size:7px;color:#3a5268;font-family:'Share Tech Mono',monospace;margin-top:6px;line-height:1.6">
+      SOURCE: USGS WATERSERVICES API · UPDATED HOURLY · CLICK GAUGE NAME FOR FULL USGS PAGE
+    </div>`;
 }
 
 function populateQuakeList() {
@@ -1571,60 +1817,67 @@ function updateStrategicBar(alerts, gauges, drought, fires) {
 ══════════════════════════════════════════════════ */
 function updateLifelineCards(alerts, gauges, drought, fires) {
   const highG = gauges.filter(g=>g.stage&&g.t&&g.stage>=g.t.f).length;
+  const majG = gauges.filter(g=>g.stage&&g.t&&g.stage>=(g.t.m||9999)).length;
   const floodWarn = alerts.filter(a=>a.properties?.event?.toLowerCase().includes("flood")).length;
   const winterWarn = alerts.filter(a=>a.properties?.event?.toLowerCase().includes("winter")||a.properties?.event?.toLowerCase().includes("blizzard")).length;
-  const fireWx = alerts.filter(a=>a.properties?.event?.toLowerCase().includes("fire")).length;
+  const fireWx = alerts.filter(a=>a.properties?.event?.toLowerCase().includes("fire")||a.properties?.event?.toLowerCase().includes("red flag")).length;
+  const warnCount = alerts.filter(a=>a.properties?.event?.includes("Warning")).length;
+  const kevCount = (state.kev||[]).length;
+  const critKev = (state.kev||[]).filter(v=>v.knownRansomwareCampaignUse==="Known").length;
 
   const lifelines = [
     {
+      id:"energy",
       icon:"⚡", label:"ENERGY",
-      num: "—",
-      status:"Check NorthWestern Energy & Black Hills Energy portals",
-      status2:"SD REA outage map available",
-      color: "green", trend:"→"
+      num:"—", status:"Check utility outage portals",
+      color:"green", trend:"→",
     },
     {
+      id:"comms",
       icon:"📡", label:"COMMUNICATIONS",
-      num: "OK",
-      status:"No 911 disruptions reported",
-      status2:"CISA KEV monitoring active",
-      color: "green", trend:"→"
+      num:"OK", status:"No 911 disruptions reported",
+      color:"green", trend:"→",
     },
     {
+      id:"transport",
       icon:"🚧", label:"TRANSPORTATION",
-      num: winterWarn>0?"⚠":"OK",
-      status: winterWarn>0?`${winterWarn} winter storm alerts active`:"SD511 no major closures",
-      status2:"Check SD511 for current status",
-      color: winterWarn>0?"yellow":"green", trend: winterWarn>0?"↓":"→"
+      num:winterWarn>0?"⚠":"OK",
+      status:winterWarn>0?`${winterWarn} winter storm alerts`:"SD511 — normal",
+      color:winterWarn>0?"yellow":"green", trend:winterWarn>0?"↓":"→",
     },
     {
+      id:"safety",
       icon:"🛡", label:"SAFETY & SECURITY",
-      num: alerts.filter(a=>a.properties?.event?.includes("Warning")).length||"0",
-      status: `${alerts.filter(a=>a.properties?.event?.includes("Warning")).length} active NWS warnings`,
-      status2:"Fusion Center status: normal",
-      color: alerts.filter(a=>a.properties?.event?.includes("Warning")).length>3?"red":alerts.filter(a=>a.properties?.event?.includes("Warning")).length>0?"yellow":"green",
-      trend: alerts.filter(a=>a.properties?.event?.includes("Warning")).length>0?"↑":"→"
+      num:warnCount||"0",
+      status:`${warnCount} active NWS warning${warnCount!==1?"s":""}`,
+      color:warnCount>3?"red":warnCount>0?"yellow":"green", trend:warnCount>0?"↑":"→",
     },
     {
+      id:"water",
       icon:"💧", label:"WATER/WASTEWATER",
-      num: highG>0?highG:"OK",
-      status: highG>0?`${highG} gauge(s) at or above flood stage`:"All monitored gauges normal",
-      status2: floodWarn>0?`${floodWarn} flood warning(s) active`:"No flood warnings",
-      color: highG>2?"red":highG>0?"yellow":"green", trend: highG>0?"↑":"→"
+      num:highG>0?highG:"OK",
+      status:highG>0?`${highG} gauge${highG!==1?"s":""} ≥ flood stage`:"All gauges normal",
+      color:majG>0?"red":highG>0?"yellow":"green", trend:highG>0?"↑":"→",
     },
     {
+      id:"health",
       icon:"🏥", label:"HEALTH & MEDICAL",
-      num: "—",
-      status:"Hospital capacity data requires HSIN access",
-      status2:"EMS: contact county EOCs for status",
-      color: "green", trend:"→"
+      num:"—", status:"No public capacity API — SD",
+      color:"green", trend:"→",
+    },
+    {
+      id:"cyber",
+      icon:"🔐", label:"CYBER",
+      num:critKev>0?critKev:kevCount>0?"KEV":"—",
+      status:critKev>0?`${critKev} ransomware KEV${critKev!==1?"s":""} active`:kevCount>0?`${kevCount} CISA KEV entries`:"CISA monitoring active",
+      color:critKev>2?"red":critKev>0?"yellow":"green", trend:critKev>0?"↑":"→",
     },
   ];
 
   const grid = document.getElementById("lifeline-grid");
   grid.innerHTML = lifelines.map(l => {
     const numColor = l.color==="red"?"var(--redlt)":l.color==="yellow"?"var(--amberlt)":"var(--greenlt)";
-    return `<div class="lifeline-card ${l.color}" title="${l.status2}">
+    return `<div class="lifeline-card ${l.color}" onclick="openLifelineModal('${l.id}')" style="cursor:pointer" title="Tap for details">
       <div class="lc-icon">${l.icon}</div>
       <div class="lc-label">${l.label}</div>
       <div style="display:flex;align-items:baseline;gap:4px">
@@ -1632,11 +1885,198 @@ function updateLifelineCards(alerts, gauges, drought, fires) {
         <span class="lc-trend" style="color:${numColor}">${l.trend}</span>
       </div>
       <div class="lc-status">${l.status}</div>
+      <div style="font-size:7px;color:var(--textdim);margin-top:4px;font-family:var(--mono)">TAP FOR DETAILS ▸</div>
     </div>`;
   }).join("");
 
   document.getElementById("lifeline-update").textContent = new Date().toLocaleTimeString();
 }
+
+/* ══════════════════════════════════════════════════
+   LIFELINE MODAL
+══════════════════════════════════════════════════ */
+function openLifelineModal(id) {
+  const modal = document.getElementById("lifeline-modal");
+  const title = document.getElementById("lm-title");
+  const body = document.getElementById("lm-body");
+  const {alerts,gauges,drought,fires} = state;
+  const highG = gauges.filter(g=>g.stage&&g.t&&g.stage>=g.t.f);
+  const majG = gauges.filter(g=>g.stage&&g.t&&g.stage>=(g.t.m||9999));
+
+  const content = {
+
+    energy: {
+      icon:"⚡", title:"ENERGY — POWER GRID STATUS",
+      html: `
+        <div class="lm-section">
+          <div class="lm-section-title">STATUS NOTE</div>
+          <div style="font-size:10px;color:var(--textmid);line-height:1.7">No public real-time outage data is aggregated for all SD utilities. Check individual utility portals below. During major events coordinate with SD DPS and county emergency managers for aggregate outage estimates.</div>
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">INVESTOR-OWNED UTILITIES</div>
+          ${[["NorthWestern Energy","RC & western SD","https://www.northwesternenergy.com/outages"],["Black Hills Energy","Black Hills area","https://www.blackhillsenergy.com/outages-and-safety/outage-center"],["Xcel Energy","Eastern SD","https://www.xcelenergy.com/outages"],["Montana-Dakota Utilities","Central/north SD","https://customer.montana-dakota.com/outage-map"],["Otter Tail Power","Northeast SD","https://www.ottertailpower.com/outages"],["MidAmerican Energy","Southeast SD","https://www.midamerican.com/content/outage-central"]].map(([n,a,u])=>`<div class="lm-stat"><span class="lm-stat-label">${n} <span style="font-size:8px;color:var(--textdim)">(${a})</span></span><a href="${u}" target="_blank" style="font-size:9px;color:var(--amberlt);font-family:var(--mono)">Outage map ↗</a></div>`).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">RURAL ELECTRIC CO-OPS</div>
+          <a href="https://outages.sdrea.coop/" target="_blank" class="lm-link" style="color:var(--amberlt);background:rgba(200,130,10,0.08);border-color:rgba(200,130,10,0.3)">▸ SD Rural Electric Association — All Cooperatives</a>
+          ${[["West River Electric","RC area","https://www.westriverelectric.com/outages"],["Grand Electric","Northwest SD","https://www.grandelectric.com/"],["Cherry-Todd","Central/west SD","https://www.cherrytodd.com/"],["Rosebud Electric","South-central SD","https://www.rosebudelectric.com/"],["Sioux Valley Energy","Southeast SD","https://www.siouxvalleyenergy.com/outage-reporting"],["Northern Electric","Northeast SD","https://www.nrec.coop/"]].map(([n,a,u])=>`<div class="lm-stat"><span class="lm-stat-label">${n} <span style="font-size:8px;color:var(--textdim)">(${a})</span></span><a href="${u}" target="_blank" style="font-size:9px;color:var(--amberlt);font-family:var(--mono)">Portal ↗</a></div>`).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">OPERATIONAL NOTES</div>
+          <div style="font-size:9px;color:var(--textmid);line-height:1.7">Ellsworth AFB on grid managed by NorthWestern Energy. SDANG Sioux Falls on Xcel Energy grid. Major outage events should be coordinated through SD DPS Emergency Management and county EOCs. For military installation backup power status contact installation facilities directly.</div>
+        </div>`
+    },
+
+    comms: {
+      icon:"📡", title:"COMMUNICATIONS STATUS",
+      html: `
+        <div class="lm-section">
+          <div class="lm-section-title">911 & PUBLIC SAFETY COMMS</div>
+          <div class="lm-stat"><span class="lm-stat-label">SD 911 Status</span><span class="lm-stat-val" style="color:var(--greenlt)">NORMAL</span></div>
+          <div class="lm-stat"><span class="lm-stat-label">CISA KEV Entries</span><span class="lm-stat-val" style="color:var(--amberlt)">${(state.kev||[]).length} active</span></div>
+          <div class="lm-stat"><span class="lm-stat-label">Ransomware KEVs</span><span class="lm-stat-val" style="color:${(state.kev||[]).filter(v=>v.knownRansomwareCampaignUse==="Known").length>0?"var(--redlt)":"var(--greenlt)"}">${(state.kev||[]).filter(v=>v.knownRansomwareCampaignUse==="Known").length}</span></div>
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">BACKUP COMMS PLAN</div>
+          <div style="font-size:9px;color:var(--textmid);line-height:1.7">Primary: VoIP / cellular · Backup: SDNG tactical radio nets · Tertiary: HF radio · Emergency: NOAA Weather Radio / satellite. SDNG comms officer coordinates interoperability during major incidents. ARECS/RACES amateur radio operators are a resource through county emergency managers.</div>
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">KEY CONTACTS & RESOURCES</div>
+          <a href="https://dps.sd.gov/law-enforcement/south-dakota-fusion-center" target="_blank" class="lm-link" style="color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ SD Fusion Center</a>
+          <a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" class="lm-link" style="color:var(--purplelt);background:rgba(101,53,176,0.08);border-color:rgba(101,53,176,0.3)">▸ CISA Cybersecurity Advisories</a>
+          <a href="https://www.fbi.gov/contact-us/field-offices/denver" target="_blank" class="lm-link" style="color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ FBI Denver Field Office</a>
+        </div>`
+    },
+
+    transport: {
+      icon:"🚧", title:"TRANSPORTATION STATUS",
+      html: `
+        <div class="lm-section">
+          <div class="lm-section-title">CURRENT WEATHER ALERTS</div>
+          ${alerts.filter(a=>{const e=a.properties?.event?.toLowerCase()||"";return e.includes("winter")||e.includes("blizzard")||e.includes("wind")||e.includes("ice");}).length===0
+            ?`<div style="color:var(--greenlt);font-size:10px;font-family:var(--mono)">✓ No active winter / high wind alerts</div>`
+            :alerts.filter(a=>{const e=a.properties?.event?.toLowerCase()||"";return e.includes("winter")||e.includes("blizzard")||e.includes("wind")||e.includes("ice");}).map(a=>`<div class="lm-stat"><span class="lm-stat-label">${a.properties?.event}</span><span style="font-size:8px;color:var(--textdim)">${a.properties?.areaDesc?.split(";")[0]?.trim()}</span></div>`).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">ROAD CONDITION RESOURCES</div>
+          <a href="https://sd511.org/" target="_blank" class="lm-link" style="color:var(--greenlt);background:rgba(26,150,80,0.08);border-color:rgba(26,150,80,0.3)">▸ SD511 — Live Road Conditions & Closures</a>
+          <a href="https://dot.sd.gov/travelers/travelers" target="_blank" class="lm-link" style="color:var(--greenlt);background:rgba(26,150,80,0.08);border-color:rgba(26,150,80,0.3)">▸ SD DOT Traveler Information</a>
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">CRITICAL CORRIDORS</div>
+          ${[["I-90","Rapid City ↔ Sioux Falls — primary east-west"],["I-29","Watertown ↔ Sioux Falls — primary north-south"],["US-83","Pierre ↔ Murdo — central SD north-south"],["US-385","Black Hills — Deadwood to Hot Springs"],["US-212","West River — Mobridge to Newell"]].map(([r,d])=>`<div class="lm-stat"><span class="lm-stat-label" style="font-family:var(--mono);font-size:9px">${r}</span><span style="font-size:8px;color:var(--textdim)">${d}</span></div>`).join("")}
+        </div>
+        <div style="font-size:8px;color:var(--textdim);margin-top:4px">📱 Text <strong style="color:var(--greenlt)">SDInterstates</strong> to 605-836-8836 for closure alerts</div>`
+    },
+
+    safety: {
+      icon:"🛡", title:"SAFETY & SECURITY STATUS",
+      html: `
+        <div class="lm-section">
+          <div class="lm-section-title">ACTIVE NWS WARNINGS</div>
+          ${alerts.filter(a=>a.properties?.event?.includes("Warning")).length===0
+            ?`<div style="color:var(--greenlt);font-size:10px;font-family:var(--mono)">✓ No active NWS warnings for SD</div>`
+            :alerts.filter(a=>a.properties?.event?.includes("Warning")).map(a=>{const c=ALERT_COLORS[a.properties?.event]||"#607080";return`<div class="lm-stat"><span class="lm-stat-label" style="color:${c}">${a.properties?.event}</span><span style="font-size:8px;color:var(--textdim)">${a.properties?.areaDesc?.split(";")[0]?.trim()}</span></div>`}).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">ACTIVE FIRE INCIDENTS — SD</div>
+          ${fires.filter(f=>f.POOState==="SD"||f.POOState==="South Dakota").length===0
+            ?`<div style="color:var(--greenlt);font-size:10px;font-family:var(--mono)">✓ No API-reported SD fire incidents</div>`
+            :fires.filter(f=>f.POOState==="SD"||f.POOState==="South Dakota").map(f=>`<div class="lm-stat"><span class="lm-stat-label">${f.IncidentName}</span><span class="lm-stat-val" style="color:var(--orangelt)">${f.IncidentSize?Math.round(f.IncidentSize)+" ac":""} ${f.PercentContained!=null?f.PercentContained+"% ctnd":""}</span></div>`).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">LAW ENFORCEMENT RESOURCES</div>
+          <a href="https://dps.sd.gov/law-enforcement/south-dakota-fusion-center" target="_blank" class="lm-link" style="color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ SD Fusion Center</a>
+          <a href="https://dps.sd.gov/" target="_blank" class="lm-link" style="color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ SD Department of Public Safety</a>
+          <a href="https://www.fbi.gov/contact-us/field-offices/denver" target="_blank" class="lm-link" style="color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ FBI Denver Field Office</a>
+        </div>`
+    },
+
+    water: {
+      icon:"💧", title:"WATER / WASTEWATER STATUS",
+      html: `
+        <div class="lm-section">
+          <div class="lm-section-title">STREAM GAUGE STATUS — SD</div>
+          ${gauges.map(g=>{
+            const s=g.stage,t=g.t;
+            const status=!s?"NO DATA":s>=(t?.m||9999)?"MAJOR FLOOD":s>=t?.f?"FLOOD":s>=(t?.a||9999)?"ACTION":"NORMAL";
+            const color={"NORMAL":"var(--greenlt)","MAJOR FLOOD":"var(--redlt)","FLOOD":"var(--redlt)","ACTION":"var(--amberlt)","NO DATA":"var(--textdim)"}[status];
+            return`<div class="lm-stat"><span class="lm-stat-label">${g.name}</span><div style="display:flex;gap:8px;align-items:center"><span class="lm-stat-val" style="color:${color}">${s?s.toFixed(1)+"ft":"—"}</span><span style="font-size:8px;color:${color};font-family:var(--mono)">${status}</span></div></div>`;
+          }).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">FLOOD WARNINGS</div>
+          ${alerts.filter(a=>a.properties?.event?.toLowerCase().includes("flood")).length===0
+            ?`<div style="color:var(--greenlt);font-size:10px;font-family:var(--mono)">✓ No active flood warnings</div>`
+            :alerts.filter(a=>a.properties?.event?.toLowerCase().includes("flood")).map(a=>`<div class="lm-stat"><span class="lm-stat-label" style="color:var(--amberlt)">${a.properties?.event}</span><span style="font-size:8px;color:var(--textdim)">${a.properties?.areaDesc?.split(";")[0]?.trim()}</span></div>`).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">RESOURCES</div>
+          <a href="https://water.weather.gov/ahps2/index.php?wfo=unr" target="_blank" class="lm-link" style="color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">▸ NWS Advanced Hydrologic Prediction — SD</a>
+          <a href="https://www.nwd-mr.usace.army.mil/rcc/current.html" target="_blank" class="lm-link" style="color:var(--cyanlt);background:rgba(10,144,144,0.08);border-color:rgba(10,144,144,0.3)">▸ Army Corps — Missouri R Water Management</a>
+          <a href="https://denr.sd.gov/" target="_blank" class="lm-link" style="color:var(--textmid);background:rgba(255,255,255,0.03);border-color:var(--border)">▸ SD DENR — Drinking Water Program</a>
+        </div>`
+    },
+
+    health: {
+      icon:"🏥", title:"HEALTH & MEDICAL STATUS",
+      html: `
+        <div class="lm-section">
+          <div class="lm-section-title">DATA AVAILABILITY</div>
+          <div style="padding:7px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.2);border-left:3px solid var(--amberlt);border-radius:0 4px 4px 0;font-size:9px;color:var(--textmid);line-height:1.7;margin-bottom:8px">
+            No public real-time hospital capacity API for SD. Real-time ED diversion and ICU occupancy require direct contact with hospital EM or SD DOH Health Link (restricted). During declared emergencies contact SD DOH Emergency Preparedness for aggregate health system status.
+          </div>
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">MAJOR SD HOSPITALS — DIRECT CONTACT</div>
+          ${[["Monument Health Rapid City","Level II Trauma","(605) 755-1000","https://www.monument.health/"],["Sanford USD Medical Center","Level II Trauma — Sioux Falls","(605) 333-1000","https://www.sanfordhealth.org/"],["Avera McKennan","Level II Trauma — Sioux Falls","(605) 322-8000","https://www.avera.org/avera-mckennan/"],["Avera St. Mary's Pierre","Regional","(605) 224-3100","https://www.avera.org/st-marys-pierre/"],["Sanford Aberdeen","Regional","(605) 626-4200","https://www.sanfordhealth.org/"],["Huron Regional Medical Center","Regional","(605) 353-6200","https://huronregional.org/"]].map(([n,d,p,u])=>`<div class="lm-stat"><div><a href="${u}" target="_blank" style="color:var(--purplelt);font-size:10px;font-family:var(--mono)">${n}</a><div style="font-size:8px;color:var(--textdim)">${d}</div></div><span class="lm-stat-val" style="color:var(--textmid);font-size:9px">${p}</span></div>`).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">EMS & PREPAREDNESS</div>
+          <a href="https://doh.sd.gov/emergency-preparedness/" target="_blank" class="lm-link" style="color:var(--purplelt);background:rgba(101,53,176,0.08);border-color:rgba(101,53,176,0.3)">▸ SD DOH Emergency Preparedness</a>
+          <a href="https://doh.sd.gov/health-data-reports/data-dashboards/" target="_blank" class="lm-link" style="color:var(--purplelt);background:rgba(101,53,176,0.08);border-color:rgba(101,53,176,0.3)">▸ SD DOH Data Dashboards</a>
+        </div>`
+    },
+
+    cyber: {
+      icon:"🔐", title:"CYBER STATUS",
+      html: `
+        <div class="lm-section">
+          <div class="lm-section-title">CISA KNOWN EXPLOITED VULNERABILITIES — MOST RECENT</div>
+          ${(state.kev||[]).length===0
+            ?`<div style="color:var(--textdim);font-size:10px;font-family:var(--mono)">Loading KEV data…</div>`
+            :(state.kev||[]).slice(0,6).map(v=>{const r=v.knownRansomwareCampaignUse==="Known";return`<div class="lm-stat"><div><span style="color:var(--purplelt);font-size:10px;font-family:var(--mono);font-weight:700">${v.cveID}</span>${r?`<span style="margin-left:6px;padding:1px 5px;background:rgba(224,56,48,0.15);border:1px solid rgba(224,56,48,0.4);border-radius:3px;font-size:7px;color:var(--redlt);font-family:var(--mono)">RANSOMWARE</span>`:""}<div style="font-size:8px;color:var(--textmid)">${v.product} (${v.vendorProject})</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:7px;color:var(--textdim);font-family:var(--mono)">Added ${v.dateAdded}</div><div style="font-size:7px;color:var(--amberlt);font-family:var(--mono)">Due ${v.dueDate}</div></div></div>`}).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">ACTIVE THREAT ADVISORIES</div>
+          ${THREAT_INTEL.map(t=>{const c=t.severity==="CRITICAL"?"var(--redlt)":t.severity==="HIGH"?"var(--amberlt)":"var(--bluelt)";return`<div style="border-left:3px solid ${c};background:${c}0c;border-radius:0 4px 4px 0;padding:6px 10px;margin-bottom:5px"><div style="display:flex;gap:5px;align-items:center;margin-bottom:2px"><span style="padding:1px 6px;background:${c}20;border:1px solid ${c}50;border-radius:3px;font-size:8px;font-weight:700;font-family:var(--mono);color:${c}">${t.severity}</span><span style="font-size:8px;color:var(--textdim);font-family:var(--mono)">${t.source} · ${t.date}</span></div><div style="font-size:10px;font-weight:700;color:${c};font-family:var(--mono);margin-bottom:2px">${t.title}</div><div style="font-size:8px;color:var(--textmid);line-height:1.5">${t.action}</div><a href="${t.link}" target="_blank" style="font-size:8px;color:var(--bluelt);font-family:var(--mono)">▸ Full advisory</a></div>`}).join("")}
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-title">CYBER RESOURCES</div>
+          <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" class="lm-link" style="color:var(--purplelt);background:rgba(101,53,176,0.08);border-color:rgba(101,53,176,0.3)">▸ CISA KEV Full Catalog</a>
+          <a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" class="lm-link" style="color:var(--purplelt);background:rgba(101,53,176,0.08);border-color:rgba(101,53,176,0.3)">▸ CISA Cybersecurity Advisories</a>
+          <a href="https://www.cisa.gov/stopransomware" target="_blank" class="lm-link" style="color:var(--redlt);background:rgba(224,56,48,0.08);border-color:rgba(224,56,48,0.3)">▸ CISA StopRansomware</a>
+          <a href="https://dps.sd.gov/law-enforcement/south-dakota-fusion-center" target="_blank" class="lm-link" style="color:var(--bluelt);background:rgba(18,128,208,0.08);border-color:rgba(18,128,208,0.3)">▸ SD Fusion Center</a>
+          <a href="https://www.infragard.org/" target="_blank" class="lm-link" style="color:var(--greenlt);background:rgba(26,150,80,0.08);border-color:rgba(26,150,80,0.3)">▸ InfraGard</a>
+        </div>`
+    },
+
+  };
+
+  const c = content[id];
+  if (!c) return;
+  const statusColor = id==="cyber"&&(state.kev||[]).filter(v=>v.knownRansomwareCampaignUse==="Known").length>0?"var(--amberlt)":"var(--texthi)";
+  title.innerHTML = `<span style="font-size:18px">${c.icon}</span> <span>${c.title}</span>`;
+  body.innerHTML = c.html;
+  modal.classList.add("open");
+}
+
+function closeLifelineModal() {
+  document.getElementById("lifeline-modal").classList.remove("open");
+}
+
+// Close on Escape key
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeLifelineModal(); });
 
 /* ══════════════════════════════════════════════════
    ALERTS
@@ -1808,6 +2248,82 @@ function updateFireBand(fires) {
   const el = document.getElementById("band-fires");
   el.textContent = fires.length;
   el.style.color = fires.length>0?"var(--orangelt)":"var(--greenlt)";
+}
+
+function renderSDWildfire(fires) {
+  const el = document.getElementById("sdwf-incidents");
+  const updEl = document.getElementById("sdwf-updated");
+  if (!el) return;
+
+  if (updEl) updEl.textContent = new Date().toLocaleTimeString();
+
+  // All SD incidents from both sources
+  const sdAll = fires.filter(f=>f.POOState==="SD"||f.POOState==="South Dakota");
+
+  // Also show InciWeb items that might have been deduplicated
+  const inciwebAll = (state.inciwebFires||[]).filter(f=>
+    f.POOState==="SD"||f.POOState==="South Dakota"
+  );
+
+  // Merge — prefer NIFC data if same fire, but include all InciWeb SD entries
+  const nifcNames = new Set(sdAll.filter(f=>f.source==="NIFC").map(f=>
+    f.IncidentName?.toLowerCase().replace(/\s+fire$/i,"").trim()
+  ));
+  const extraInciweb = inciwebAll.filter(f=>{
+    const clean = f.IncidentName?.toLowerCase().replace(/\s+fire$/i,"").trim();
+    return !nifcNames.has(clean);
+  });
+  const allSD = [...sdAll, ...extraInciweb];
+
+  if (allSD.length === 0) {
+    el.innerHTML = `
+      <div style="color:var(--greenlt);font-size:9px;font-family:var(--mono);margin-bottom:3px">✓ No SD incidents in current feeds</div>
+      <div style="padding:5px 8px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.2);border-left:3px solid var(--amberlt);border-radius:0 4px 4px 0">
+        <div style="font-size:8px;color:var(--amberlt);font-weight:700;font-family:var(--mono);margin-bottom:2px">⚠ REPORTING THRESHOLD</div>
+        <div style="font-size:8px;color:var(--textmid);line-height:1.6">
+          <strong style="color:var(--text)">NIFC WFIGS</strong> — fires typically <strong style="color:var(--amberlt)">100+ acres</strong><br/>
+          <strong style="color:var(--text)">InciWeb RSS</strong> — any reported incident, ~30–60 min lag<br/>
+          Small initial-attack fires appear in resources below before APIs.
+        </div>
+      </div>`;
+    return;
+  }
+
+  el.innerHTML = allSD.map(f => {
+    const acres = f.IncidentSize||f.DiscoveryAcres||0;
+    const pct = f.PercentContained;
+    const county = f.POOCounty ? f.POOCounty.replace(" County","")+" Co." : "";
+    const color = pct!=null&&pct>=100?"var(--greenlt)":pct!=null&&pct>50?"var(--amberlt)":"var(--redlt)";
+    const sourceBadge = f.source==="NIFC"
+      ? `<span class="chip" style="background:rgba(224,104,32,0.12);border:1px solid rgba(224,104,32,0.3);color:var(--orangelt);font-size:7px">NIFC</span>`
+      : `<span class="chip" style="background:rgba(18,128,208,0.12);border:1px solid rgba(18,128,208,0.3);color:var(--bluelt);font-size:7px">InciWeb</span>`;
+
+    const coords = (f.lat&&f.lon)
+      ? `<span style="font-family:var(--mono);font-size:7px;color:var(--textdim)"> · ${f.lat.toFixed(3)}°N ${Math.abs(f.lon).toFixed(3)}°W</span>`
+      : "";
+
+    const link = f.link
+      ? `<a href="${f.link}" target="_blank" style="font-size:8px;color:var(--bluelt);font-family:var(--mono)">▸ InciWeb page</a>`
+      : `<a href="https://inciweb.wildfire.gov/state/south-dakota" target="_blank" style="font-size:8px;color:var(--textdim);font-family:var(--mono)">▸ InciWeb SD</a>`;
+
+    return `<div style="border-left:3px solid ${color};background:${color}0c;border-radius:0 4px 4px 0;padding:6px 9px;margin-bottom:5px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px;margin-bottom:2px">
+        <span style="font-family:var(--head);font-size:12px;font-weight:700;color:${color};line-height:1">${f.IncidentName}</span>
+        <div style="display:flex;gap:3px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end">
+          ${sourceBadge}
+          ${acres>0?`<span class="chip" style="background:rgba(224,104,32,0.12);border:1px solid rgba(224,104,32,0.3);color:var(--orangelt);font-size:7px">${acres>=1000?(acres/1000).toFixed(1)+"k":Math.round(acres)} ac</span>`:""}
+          ${pct!=null?`<span class="chip" style="background:${color}18;border:1px solid ${color}40;color:${color};font-size:7px">${pct}%</span>`:""}
+        </div>
+      </div>
+      <div style="font-size:8px;color:var(--textmid)">📍 ${county||"SD"}${coords}</div>
+      ${f.FireCause?`<div style="font-size:7px;color:var(--textdim);font-family:var(--mono)">Cause: ${f.FireCause}</div>`:""}
+      ${f.StructuresThreatenedTotal>0?`<div style="font-size:8px;color:var(--redlt);font-family:var(--mono)">⚠ ${f.StructuresThreatenedTotal} structures threatened</div>`:""}
+      ${pct!=null?`<div style="background:#040810;border-radius:2px;height:3px;overflow:hidden;margin-top:4px"><div style="width:${Math.min(pct,100)}%;height:100%;background:${color}"></div></div>`:""}
+      <div style="margin-top:4px">${link}</div>
+    </div>`;
+  }).join("") + `<div style="font-size:7px;color:var(--textdim);font-family:var(--mono);margin-top:4px;line-height:1.5">
+    ${allSD.length} SD incident${allSD.length!==1?"s":""} · NIFC WFIGS + InciWeb RSS · Refreshed every 5 min
+  </div>`;
 }
 
 function renderFires(fires) {
@@ -2088,6 +2604,7 @@ function renderAll() {
   renderFemaSeismic(fema,quakes);
   updateFireBand(fires);
   renderFires(fires);
+  renderSDWildfire(fires);
 
   state.lastUpdate = new Date();
   document.getElementById("band-updated").textContent = state.lastUpdate.toLocaleTimeString();
@@ -2098,11 +2615,19 @@ function renderAll() {
 /* ══════════════════════════════════════════════════
    INIT & REFRESH
 ══════════════════════════════════════════════════ */
+async function fetchKevMain() {
+  try {
+    const r=await fetch("https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json");
+    const d=await r.json();
+    state.kev=(d.vulnerabilities||[]).sort((a,b)=>new Date(b.dateAdded)-new Date(a.dateAdded)).slice(0,10);
+  } catch(e) { state.kev=[]; }
+}
+
 async function refreshAll() {
   document.getElementById("band-updated").textContent = "Refreshing…";
   await Promise.allSettled([
     fetchAlerts(), fetchGauges(), fetchDrought(),
-    fetchFema(), fetchQuakes(), fetchFires()
+    fetchFema(), fetchQuakes(), fetchFires(), fetchKevMain()
   ]);
   renderAll();
 }
@@ -2112,22 +2637,6 @@ async function init() {
   renderAll();
   await refreshAll();
   setInterval(refreshAll, 5*60*1000);
-  // Check if SD Wildland Fire iframe loaded — show fallback if blocked
-  setTimeout(()=>{
-    const frame = document.querySelector('iframe[title="SD Wildland Fire Info"]');
-    const fallback = document.getElementById("sdwf-fallback");
-    if (!frame||!fallback) return;
-    try {
-      // If we can't access contentDocument, CORS blocked it — show fallback links
-      const doc = frame.contentDocument||frame.contentWindow?.document;
-      if (!doc||doc.readyState==="loading") {
-        fallback.style.display="flex";
-      }
-    } catch(e) {
-      // Cross-origin block — show fallback
-      fallback.style.display="flex";
-    }
-  }, 5000);
 }
 
 let drawerOpen = false;
@@ -2615,5 +3124,6 @@ function renderDrawerOutlook(alerts, gauges, drought, quakes) {
 
 
 </script>
+
 </body>
 </html>
